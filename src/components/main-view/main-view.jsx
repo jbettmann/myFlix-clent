@@ -17,9 +17,9 @@ export default class MainView extends React.Component { //with extends, basiclly
         // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
         this.state = {
             movies: [
-                { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: 'https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/'},
-                { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: 'https://www.imdb.com/title/tt0111161/mediaviewer/rm10105600/'},
-                { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: 'https://www.imdb.com/title/tt0172495/mediaviewer/rm2442542592/'}
+                { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...'},
+                { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
+                { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
             ],
             // this tells app no movie cards were clicked
             selectedMovie: null

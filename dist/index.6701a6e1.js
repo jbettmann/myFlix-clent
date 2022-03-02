@@ -22908,19 +22908,19 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     Title: 'Inception',
                     Description: 'desc1...',
-                    ImagePath: 'https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/'
+                    ImagePath: '...'
                 },
                 {
                     _id: 2,
                     Title: 'The Shawshank Redemption',
                     Description: 'desc2...',
-                    ImagePath: 'https://www.imdb.com/title/tt0111161/mediaviewer/rm10105600/'
+                    ImagePath: '...'
                 },
                 {
                     _id: 3,
                     Title: 'Gladiator',
                     Description: 'desc3...',
-                    ImagePath: 'https://www.imdb.com/title/tt0172495/mediaviewer/rm2442542592/'
+                    ImagePath: '...'
                 }
             ],
             // this tells app no movie cards were clicked
