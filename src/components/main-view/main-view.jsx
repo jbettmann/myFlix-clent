@@ -1,8 +1,10 @@
 
 // Requirment to create component
 import React from 'react';
+import axios from 'axios'; // Ajax operations 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+
 
 
 // React.Component is like a template or blueprint for creating new components 
@@ -16,11 +18,7 @@ export default class MainView extends React.Component { //with extends, basiclly
         super();
         // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
         this.state = {
-            movies: [
-                { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: '...'},
-                { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
-                { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
-            ],
+            movies: [ ],
             // this tells app no movie cards were clicked
             selectedMovie: null
         };
@@ -49,4 +47,17 @@ export default class MainView extends React.Component { //with extends, basiclly
           </div>
           );
         }
+
+    componentDidMount(){
+      //setting movies array state to load data from myFlix API
+      axios.get('https://jordansmyflix.herokuapp.com/movies')
+      .then(response => {
+        this.setState({ 
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
 }
