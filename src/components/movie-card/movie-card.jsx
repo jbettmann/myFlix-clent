@@ -16,9 +16,6 @@ MovieCard.propTypes = {
     // props object MAY contain a title key, if it DOES then it MUST be a string
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    }).isRequired,
     ImageUrl: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired
