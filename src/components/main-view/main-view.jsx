@@ -52,8 +52,9 @@ export default class MainView extends React.Component { //with extends, basiclly
 
       return (
         <div className="main-view">
-          {selectedMovie
+          {selectedMovie 
             ? <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+                
             : movies.map(movie => (
               <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
             ))
@@ -84,3 +85,4 @@ LoginView.propTypes = {
   }),
   onLoggedIn: PropTypes.func.isRequired
 };
+
