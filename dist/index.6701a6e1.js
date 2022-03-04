@@ -22913,7 +22913,8 @@ class MainView extends _reactDefault.default.Component {
             user: null //default is logged out.
         };
     }
-    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie
+    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie. 
+    // This method(this.setState) ALWAYS takes an object and that object contains new value to assign state in form of key:value pair
     setSelectedMovie(newSelectedMovie) {
         this.setState({
             selectedMovie: newSelectedMovie
@@ -22934,7 +22935,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49
+                lineNumber: 50
             },
             __self: this
         }));
@@ -22942,7 +22943,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 51
+                lineNumber: 52
             },
             __self: this,
             children: "Loading..."
@@ -22951,7 +22952,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 54
+                lineNumber: 55
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -22961,17 +22962,20 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 56
+                    lineNumber: 57
                 },
                 __self: this
-            }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+            }) : movies.map((movie)=>// onMovieClick function gets passed as a prop to MovieCard because,the only component that can directly change a state is the component that owns that state
+                // Function sets state to that movie.
+                // onClick event attribute only works as an event listener with React elements 
+                /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                     movieData: movie,
                     onMovieClick: (movie1)=>{
                         this.setSelectedMovie(movie1);
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 59
+                        lineNumber: 63
                     },
                     __self: this
                 }, movie._id)
@@ -23022,8 +23026,9 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 class MovieCard extends _reactDefault.default.Component {
     render() {
-        // movieData is "name of the prop" used in <MovieCard ... />
+        // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
         const { movieData , onMovieClick  } = this.props;
+        // use onMovieClick as callback on onClick event listener to change start of main-view
         return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "movie-card",
             onClick: ()=>{
@@ -23031,7 +23036,7 @@ class MovieCard extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 9
+                lineNumber: 10
             },
             __self: this,
             children: movieData.Title
@@ -23999,7 +24004,7 @@ class MovieView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 42
+                        lineNumber: 43
                     },
                     __self: this,
                     children: "Back"

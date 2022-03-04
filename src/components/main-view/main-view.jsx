@@ -27,7 +27,8 @@ export default class MainView extends React.Component { //with extends, basiclly
         };
     }
 
-    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie
+    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie. 
+    // This method(this.setState) ALWAYS takes an object and that object contains new value to assign state in form of key:value pair
     setSelectedMovie(newSelectedMovie) {
       this.setState({
         selectedMovie: newSelectedMovie
@@ -56,6 +57,9 @@ export default class MainView extends React.Component { //with extends, basiclly
             ? <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
                 
             : movies.map(movie => (
+              // onMovieClick function gets passed as a prop to MovieCard because,the only component that can directly change a state is the component that owns that state
+              // Function sets state to that movie.
+              // onClick event attribute only works as an event listener with React elements 
               <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
             ))
           }

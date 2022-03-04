@@ -39,6 +39,7 @@ export class MovieView extends React.Component {
           <span className="label">Featured: </span>
           <span className="value">{movieData.Featured}</span>
         </div>
+        {/* button sets selectedMovie to null, allowing MainView to stop rendering MovieView */}
         <button onClick={() => { onBackClick(null); }}>Back</button>
       </div>
     )};
