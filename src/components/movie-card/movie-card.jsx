@@ -18,11 +18,11 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired
-    }),
+    }).isRequired,
     ImageUrl: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired
-    }),
+    }).isRequired,
     Release: PropTypes.string.isRequired,
     Featured: PropTypes.bool.isRequired,
     Actors: PropTypes.array.isRequired
