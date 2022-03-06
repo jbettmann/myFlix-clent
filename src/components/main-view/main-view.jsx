@@ -29,14 +29,6 @@ export default class MainView extends React.Component { //with extends, basiclly
       };
   }
 
-<<<<<<< Updated upstream
-    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie
-    setSelectedMovie(newSelectedMovie) {
-      this.setState({
-        selectedMovie: newSelectedMovie
-      });
-    }
-=======
   // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie. 
   // This method(this.setState) ALWAYS takes an object and that object contains new value to assign state in form of key:value pair
   setSelectedMovie(newSelectedMovie) {
@@ -44,7 +36,6 @@ export default class MainView extends React.Component { //with extends, basiclly
       selectedMovie: newSelectedMovie
     });
   }
->>>>>>> Stashed changes
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user. 
   onLoggedIn(user) {
@@ -70,12 +61,6 @@ export default class MainView extends React.Component { //with extends, basiclly
     // load spinner if no list loads 
     if (movies.length === 0) 
       return (
-<<<<<<< Updated upstream
-        <div className="main-view">
-          {selectedMovie
-            ? <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-            : movies.map(movie => (
-=======
           <Row className="login-view justify-content-sm-center align-items-center"> 
             <Col sm="auto">
               <Spinner animation="border" role="status">
@@ -102,7 +87,6 @@ export default class MainView extends React.Component { //with extends, basiclly
             // Function sets state to that movie.
             // onClick event attribute only works as an event listener with React elements 
             <Col md={4} sm={6} id="movie-card__main">
->>>>>>> Stashed changes
               <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
             </Col>  
             ))

@@ -10,9 +10,6 @@ export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... />
     const { movieData, onMovieClick } = this.props;
-<<<<<<< Updated upstream
-    return <div className="movie-card" onClick={() => { onMovieClick(movieData); }}>{movieData.Title}</div>;
-=======
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
       <Card id="movie-card" variant="dark">
@@ -24,7 +21,6 @@ export class MovieCard extends React.Component {
         </Card.Body>
       </Card>
     );
->>>>>>> Stashed changes
   }
 }
 
