@@ -1,12 +1,30 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button  from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... />
     const { movieData, onMovieClick } = this.props;
+<<<<<<< Updated upstream
     return <div className="movie-card" onClick={() => { onMovieClick(movieData); }}>{movieData.Title}</div>;
+=======
+    // use onMovieClick as callback on onClick event listener to change start of main-view
+    return (
+      <Card id="movie-card" variant="dark">
+        <Card.Img variant="top" src={movieData.ImageUrl} />
+        <Card.Body >
+          <Card.Title >{movieData.Title}</Card.Title>
+          <Card.Text>{movieData.Description}</Card.Text>
+          <Button id="btn-link" onClick={() => onMovieClick(movieData)} variant="link">Open</Button>        
+        </Card.Body>
+      </Card>
+    );
+>>>>>>> Stashed changes
   }
 }
 
