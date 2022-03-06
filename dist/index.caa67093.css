@@ -37,8 +37,26 @@ p {
 #movie-view > div {
   border: none;
 }
+
+#movie-card {
+  background-color: #373737;
+  height: 100%;
+}
+
+.card-title {
+  color: #fff;
+}
+
+#movie-card__main {
+  margin: 1rem 0;
+  flex: 1 0 auto;
+}
 .login-view {
   height: 100vh;
+}
+
+.form-label {
+  color: #fff;
 }
 
 #card_body {

@@ -22925,7 +22925,8 @@ class MainView extends _reactDefault.default.Component {
             user: null //default is logged out.
         };
     }
-    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie
+    // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie. 
+    // This method(this.setState) ALWAYS takes an object and that object contains new value to assign state in form of key:value pair
     setSelectedMovie(newSelectedMovie) {
         this.setState({
             selectedMovie: newSelectedMovie
@@ -22941,28 +22942,11 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user  } = this.state;
         // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
-<<<<<<< Updated upstream
-        if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-            onLoggedIn: (user1)=>this.onLoggedIn(user1)
-            ,
-            __source: {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49
-            },
-            __self: this
-        }));
-        if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-            className: "main-view",
-            __source: {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 51
-=======
         if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
             className: "login-view justify-content-sm-center align-items-center",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 54
->>>>>>> Stashed changes
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
@@ -22988,26 +22972,13 @@ class MainView extends _reactDefault.default.Component {
             className: "login-view justify-content-sm-center align-items-center",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< Updated upstream
-                lineNumber: 54
-=======
                 lineNumber: 64
->>>>>>> Stashed changes
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                 sm: "auto",
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< Updated upstream
-                    lineNumber: 56
-                },
-                __self: this
-            }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
-                    movieData: movie,
-                    onMovieClick: (movie1)=>{
-                        this.setSelectedMovie(movie1);
-=======
                     lineNumber: 65
                 },
                 __self: this,
@@ -23017,7 +22988,6 @@ class MainView extends _reactDefault.default.Component {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
                         lineNumber: 66
->>>>>>> Stashed changes
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("span", {
@@ -23042,11 +23012,7 @@ class MainView extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_navFull.NavBar, {
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< Updated upstream
-                        lineNumber: 58
-=======
                         lineNumber: 75
->>>>>>> Stashed changes
                     },
                     __self: this
                 }),
@@ -23164,16 +23130,6 @@ class MovieCard extends _reactDefault.default.Component {
     render() {
         // movieData is "name of the prop" used in <MovieCard ... />
         const { movieData , onMovieClick  } = this.props;
-<<<<<<< Updated upstream
-        return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-            className: "movie-card",
-            onClick: ()=>{
-                onMovieClick(movieData);
-            },
-            __source: {
-                fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 9
-=======
         // use onMovieClick as callback on onClick event listener to change start of main-view
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_cardDefault.default, {
             id: "movie-card",
@@ -23181,7 +23137,6 @@ class MovieCard extends _reactDefault.default.Component {
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
                 lineNumber: 15
->>>>>>> Stashed changes
             },
             __self: this,
             children: [
@@ -34824,18 +34779,6 @@ function createButton(name, defaultValue, label = name) {
                     "aria-hidden": "true",
                     children: children || defaultValue
                 }),
-<<<<<<< Updated upstream
-                /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                    onClick: ()=>{
-                        onBackClick(null);
-                    },
-                    __source: {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 42
-                    },
-                    __self: this,
-                    children: "Back"
-=======
                 /*#__PURE__*/ _jsxRuntime.jsx("span", {
                     className: "visually-hidden",
                     children: label
@@ -35601,7 +35544,6 @@ const TabPane = /*#__PURE__*/ _react.forwardRef(({ bsPrefix , transition , ...pr
                     ...rest,
                     ref: ref,
                     className: _classnamesDefault.default(className, prefix, isActive && 'active')
->>>>>>> Stashed changes
                 })
             })
         })
@@ -37653,72 +37595,13 @@ function LoginView(props) {
         console.log(username, password);
         /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
-<<<<<<< Updated upstream
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
-=======
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
->>>>>>> Stashed changes
+        id: "movie-card",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
             lineNumber: 25
         },
         __self: this,
-<<<<<<< Updated upstream
-        children: [
-            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                __source: {
-                    fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 21
-                },
-                __self: this,
-                children: [
-                    "Username:",
-                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value)
-                        ,
-                        __source: {
-                            fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 23
-                        },
-                        __self: this
-                    })
-                ]
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                __source: {
-                    fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 25
-                },
-                __self: this,
-                children: [
-                    "Password:",
-                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value)
-                        ,
-                        __source: {
-                            fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 27
-                        },
-                        __self: this
-                    })
-                ]
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                type: "submit",
-                onClick: handleSubmit,
-                __source: {
-                    fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 29
-                },
-                __self: this,
-                children: "Submit"
-            })
-        ]
-=======
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
             id: "card_body",
             __source: {
@@ -37804,6 +37687,7 @@ function LoginView(props) {
                     ]
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                    id: "btn-link",
                     variant: "link",
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
@@ -37814,7 +37698,6 @@ function LoginView(props) {
                 })
             ]
         })
->>>>>>> Stashed changes
     }));
 }
 _s(LoginView, "9FY2cPL9VBDmuhjwpF2ik6flsHs=");

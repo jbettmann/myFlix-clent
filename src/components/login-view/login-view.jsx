@@ -22,7 +22,7 @@ export function LoginView(props) {
   };
 
   return (
-      <Card>
+      <Card id="movie-card"> 
         <Card.Body id='card_body'>
           <Form>
             <Form.Group controlId="formUsername">
@@ -36,7 +36,7 @@ export function LoginView(props) {
             </Form.Group>
             <Button variant="light" type="submit" onClick={handleSubmit}>Submit</Button>
           </Form>
-          <Button variant="link">Register</Button>
+          <Button id="btn-link" variant="link">Register</Button>
         </Card.Body>
       </Card>
      
