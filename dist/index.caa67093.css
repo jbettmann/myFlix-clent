@@ -1,4 +1,64 @@
-.my-flix {
-  color: steelblue;
+#body {
+  background-color: #f0f0ec;
+}
+
+h5 {
+  color: #f0f0ec;
+}
+
+span {
+  color: #f0f0ec;
+}
+
+p {
+  color: #f0f0ec;
+}
+
+.app-container {
+  color: black;
+}
+
+#btn-link {
+  color: #f0f0ec;
+}
+#movie-card {
+  background-color: #3d2661;
+  height: 100%;
+}
+
+.card-title {
+  color: #fff;
+}
+
+#movie-card__main {
+  margin: 1rem 0;
+  flex: 1 0 auto;
+}
+#movie-view > div {
+  border: none;
+}
+.login-view {
+  height: 100vh;
+}
+
+#card_body {
+  padding: 2rem 2rem;
+}
+
+.btn {
+  margin: 0.5rem 0;
+}
+
+a {
+  margin: 0.5rem 0;
+}
+
+#nav {
+  background-color: #59418000;
+}
+
+#logo {
+  font-size: 2rem;
+  color: #3d2661;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
