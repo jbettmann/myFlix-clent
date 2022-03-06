@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Navbar } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import MainView from './components/main-view/main-view'; // If MainView doesnt have "default" keyword in main-view.jsx, you must surround it in {} here.
 
@@ -9,7 +10,10 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <MainView />
+      // Bootstrap Container for styling
+      <Container>
+        <MainView />
+      </Container>
     );
   }
 }
