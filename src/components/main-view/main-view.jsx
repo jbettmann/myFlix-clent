@@ -3,11 +3,15 @@
 import React from 'react';
 import axios from 'axios'; // Ajax operations 
 import PropTypes from 'prop-types';
-import { Spinner, Col, Row, Container, Navbar, Nav } from 'react-bootstrap'; 
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Spinner, Col, Row, Container, Button} from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { NavBar } from '../navbar/nav-full';
+import { RegistrationView } from '../registration-view/registration-view';
+
 
 import './main-view.scss';
 
@@ -38,9 +42,41 @@ export default class MainView extends React.Component { //with extends, basiclly
   }
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user. 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username //username saved in user state
+    });
+    // auth info recieved from handleSubmit method on LoginView is saved to localStorage. 
+    // localStorage has setItem method taking two arguments: key and value. 
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+
+    // gets movies once user is logged in. 'this' refers to object itself, aka MainView class. 
+    this.getMovies(authData.token);
+  }
+
+  // getMovies helps with refactoring, to not repeat ourself. Executes a GET request to 'movies' endpoint. 
+  getMovies(token) {
+    axios.get('https://jordansmyflix.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  // logs user out and sets state to null
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
     });
   }
     
@@ -72,7 +108,7 @@ export default class MainView extends React.Component { //with extends, basiclly
 
     return (
       <Container>
-        <NavBar />
+        <NavBar onLogoutClick={() => {this.onLoggedOut()}} />
         <Container>
           <Row className="justify-content-md-center" id="main-view">
           {selectedMovie 
@@ -98,17 +134,28 @@ export default class MainView extends React.Component { //with extends, basiclly
     }
 
     componentDidMount(){
-      //setting movies array state to load data from myFlix API
-      axios.get('https://jordansmyflix.herokuapp.com/movies')
-      .then(response => {
-        this.setState({ 
-          movies: response.data
+      // Checks if user is logged in when page is loaded. gets token from local stroage 
+      let accessToken = localStorage.getItem('token');
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
         });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+        // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
+        this.getMovies(accessToken)
+      }
     }
+
+      //setting movies array state to load data from myFlix API
+    //   axios.get('https://jordansmyflix.herokuapp.com/movies')
+    //   .then(response => {
+    //     this.setState({ 
+    //       movies: response.data
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+    // }
 }
 
 LoginView.propTypes = {
