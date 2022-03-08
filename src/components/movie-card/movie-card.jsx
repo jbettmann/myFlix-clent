@@ -3,13 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button  from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
-    const { movieData, onMovieClick } = this.props;
+    const { movieData } = this.props;
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
       <Card id="movie-card" variant="dark">
@@ -17,7 +18,9 @@ export class MovieCard extends React.Component {
         <Card.Body >
           <Card.Title >{movieData.Title}</Card.Title>
           <Card.Text>{movieData.Description}</Card.Text>
-          <Button id="btn-link" onClick={() => onMovieClick(movieData)} variant="link">Open</Button>        
+          <Link to={`/movies/${movieData._id}`}>
+            <Button id='btn-link' variant="link">Open</Button>
+          </Link>       
         </Card.Body>
       </Card>
     );

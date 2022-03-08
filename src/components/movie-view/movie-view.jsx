@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 import './movie-view.scss';
 
@@ -26,10 +27,16 @@ export class MovieView extends React.Component {
           <div className="movie-genre">
             <span className="label">Genre: </span>
             <span className="value">{movieData.Genre.Name}</span>
+            <Link to={`/genres/${movieData.Genre.Name}`}>
+              <Button variant="link">Genre</Button>
+            </Link>
           </div>
           <div className="movie-director">
             <span className="label">Director: </span>
             <span className="value">{movieData.Director.Name}</span>
+            <Link to={`/directors/${movieData.Director.Name}`}>
+              <Button variant="link">Director</Button>
+            </Link>
           </div>
           <div className="movie-releaseDate">
             <span className="label">Release Date: </span>
@@ -44,7 +51,7 @@ export class MovieView extends React.Component {
             <span className="value">{movieData.Featured}</span>
           </div>
           {/* button sets selectedMovie to null, allowing MainView to stop rendering MovieView */}
-          <Button variant="light" onClick={() => { onBackClick(null); }}>Back</Button>
+          <Button variant="light" onClick={() => { onBackClick(); }}>Back</Button>
         </Card.Body>
       </Card>
     )};

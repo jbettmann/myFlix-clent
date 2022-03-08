@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios'; // Ajax operations 
 import PropTypes from 'prop-types';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
 import { Spinner, Col, Row, Container, Button} from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -27,18 +27,9 @@ export default class MainView extends React.Component { //with extends, basiclly
       super();
       // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
       this.state = {
-          movies: [ ],
-          selectedMovie: null, // this tells app no movie cards were clicked
+          movies: [],
           user: null //default is logged out.
       };
-  }
-
-  // When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie. 
-  // This method(this.setState) ALWAYS takes an object and that object contains new value to assign state in form of key:value pair
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-    });
   }
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user. 
@@ -82,13 +73,13 @@ export default class MainView extends React.Component { //with extends, basiclly
     
   // renders what will be displayed on the screen. The visual representation of component.
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, user } = this.state;
 
     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
     if (!user) 
       return (
-        <Row className="login-view justify-content-sm-center align-items-center"> 
-          <Col sm="auto">
+        <Row  className="login-view justify-content-sm-center align-items-center">
+          <Col  sm="auto">
             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>
         </Row>
@@ -109,29 +100,71 @@ export default class MainView extends React.Component { //with extends, basiclly
     return (
       <Container>
         <NavBar onLogoutClick={() => {this.onLoggedOut()}} />
-        <Container>
-          <Row className="justify-content-md-center" id="main-view">
-          {selectedMovie 
-          ? (
-            <Col sm="auto" id="movie-view">
-            {/* md={8} makes MovieView take up 8 columns out of 12 when screen larger then 768px */}
-              <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-            </Col>
-          )      
-          : movies.map(movie => (
-            // onMovieClick function gets passed as a prop to MovieCard because,the only component that can directly change a state is the component that owns that state
-            // Function sets state to that movie.
-            // onClick event attribute only works as an event listener with React elements 
-            <Col md={4} sm={6} id="movie-card__main">
-              <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-            </Col>  
+        <Router>
+        <Row className="justify-content-md-center" id="main-view">
+          {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
+          <Route exact path="/" render={() => {
+            return movies.map(m => (
+              <Col md={4} sm={6} id="movie-card__main" key={m._id}>
+                <MovieCard movie={m} />
+              </Col>
             ))
-          }
-          </Row>
-        </Container>
+          }} />
+          <Route exact path="/movies/:movieId" render={({ match, history }) => {
+            return ( 
+              <Col sm="auto" id="movie-view">
+                {/* .goback() is build-in function to go to previous page */}
+                <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
+              </Col>
+          )}} />
+          <Route exact path="/genres/:name" render={({ match }) => {
+            // getting movies async or returns if movies havent been added
+            if (movies.length === 0) return <Row className="justify-content-md-center" id="main-view" />;
+            return (
+              <Col sm="auto" id="movie-view">
+                {/* Loop through genre names in movies array and returns movie with Genre without .Genre at end. When added .Genre will return genre info */}
+                <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+              </Col>
+          )}}/>
+          <Route exact path="/directors/:name" render={({ match }) => {
+            if (movies.length === 0) return <Row className="justify-content-md-center" id="main-view" />;
+            return (
+              <Col md={8}>
+                <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+              </Col>
+          )}}/>
+        </Row>
+      </Router>
       </Container>
-      );
-    }
+  );
+}
+
+
+    //   <Container>
+    //     <NavBar onLogoutClick={() => {this.onLoggedOut()}} />
+    //     <Container>
+    //       <Row className="justify-content-md-center" id="main-view">
+    //       {selectedMovie 
+    //       ? (
+    //         <Col sm="auto" id="movie-view">
+    //         {/* md={8} makes MovieView take up 8 columns out of 12 when screen larger then 768px */}
+    //           <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+    //         </Col>
+    //       )      
+    //       : movies.map(movie => (
+    //         // onMovieClick function gets passed as a prop to MovieCard because,the only component that can directly change a state is the component that owns that state
+    //         // Function sets state to that movie.
+    //         // onClick event attribute only works as an event listener with React elements 
+    //         <Col md={4} sm={6} id="movie-card__main">
+    //           <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+    //         </Col>  
+    //         ))
+    //       }
+    //       </Row>
+    //     </Container>
+    //   </Container>
+    //   );
+    // }
 
     componentDidMount(){
       // Checks if user is logged in when page is loaded. gets token from local stroage 
