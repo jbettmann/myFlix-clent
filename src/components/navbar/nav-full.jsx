@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 import './nav.scss';
 
-export function NavBar() {
+export function NavBar(props) {
 
   return  (
     <Navbar id="nav">
@@ -14,6 +14,7 @@ export function NavBar() {
           <Nav.Link href="#Movies">movies</Nav.Link>
           <Nav.Link href="#Profile">profile</Nav.Link>
           <Nav.Link href="#Favorites">myFavorties</Nav.Link>
+          <Button onClick={() => props.onLogoutClick()}>Logout</Button>
         </Nav>
       </Container>
     </Navbar>
