@@ -8,7 +8,7 @@ import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    // movieData is "name of the prop" used in <MovieCard ... />
+    // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
     const { movieData, onMovieClick } = this.props;
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
@@ -30,13 +30,10 @@ MovieCard.propTypes = {
     // props object MAY contain a title key, if it DOES then it MUST be a string
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    }),
     ImageUrl: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired
-    }),
+    }).isRequired,
     Release: PropTypes.string.isRequired,
     Featured: PropTypes.bool.isRequired,
     Actors: PropTypes.array.isRequired
