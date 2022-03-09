@@ -58,34 +58,33 @@ const validate = () => {
 };
 
   return (
-    <Container>
-        <Navbar id="nav" fixed="top">
+    <Row className="login-view justify-content-sm-center align-items-center"> 
+      <Col sm="auto">
         <Container>
-          <Navbar.Brand href="#home" id="logo" className="fs-3">myFlix</Navbar.Brand>
-        </Container>
-      </Navbar>
-      <Card id="movie-card"> 
-        <Card.Body id='card_body'>
-          <Form>
-            <Form.Group controlId="formUsername">
-              <Form.Label>Username:</Form.Label>
-              <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
-              {/* Display validation error */}
-              {usernameErr && <p>{usernameErr}</p>}
-            </Form.Group>
+          <Card id="movie-card"> 
+            <Card.Body id='card_body'>
+              <Form>
+                <Form.Group controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+                  {/* Display validation error */}
+                  {usernameErr && <p>{usernameErr}</p>}
+                </Form.Group>
 
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
-              {/* Display validation error */}
-              {passwordErr && <p>{passwordErr}</p>}
-            </Form.Group>
-            <Button variant="light" type="submit" onClick={handleSubmit}>Submit</Button>
-          </Form>
-          <Button id="btn-link" variant="link">Register</Button>
-        </Card.Body>
-      </Card>
-    </Container> 
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                  {/* Display validation error */}
+                  {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+                <Button variant="light" type="submit" onClick={handleSubmit}>Submit</Button>
+              </Form>
+              <Button id="btn-link" variant="link">Register</Button>
+            </Card.Body>
+          </Card>
+        </Container> 
+      </Col>
+    </Row>
   );
 }
 

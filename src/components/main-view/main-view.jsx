@@ -10,9 +10,9 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import UserUpdate from '../profile-view/user-update';
-import NavBar from '../navbar/navbar';
-import RegistrationView from '../registration-view/registration-view';
+import { UserUpdate } from '../profile-view/user-update';
+import { NavBar } from '../navbar/navbar';
+import { RegistrationView }from '../registration-view/registration-view';
 
 
 import './main-view.scss';
@@ -21,7 +21,7 @@ import './main-view.scss';
 // React.Component is like a template or blueprint for creating new components 
 // export "exposes" MainView, making it available for use by other components, modules and files. aka, youll be able import it into other files
 // creates MainView component. "class" states class component, oppposed to function component
-export default class MainView extends React.Component { //with extends, basiclly saying "create new MainView using React.Component template"
+export class MainView extends React.Component { //with extends, basiclly saying "create new MainView using React.Component template"
 
   // React uses constructor method to create component
   constructor() {
@@ -90,17 +90,7 @@ export default class MainView extends React.Component { //with extends, basiclly
     const { movies, user } = this.state;
 
     // load spinner if no list loads 
-    if (movies.length === 0) {
-      return (
-          <Row className="login-view justify-content-sm-center align-items-center"> 
-            <Col sm="auto">
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            </Col>
-          </Row>
-        ) 
-      }
+
     return (
       <>
         <NavBar user={user} />  
@@ -110,20 +100,38 @@ export default class MainView extends React.Component { //with extends, basiclly
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
                     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
-                if (!user) {
+                if (movies.length === 0) {
                   return (
-                    <Row  className="login-view justify-content-sm-center align-items-center">
-                      <Col  sm="auto">
-                        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                      <Row className="login-view justify-content-sm-center align-items-center"> 
+                        <Col sm="auto">
+                          <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                          </Spinner>
+                        </Col>
+                      </Row>
+                    ) 
+                  }
+                          
+                if (!user) {
+                  return <Redirect to="/login" />;
+                }
+                return (
+                  <>
+                    {movies.map(movie => (
+                      <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
+                        <MovieCard movieData={movie} />
                       </Col>
-                    </Row>
-                    )}
-                return movies.map(movie => (
-                  <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
-                    <MovieCard movieData={movie} />
-                  </Col>
-                ))
+                  ))}
+                </>
+                )
               }} />
+
+            <Route path="/login" render={() => {
+                if (user) {
+                    return <Redirect to="/" />;
+                }
+                return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
+            }} /> 
 
               <Route path="/register" render={() => {
                 if (user) {
@@ -214,44 +222,3 @@ export default class MainView extends React.Component { //with extends, basiclly
     );
   }
 }
-
-
-    //   <Container>
-    //     <NavBar onLogoutClick={() => {this.onLoggedOut()}} />
-    //     <Container>
-    //       <Row className="justify-content-md-center" id="main-view">
-    //       {selectedMovie 
-    //       ? (
-    //         <Col sm="auto" id="movie-view">
-    //         {/* md={8} makes MovieView take up 8 columns out of 12 when screen larger then 768px */}
-    //           <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-    //         </Col>
-    //       )      
-    //       : movies.map(movie => (
-    //         // onMovieClick function gets passed as a prop to MovieCard because,the only component that can directly change a state is the component that owns that state
-    //         // Function sets state to that movie.
-    //         // onClick event attribute only works as an event listener with React elements 
-    //         <Col md={4} sm={6} id="movie-card__main">
-    //           <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-    //         </Col>  
-    //         ))
-    //       }
-    //       </Row>
-    //     </Container>
-    //   </Container>
-    //   );
-    // }
-
-
-
-      //setting movies array state to load data from myFlix API
-    //   axios.get('https://jordansmyflix.herokuapp.com/movies')
-    //   .then(response => {
-    //     this.setState({ 
-    //       movies: response.data
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    // }
