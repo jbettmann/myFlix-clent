@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Card, Form, Button, Container, Navbar } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import './login-view.scss';
 
@@ -87,3 +88,12 @@ const validate = () => {
     </Container> 
   );
 }
+
+LoginView.propTypes = {
+  // props object MUST include a movie object. .shape({...}) means object
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired
+  }),
+  onLoggedIn: PropTypes.func.isRequired
+};

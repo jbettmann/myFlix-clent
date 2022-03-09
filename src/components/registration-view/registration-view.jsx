@@ -19,7 +19,7 @@ export function RegistrationView(props) {
 
   // Declare hook for each input
   // Could also do [values, setValues] = useState({nameErr: '', usernameErr: '', etc...})
-  const [ nameErr, setnameErr ] = useState('');
+  const [ nameErr, setNameErr ] = useState('');
   const [ usernameErr, setUsernameErr ] = useState('');
   const [ passwordErr, setPasswordErr ] = useState('');
   const [ emailErr, setEmailErr ] = useState('');
