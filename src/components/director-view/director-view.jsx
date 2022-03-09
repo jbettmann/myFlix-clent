@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
-export  function DirectorView() {
+export  function DirectorView({}) {
   return (
-    <div>
-      
-    </div>
+    <Container>
+      <h4>{Director.Name}</h4>
+    </Container>
   )
 }

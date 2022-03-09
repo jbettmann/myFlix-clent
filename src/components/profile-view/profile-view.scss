@@ -1,0 +1,29 @@
+.fav-movies {
+  margin-bottom: 15px;
+
+  // makes images all same height
+  figure {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis; // makes sure title doesnt wrap and coloumn stay the same height on small screens
+    white-space: nowrap;
+    margin: auto;
+    width: 100%;
+    img {
+      display: block;
+      height: 400px;
+      margin: auto;
+    }
+    figcaption {
+      text-align: center;
+    }
+  }
+  button {
+    display: block;
+    margin: auto;
+  }
+}
+
+.card {
+  margin-bottom: 15px;
+}
