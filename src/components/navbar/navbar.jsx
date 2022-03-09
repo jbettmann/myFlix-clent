@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 import './nav.scss';
 
-export function NavBar({user}) {
+export function NavList({ user }) {
 
   // logs user out and sets state to null
 const onLoggedOut = () => {
@@ -34,7 +34,7 @@ const isAuth = () => {
               <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
               )}
               {isAuth() && (
-              <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
+              <Button onClick={() => { onLoggedOut() }}>Logout</Button>
               )}
               {!isAuth() && (
               <Nav.Link href="/">Sign-in</Nav.Link>

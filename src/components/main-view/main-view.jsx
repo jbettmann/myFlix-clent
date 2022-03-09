@@ -11,8 +11,8 @@ import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { UserUpdate } from '../profile-view/user-update';
-import { NavBar } from '../navbar/navbar';
-import { RegistrationView }from '../registration-view/registration-view';
+import { NavList } from '../navbar/navbar';
+import { RegistrationView } from '../registration-view/registration-view';
 
 
 import './main-view.scss';
@@ -93,7 +93,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
 
     return (
       <>
-        <NavBar user={user} />  
+        <NavList user={user} />  
         <Container>
           <Row className="justify-content-md-center" id="main-view">
             <Router>
@@ -219,6 +219,6 @@ export class MainView extends React.Component { //with extends, basiclly saying 
           </Row>
         </Container>
       </>
-    );
+    )
   }
 }
