@@ -2,15 +2,14 @@
 // Requirment to create component
 import React from 'react';
 import axios from 'axios'; // Ajax operations 
-import PropTypes from 'prop-types';
 
 import { BrowserRouter as Router, Route } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
-import { Spinner, Col, Row, Container, Button} from 'react-bootstrap'; 
+import { Spinner, Col, Row, Container, Button, Redirect} from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { NavBar } from '../navbar/nav-full';
-import { RegistrationView } from '../registration-view/registration-view';
+import NavBar from '../navbar/navbar';
+import RegistrationView from '../registration-view/registration-view';
 
 
 import './main-view.scss';
@@ -30,6 +29,18 @@ export default class MainView extends React.Component { //with extends, basiclly
           movies: [],
           user: null //default is logged out.
       };
+  }
+
+  componentDidMount() {
+    // Checks if user is logged in when page is loaded. gets token from local stroage 
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
+      this.getMovies(accessToken)
+    }
   }
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user. 
@@ -75,16 +86,6 @@ export default class MainView extends React.Component { //with extends, basiclly
   render() {
     const { movies, user } = this.state;
 
-    // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
-    if (!user) 
-      return (
-        <Row  className="login-view justify-content-sm-center align-items-center">
-          <Col  sm="auto">
-            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-          </Col>
-        </Row>
-        )
-
     // load spinner if no list loads 
     if (movies.length === 0) 
       return (
@@ -98,45 +99,114 @@ export default class MainView extends React.Component { //with extends, basiclly
         ) 
 
     return (
-      <Container>
-        <NavBar onLogoutClick={() => {this.onLoggedOut()}} />
-        <Router>
+      <Router>
+      <>
+        <NavBar user={user} />  
+        <Container>
         <Row className="justify-content-md-center" id="main-view">
+
           {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
           <Route exact path="/" render={() => {
+                // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
+            if (!user) 
+            return (
+              <Row  className="login-view justify-content-sm-center align-items-center">
+                <Col  sm="auto">
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+              </Row>
+              )
             return movies.map(m => (
               <Col md={4} sm={6} id="movie-card__main" key={m._id}>
                 <MovieCard movie={m} />
               </Col>
             ))
           }} />
-          <Route exact path="/movies/:movieId" render={({ match, history }) => {
+
+          <Route path="/register" render={() => {
+            if (user) return <Redirect to="/" />
+            return (
+              <Col sm="auto" id="movie-view">
+                <RegistrationView />
+              </Col>
+          )}} />
+
+          <Route path="/movies/:movieId" render={({ match, history }) => {
+            if (!user) 
+            return (
+              <Row  className="login-view justify-content-sm-center align-items-center">
+                <Col  sm="auto">
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+              </Row>
+              )
             return ( 
               <Col sm="auto" id="movie-view">
                 {/* .goback() is build-in function to go to previous page */}
                 <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
               </Col>
           )}} />
-          <Route exact path="/genres/:name" render={({ match }) => {
+
+          <Route path="/genres/:name" render={({ match }) => {
+            if (!user) 
+            return (
+              <Row  className="login-view justify-content-sm-center align-items-center">
+                <Col  sm="auto">
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+              </Row>
+              )
             // getting movies async or returns if movies havent been added
-            if (movies.length === 0) return <Row className="justify-content-md-center" id="main-view" />;
             return (
               <Col sm="auto" id="movie-view">
                 {/* Loop through genre names in movies array and returns movie with Genre without .Genre at end. When added .Genre will return genre info */}
                 <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
               </Col>
           )}}/>
-          <Route exact path="/directors/:name" render={({ match }) => {
-            if (movies.length === 0) return <Row className="justify-content-md-center" id="main-view" />;
+
+          <Route path="/directors/:name" render={({ match }) => {
+            if (!user) 
+            return (
+              <Row  className="login-view justify-content-sm-center align-items-center">
+                <Col  sm="auto">
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+              </Row>
+              )
             return (
               <Col md={8}>
                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
               </Col>
           )}}/>
+
+          <Route path={`/users/${user}`} render={({ history }) => {
+            if (!user) return <Redirect to="/" />
+            return (
+              <Col md={8}>
+                <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
+              </Col>
+          )}}/>
+
+          <Route path={`/user-update/${user}`} render={({ match, history }) => {
+            if (!user) 
+            return (
+              <Row  className="login-view justify-content-sm-center align-items-center">
+                <Col  sm="auto">
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+              </Row>
+              )
+            return (
+              <Col md={8}>
+                <UserUpdate user={user} onBackClick={() => history.goBack()} />
+              </Col>
+          )}}/>
         </Row>
+        </Container>
+      </>
       </Router>
-      </Container>
-  );
+    );
+  }
 }
 
 
@@ -166,17 +236,7 @@ export default class MainView extends React.Component { //with extends, basiclly
     //   );
     // }
 
-    componentDidMount(){
-      // Checks if user is logged in when page is loaded. gets token from local stroage 
-      let accessToken = localStorage.getItem('token');
-      if (accessToken !== null) {
-        this.setState({
-          user: localStorage.getItem('user')
-        });
-        // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
-        this.getMovies(accessToken)
-      }
-    }
+
 
       //setting movies array state to load data from myFlix API
     //   axios.get('https://jordansmyflix.herokuapp.com/movies')
@@ -189,13 +249,3 @@ export default class MainView extends React.Component { //with extends, basiclly
     //     console.log(error);
     //   });
     // }
-}
-
-LoginView.propTypes = {
-  // props object MUST include a movie object. .shape({...}) means object
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired
-  }),
-  onLoggedIn: PropTypes.func.isRequired
-};
