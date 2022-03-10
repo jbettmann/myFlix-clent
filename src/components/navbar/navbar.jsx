@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 import './nav.scss';
@@ -27,8 +27,8 @@ const isAuth = () => {
     <Navbar id="nav" sticky="top" expand="lg">
       <Container>
         <Navbar.Brand href="#home" id="logo" className="fs-3">myFlix</Navbar.Brand>
-          <Nav.Toggle aria-controls="responsive-navbar-nav" />
-          <Nav.Collapse id="responsive-navbar-nav">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto Nav-list">
               {isAuth() && (
               <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
@@ -43,7 +43,7 @@ const isAuth = () => {
               <Nav.Link href="/register">Sign-up</Nav.Link>
               )}
             </Nav>
-          </Nav.Collapse>
+          </Navbar.Collapse>
       </Container>
     </Navbar>
   );

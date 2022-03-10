@@ -3,7 +3,7 @@
 import React from 'react';
 import axios from 'axios'; // Ajax operations 
 
-import { BrowserRouter as Router, Route } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
 import { Spinner, Col, Row, Container, Button, Redirect} from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -92,46 +92,18 @@ export class MainView extends React.Component { //with extends, basiclly saying 
     // load spinner if no list loads 
 
     return (
-      <>
+      <Router>
         <NavList user={user} />  
         <Container>
           <Row className="justify-content-md-center" id="main-view">
-            <Router>
+            <Routes>
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
-              <Route exact path="/" render={() => {
-                    // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
-                if (movies.length === 0) {
-                  return (
-                      <Row className="login-view justify-content-sm-center align-items-center"> 
-                        <Col sm="auto">
-                          <Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                          </Spinner>
-                        </Col>
-                      </Row>
-                    ) 
-                  }
-                          
-                if (!user) {
-                  return <Redirect to="/login" />;
-                }
-                return (
-                  <>
-                    {movies.map(movie => (
-                      <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
-                        <MovieCard movieData={movie} />
-                      </Col>
-                  ))}
-                </>
-                )
-              }} />
-
-            <Route path="/login" render={() => {
-                if (user) {
+              <Route path="/login" render={() => {
+                  if (user) {
                     return <Redirect to="/" />;
-                }
-                return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
-            }} /> 
+                  }
+                  return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
+              }} /> 
 
               <Route path="/register" render={() => {
                 if (user) {
@@ -145,13 +117,8 @@ export class MainView extends React.Component { //with extends, basiclly saying 
 
               <Route path="/movies/:movieId" render={({ match, history }) => {
                 if (!user) {
-                  return (
-                    <Row  className="login-view justify-content-sm-center align-items-center">
-                      <Col  sm="auto">
-                        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                      </Col>
-                    </Row>
-                    )}
+                  return <Redirect to="/login" />
+                }
                 return ( 
                   <Col sm="auto" id="movie-view">
                     {/* .goback() is build-in function to go to previous page */}
@@ -161,13 +128,8 @@ export class MainView extends React.Component { //with extends, basiclly saying 
 
               <Route path="/genres/:name" render={({ match }) => {
                 if (!user) {
-                  return (
-                    <Row  className="login-view justify-content-sm-center align-items-center">
-                      <Col  sm="auto">
-                        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                      </Col>
-                    </Row>
-                    )}
+                  return <Redirect to="/login" />
+                }
                 // getting movies async or returns if movies havent been added
                 return (
                   <Col sm="auto" id="movie-view">
@@ -178,13 +140,8 @@ export class MainView extends React.Component { //with extends, basiclly saying 
 
               <Route path="/directors/:name" render={({ match }) => {
                 if (!user) {
-                  return (
-                    <Row  className="login-view justify-content-sm-center align-items-center">
-                      <Col  sm="auto">
-                        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                      </Col>
-                    </Row>
-                    )}
+                  return <Redirect to="/login" />
+                }
                 return (
                   <Col md={8}>
                     <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
@@ -203,22 +160,33 @@ export class MainView extends React.Component { //with extends, basiclly saying 
 
               <Route path={`/user-update/${user}`} render={({ match, history }) => {
                 if (!user) {
-                  return (
-                    <Row  className="login-view justify-content-sm-center align-items-center">
-                      <Col  sm="auto">
-                        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                      </Col>
-                    </Row>
-                    )}
+                  return <Redirect to="/login" />
+                }
                 return (
                   <Col md={8}>
                     <UserUpdate user={user} onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
-            </Router>
+
+              <Route exact path="/" render={() => {
+                // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView. 
+                if (!user) {
+                  return <Redirect to="/login" />
+                }
+                return (
+                  <>
+                    {movies.map(movie => (
+                      <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
+                        <MovieCard movieData={movie} />
+                      </Col>
+                    ))}
+                  </>
+                )
+              }} />
+            </Routes>
           </Row>
         </Container>
-      </>
+      </Router>
     )
   }
 }
