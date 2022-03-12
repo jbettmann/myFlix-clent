@@ -98,6 +98,24 @@ export class MainView extends React.Component { //with extends, basiclly saying 
           <Row className="justify-content-md-center" id="main-view">
             <Routes>
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
+              <Route exact path="/" render={() => {
+                    // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
+                    
+                if (!user) {
+                  return <Redirect to="/login" />
+                }
+
+                return (
+                  <>
+                    {movies.map(movie => (
+                      <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
+                        <MovieCard movieData={movie} />
+                      </Col>
+                    ))}
+                  </>
+                )
+              }} />
+
               <Route path="/login" render={() => {
                   if (user) {
                     return <Redirect to="/" />;
@@ -167,22 +185,6 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                     <UserUpdate user={user} onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
-
-              <Route exact path="/" render={() => {
-                // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView. 
-                if (!user) {
-                  return <Redirect to="/login" />
-                }
-                return (
-                  <>
-                    {movies.map(movie => (
-                      <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
-                        <MovieCard movieData={movie} />
-                      </Col>
-                    ))}
-                  </>
-                )
-              }} />
             </Routes>
           </Row>
         </Container>
