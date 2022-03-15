@@ -10,15 +10,15 @@ import './movie-card.scss';
 export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
-    const { movie } = this.props;
+    const { movies } = this.props;
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
       <Card id="movie-card" variant="dark">
-        <Card.Img variant="top" src={movie.ImageUrl} />
+        <Card.Img variant="top" src={movies.ImageUrl} />
         <Card.Body >
-          <Card.Title >{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <Link to={`/movies/${movie._id}`}>
+          <Card.Title >{movies.Title}</Card.Title>
+          <Card.Text>{movies.Description}</Card.Text>
+          <Link to={`/movies/${movies._id}`}>
             <Button id='btn-link' variant="link">Open</Button>
           </Link>       
         </Card.Body>
@@ -29,7 +29,7 @@ export class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
   // props object MUST include a movie object. .shape({...}) means object
-  movieData: PropTypes.shape({
+  movies: PropTypes.shape({
     // props object MAY contain a title key, if it DOES then it MUST be a string
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
