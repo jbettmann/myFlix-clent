@@ -57,33 +57,6 @@ a {
 }
 
 
-.fav-movies {
-  margin-bottom: 15px;
-}
-.fav-movies figure {
-  position: relative;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin: auto;
-  width: 100%;
-}
-.fav-movies figure img {
-  display: block;
-  height: 400px;
-  margin: auto;
-}
-.fav-movies figure figcaption {
-  text-align: center;
-}
-.fav-movies button {
-  display: block;
-  margin: auto;
-}
-
-.card {
-  margin-bottom: 15px;
-}
 #body {
   background-color: #f0f0ec;
 }

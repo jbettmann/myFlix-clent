@@ -22984,7 +22984,7 @@ class MainView extends _reactDefault.default.Component {
         // load spinner if no list loads 
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
             children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_navbar.NavList, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_navbar.NavBar, {
                     user: user,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
@@ -23231,7 +23231,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","axios":"iYoWk","../login-view/login-view":"054li","react-router-dom":"kjA5T","react-bootstrap":"h2YVd","../director-view/director-view":"ck15y","../genre-view/genre-view":"8WCoL","../profile-view/user-update":"huxX2","../navbar/navbar":"63yS7","../registration-view/registration-view":"aP2YV","./main-view.scss":"jyMAr"}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","axios":"iYoWk","../login-view/login-view":"054li","./main-view.scss":"jyMAr","react-bootstrap":"h2YVd","react-router-dom":"kjA5T","../registration-view/registration-view":"aP2YV","../director-view/director-view":"ck15y","../genre-view/genre-view":"8WCoL","../profile-view/user-update":"huxX2","../navbar/navbar":"63yS7"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -23346,7 +23346,7 @@ MovieCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","prop-types":"1tgq3","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-router-dom":"kjA5T","./movie-card.scss":"cF5gT"}],"1tgq3":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","prop-types":"1tgq3","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","./movie-card.scss":"cF5gT","react-router-dom":"kjA5T"}],"1tgq3":[function(require,module,exports) {
 var ReactIs = require('react-is');
 // By explicitly using `prop-types` you are opting into new development behavior.
 // http://fb.me/prop-types-in-prod
@@ -24456,7 +24456,7 @@ const context = /*#__PURE__*/ _react.createContext(null);
 context.displayName = 'CardHeaderContext';
 exports.default = context;
 
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28"}],"kjA5T":[function(require,module,exports) {
+},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28"}],"cF5gT":[function() {},{}],"kjA5T":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MemoryRouter", ()=>_reactRouter.MemoryRouter
@@ -26290,7 +26290,7 @@ const normalizeSearch = (search)=>!search || search === "?" ? "" : search.starts
 const normalizeHash = (hash)=>!hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash
 ; ///////////////////////////////////////////////////////////////////////////////
 
-},{"react":"6TuXu","history":"34V7X","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28"}],"cF5gT":[function() {},{}],"ikZdr":[function(require,module,exports) {
+},{"react":"6TuXu","history":"34V7X","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28"}],"ikZdr":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3741 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26595,7 +26595,7 @@ class MovieView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","react-bootstrap":"h2YVd","react-router-dom":"kjA5T","./movie-view.scss":"kvL93"}],"h2YVd":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","./movie-view.scss":"kvL93","react-bootstrap":"h2YVd","react-router-dom":"kjA5T"}],"kvL93":[function() {},{}],"h2YVd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>_accordionDefault.default
@@ -37987,7 +37987,7 @@ Tooltip.defaultProps = defaultProps;
 Tooltip.displayName = 'Tooltip';
 exports.default = Tooltip;
 
-},{"classnames":"bOXOh","react":"6TuXu","./ThemeProvider":"eeqfi","./helpers":"S1Bw1","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28"}],"kvL93":[function() {},{}],"iYoWk":[function(require,module,exports) {
+},{"classnames":"bOXOh","react":"6TuXu","./ThemeProvider":"eeqfi","./helpers":"S1Bw1","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -39774,364 +39774,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","axios":"iYoWk","react-bootstrap":"h2YVd","prop-types":"1tgq3","./login-view.scss":"lS4BK"}],"lS4BK":[function() {},{}],"ck15y":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$f8cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f8cc.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "DirectorView", ()=>DirectorView
-);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactBootstrap = require("react-bootstrap");
-function DirectorView({}) {
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
-        __source: {
-            fileName: "src/components/director-view/director-view.jsx",
-            lineNumber: 6
-        },
-        __self: this,
-        children: /*#__PURE__*/ _jsxRuntime.jsx("h4", {
-            __source: {
-                fileName: "src/components/director-view/director-view.jsx",
-                lineNumber: 7
-            },
-            __self: this,
-            children: Director.Name
-        })
-    }));
-}
-_c = DirectorView;
-var _c;
-$RefreshReg$(_c, "DirectorView");
-
-  $parcel$ReactRefreshHelpers$f8cc.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"8WCoL":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$5f0a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5f0a.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "GenreView", ()=>GenreView
-);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-function GenreView() {
-    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-        __source: {
-            fileName: "src/components/genre-view/genre-view.jsx",
-            lineNumber: 5
-        },
-        __self: this,
-        children: "Genre View"
-    }));
-}
-_c = GenreView;
-var _c;
-$RefreshReg$(_c, "GenreView");
-
-  $parcel$ReactRefreshHelpers$5f0a.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"huxX2":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$bc55 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$bc55.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactBootstrap = require("react-bootstrap");
-function UserUpdate({ handleSubmit , handleUpdate  }) {
-    return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
-        children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("h2", {
-                __source: {
-                    fileName: "src/components/profile-view/user-update.jsx",
-                    lineNumber: 7
-                },
-                __self: this,
-                children: "Update Profile"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
-                onSubmit: (e)=>handleSubmit(e)
-                ,
-                __source: {
-                    fileName: "src/components/profile-view/user-update.jsx",
-                    lineNumber: 8
-                },
-                __self: this,
-                children: [
-                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                        __source: {
-                            fileName: "src/components/profile-view/user-update.jsx",
-                            lineNumber: 9
-                        },
-                        __self: this,
-                        children: [
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                                __source: {
-                                    fileName: "src/components/profile-view/user-update.jsx",
-                                    lineNumber: 10
-                                },
-                                __self: this,
-                                children: "Username:"
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                                type: "text",
-                                name: "Username",
-                                defaultValue: user.Username,
-                                placeholder: "Enter new username",
-                                required: true,
-                                onChange: (e)=>handleUpdate(e)
-                                ,
-                                __source: {
-                                    fileName: "src/components/profile-view/user-update.jsx",
-                                    lineNumber: 11
-                                },
-                                __self: this
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                        __source: {
-                            fileName: "src/components/profile-view/user-update.jsx",
-                            lineNumber: 14
-                        },
-                        __self: this,
-                        children: [
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                                __source: {
-                                    fileName: "src/components/profile-view/user-update.jsx",
-                                    lineNumber: 15
-                                },
-                                __self: this,
-                                children: "Password"
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                                type: "password",
-                                name: "Password",
-                                defaultValue: "",
-                                placeholder: "Your password must be at least 8 characters",
-                                minLength: "8",
-                                required: true,
-                                onChange: (e)=>handleUpdate(e)
-                                ,
-                                __source: {
-                                    fileName: "src/components/profile-view/user-update.jsx",
-                                    lineNumber: 16
-                                },
-                                __self: this
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                        __source: {
-                            fileName: "src/components/profile-view/user-update.jsx",
-                            lineNumber: 19
-                        },
-                        __self: this,
-                        children: [
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                                __source: {
-                                    fileName: "src/components/profile-view/user-update.jsx",
-                                    lineNumber: 20
-                                },
-                                __self: this,
-                                children: "Email"
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                                type: "email",
-                                name: "Email",
-                                defaultValue: user.Email,
-                                placeholder: "Enter new email",
-                                onChange: (e)=>handleUpdate(e.target.value)
-                                ,
-                                required: true,
-                                __source: {
-                                    fileName: "src/components/profile-view/user-update.jsx",
-                                    lineNumber: 21
-                                },
-                                __self: this
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                        id: "btn-link",
-                        type: "submit",
-                        __source: {
-                            fileName: "src/components/profile-view/user-update.jsx",
-                            lineNumber: 23
-                        },
-                        __self: this,
-                        children: "Update"
-                    })
-                ]
-            })
-        ]
-    }));
-}
-exports.default = UserUpdate;
-_c = UserUpdate;
-var _c;
-$RefreshReg$(_c, "UserUpdate");
-
-  $parcel$ReactRefreshHelpers$bc55.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"63yS7":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$1bb2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$1bb2.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "NavList", ()=>NavList
-);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactBootstrap = require("react-bootstrap");
-var _navScss = require("./nav.scss");
-function NavList({ user  }) {
-    // logs user out and sets state to null
-    const onLoggedOut = ()=>{
-        localStorage.clear();
-        window.open("/", "_self");
-    };
-    const isAuth = ()=>{
-        if (typeof window == "undefined") return false;
-        if (localStorage.getItem("token")) return localStorage.getItem("token");
-        else return false;
-    };
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
-        id: "nav",
-        sticky: "top",
-        expand: "lg",
-        __source: {
-            fileName: "src/components/navbar/navbar.jsx",
-            lineNumber: 27
-        },
-        __self: this,
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
-            __source: {
-                fileName: "src/components/navbar/navbar.jsx",
-                lineNumber: 28
-            },
-            __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Brand, {
-                    href: "#home",
-                    id: "logo",
-                    className: "fs-3",
-                    __source: {
-                        fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 29
-                    },
-                    __self: this,
-                    children: "myFlix"
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Toggle, {
-                    "aria-controls": "responsive-navbar-nav",
-                    __source: {
-                        fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 30
-                    },
-                    __self: this
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Collapse, {
-                    id: "responsive-navbar-nav",
-                    __source: {
-                        fileName: "src/components/navbar/navbar.jsx",
-                        lineNumber: 31
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
-                        className: "me-auto Nav-list",
-                        __source: {
-                            fileName: "src/components/navbar/navbar.jsx",
-                            lineNumber: 32
-                        },
-                        __self: this,
-                        children: [
-                            isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                href: `/users/${user}`,
-                                __source: {
-                                    fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 34
-                                },
-                                __self: this,
-                                children: user
-                            }),
-                            isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                onClick: ()=>{
-                                    onLoggedOut();
-                                },
-                                __source: {
-                                    fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 37
-                                },
-                                __self: this,
-                                children: "Logout"
-                            }),
-                            !isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                href: "/",
-                                __source: {
-                                    fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 40
-                                },
-                                __self: this,
-                                children: "Sign-in"
-                            }),
-                            !isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                href: "/register",
-                                __source: {
-                                    fileName: "src/components/navbar/navbar.jsx",
-                                    lineNumber: 43
-                                },
-                                __self: this,
-                                children: "Sign-up"
-                            })
-                        ]
-                    })
-                })
-            ]
-        })
-    }));
-}
-_c = NavList;
-var _c;
-$RefreshReg$(_c, "NavList");
-
-  $parcel$ReactRefreshHelpers$1bb2.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./nav.scss":"5srgb","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"5srgb":[function() {},{}],"aP2YV":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn","react-bootstrap":"h2YVd","./login-view.scss":"lS4BK","axios":"iYoWk","prop-types":"1tgq3"}],"lS4BK":[function() {},{}],"jyMAr":[function() {},{}],"aP2YV":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8dd4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40495,6 +40138,363 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","axios":"iYoWk","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"kjA5T","prop-types":"1tgq3","./registration-view.scss":"fr9ZP","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"fr9ZP":[function() {},{}],"jyMAr":[function() {},{}]},["6GjP2","1IQEa","dLPEP"], "dLPEP", "parcelRequiree909")
+},{"react/jsx-runtime":"8xIwr","axios":"iYoWk","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"kjA5T","prop-types":"1tgq3","./registration-view.scss":"fr9ZP","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"fr9ZP":[function() {},{}],"ck15y":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f8cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f8cc.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DirectorView", ()=>DirectorView
+);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+function DirectorView({}) {
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
+        __source: {
+            fileName: "src/components/director-view/director-view.jsx",
+            lineNumber: 6
+        },
+        __self: this,
+        children: /*#__PURE__*/ _jsxRuntime.jsx("h4", {
+            __source: {
+                fileName: "src/components/director-view/director-view.jsx",
+                lineNumber: 7
+            },
+            __self: this,
+            children: Director.Name
+        })
+    }));
+}
+_c = DirectorView;
+var _c;
+$RefreshReg$(_c, "DirectorView");
+
+  $parcel$ReactRefreshHelpers$f8cc.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"8WCoL":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5f0a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5f0a.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GenreView", ()=>GenreView
+);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function GenreView() {
+    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+        __source: {
+            fileName: "src/components/genre-view/genre-view.jsx",
+            lineNumber: 5
+        },
+        __self: this,
+        children: "Genre View"
+    }));
+}
+_c = GenreView;
+var _c;
+$RefreshReg$(_c, "GenreView");
+
+  $parcel$ReactRefreshHelpers$5f0a.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"huxX2":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$bc55 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$bc55.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+function UserUpdate({ handleSubmit , handleUpdate  }) {
+    return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                __source: {
+                    fileName: "src/components/profile-view/user-update.jsx",
+                    lineNumber: 7
+                },
+                __self: this,
+                children: "Update Profile"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
+                onSubmit: (e)=>handleSubmit(e)
+                ,
+                __source: {
+                    fileName: "src/components/profile-view/user-update.jsx",
+                    lineNumber: 8
+                },
+                __self: this,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                        __source: {
+                            fileName: "src/components/profile-view/user-update.jsx",
+                            lineNumber: 9
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                __source: {
+                                    fileName: "src/components/profile-view/user-update.jsx",
+                                    lineNumber: 10
+                                },
+                                __self: this,
+                                children: "Username:"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                type: "text",
+                                name: "Username",
+                                defaultValue: user.Username,
+                                placeholder: "Enter new username",
+                                required: true,
+                                onChange: (e)=>handleUpdate(e)
+                                ,
+                                __source: {
+                                    fileName: "src/components/profile-view/user-update.jsx",
+                                    lineNumber: 11
+                                },
+                                __self: this
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                        __source: {
+                            fileName: "src/components/profile-view/user-update.jsx",
+                            lineNumber: 14
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                __source: {
+                                    fileName: "src/components/profile-view/user-update.jsx",
+                                    lineNumber: 15
+                                },
+                                __self: this,
+                                children: "Password"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                type: "password",
+                                name: "Password",
+                                defaultValue: "",
+                                placeholder: "Your password must be at least 8 characters",
+                                minLength: "8",
+                                required: true,
+                                onChange: (e)=>handleUpdate(e)
+                                ,
+                                __source: {
+                                    fileName: "src/components/profile-view/user-update.jsx",
+                                    lineNumber: 16
+                                },
+                                __self: this
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                        __source: {
+                            fileName: "src/components/profile-view/user-update.jsx",
+                            lineNumber: 19
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                __source: {
+                                    fileName: "src/components/profile-view/user-update.jsx",
+                                    lineNumber: 20
+                                },
+                                __self: this,
+                                children: "Email"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                type: "email",
+                                name: "Email",
+                                defaultValue: user.Email,
+                                placeholder: "Enter new email",
+                                onChange: (e)=>handleUpdate(e.target.value)
+                                ,
+                                required: true,
+                                __source: {
+                                    fileName: "src/components/profile-view/user-update.jsx",
+                                    lineNumber: 21
+                                },
+                                __self: this
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                        id: "btn-link",
+                        type: "submit",
+                        __source: {
+                            fileName: "src/components/profile-view/user-update.jsx",
+                            lineNumber: 23
+                        },
+                        __self: this,
+                        children: "Update"
+                    })
+                ]
+            })
+        ]
+    }));
+}
+exports.default = UserUpdate;
+_c = UserUpdate;
+var _c;
+$RefreshReg$(_c, "UserUpdate");
+
+  $parcel$ReactRefreshHelpers$bc55.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"63yS7":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1bb2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1bb2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "NavBar", ()=>NavBar
+);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+var _navScss = require("./nav.scss");
+function NavBar({ user  }) {
+    // logs user out and sets state to null
+    const onLoggedOut = ()=>{
+        localStorage.clear();
+        window.open("/", "_self");
+    };
+    const isAuth = ()=>{
+        if (typeof window == "undefined") return false;
+        if (localStorage.getItem("token")) return localStorage.getItem("token");
+        else return false;
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
+        id: "nav",
+        sticky: "top",
+        expand: "lg",
+        __source: {
+            fileName: "src/components/navbar/navbar.jsx",
+            lineNumber: 27
+        },
+        __self: this,
+        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
+            __source: {
+                fileName: "src/components/navbar/navbar.jsx",
+                lineNumber: 28
+            },
+            __self: this,
+            children: [
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Brand, {
+                    href: "#home",
+                    id: "logo",
+                    className: "fs-3",
+                    __source: {
+                        fileName: "src/components/navbar/navbar.jsx",
+                        lineNumber: 29
+                    },
+                    __self: this,
+                    children: "myFlix"
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Toggle, {
+                    "aria-controls": "responsive-navbar-nav",
+                    __source: {
+                        fileName: "src/components/navbar/navbar.jsx",
+                        lineNumber: 30
+                    },
+                    __self: this
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Collapse, {
+                    id: "responsive-navbar-nav",
+                    __source: {
+                        fileName: "src/components/navbar/navbar.jsx",
+                        lineNumber: 31
+                    },
+                    __self: this,
+                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
+                        className: "me-auto Nav-list",
+                        __source: {
+                            fileName: "src/components/navbar/navbar.jsx",
+                            lineNumber: 32
+                        },
+                        __self: this,
+                        children: [
+                            isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
+                                href: `/users/${user}`,
+                                __source: {
+                                    fileName: "src/components/navbar/navbar.jsx",
+                                    lineNumber: 34
+                                },
+                                __self: this,
+                                children: user
+                            }),
+                            isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                onClick: ()=>{
+                                    this.onLoggedOut();
+                                },
+                                __source: {
+                                    fileName: "src/components/navbar/navbar.jsx",
+                                    lineNumber: 37
+                                },
+                                __self: this,
+                                children: "Logout"
+                            }),
+                            !isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
+                                href: "/",
+                                __source: {
+                                    fileName: "src/components/navbar/navbar.jsx",
+                                    lineNumber: 40
+                                },
+                                __self: this,
+                                children: "Sign-in"
+                            }),
+                            !isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
+                                href: "/register",
+                                __source: {
+                                    fileName: "src/components/navbar/navbar.jsx",
+                                    lineNumber: 43
+                                },
+                                __self: this,
+                                children: "Sign-up"
+                            })
+                        ]
+                    })
+                })
+            ]
+        })
+    }));
+}
+_c = NavBar;
+var _c;
+$RefreshReg$(_c, "NavBar");
+
+  $parcel$ReactRefreshHelpers$1bb2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./nav.scss":"5srgb","@parcel/transformer-js/src/esmodule-helpers.js":"cBX28","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kN8bn"}],"5srgb":[function() {},{}]},["6GjP2","1IQEa","dLPEP"], "dLPEP", "parcelRequiree909")
 
 //# sourceMappingURL=index.6701a6e1.js.map
