@@ -10,15 +10,15 @@ import './movie-card.scss';
 export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
-    const { movieData } = this.props;
+    const { movie } = this.props;
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
       <Card id="movie-card" variant="dark">
-        <Card.Img variant="top" src={movieData.ImageUrl} />
+        <Card.Img variant="top" src={movie.ImageUrl} />
         <Card.Body >
-          <Card.Title >{movieData.Title}</Card.Title>
-          <Card.Text>{movieData.Description}</Card.Text>
-          <Link to={`/movies/${movieData._id}`}>
+          <Card.Title >{movie.Title}</Card.Title>
+          <Card.Text>{movie.Description}</Card.Text>
+          <Link to={`/movies/${movie._id}`}>
             <Button id='btn-link' variant="link">Open</Button>
           </Link>       
         </Card.Body>
@@ -40,7 +40,6 @@ MovieCard.propTypes = {
     Release: PropTypes.string.isRequired,
     Featured: PropTypes.bool.isRequired,
     Actors: PropTypes.array.isRequired
-  }).isRequired,
+  }).isRequired
   // props object MUST contain onMovieClick and MUST be a function 
-  onMovieClick: PropTypes.func.isRequired
 };
