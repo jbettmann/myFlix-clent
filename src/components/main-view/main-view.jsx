@@ -3,8 +3,8 @@
 import React from 'react';
 import axios from 'axios'; // Ajax operations 
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
-import { Spinner, Col, Row, Container, Button, Redirect} from 'react-bootstrap'; 
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
+import {  Col, Row, Container, Button } from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -13,6 +13,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { UserUpdate } from '../profile-view/user-update';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 
 import './main-view.scss';
@@ -96,7 +97,6 @@ export class MainView extends React.Component { //with extends, basiclly saying 
         <NavList user={user} />  
         <Container>
           <Row className="justify-content-md-center" id="main-view">
-            <Routes>
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
                     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
@@ -109,7 +109,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                   <>
                     {movies.map(movie => (
                       <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
-                        <MovieCard movieData={movie} />
+                        <MovieCard movie={movie} />
                       </Col>
                     ))}
                   </>
@@ -140,7 +140,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                 return ( 
                   <Col sm="auto" id="movie-view">
                     {/* .goback() is build-in function to go to previous page */}
-                    <MovieView movieData={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
+                    <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
                   </Col>
               )}} />
 
@@ -162,17 +162,17 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                 }
                 return (
                   <Col md={8}>
-                    <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+                    <DirectorView movies={movies.filter(movie => movie.Director.Name === match.params.name)} director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()}/>
                   </Col>
               )}}/>
 
               <Route path={`/users/${user}`} render={({ history }) => {
                 if (!user){ 
-                  return <Redirect to="/" />
+                  return <Redirect to="/login" />
                   }
                 return (
                   <Col md={8}>
-                    <ProfileView movieData={movies} user={user} onBackClick={() => history.goBack()} />
+                    <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
 
@@ -185,7 +185,6 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                     <UserUpdate user={user} onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
-            </Routes>
           </Row>
         </Container>
       </Router>
