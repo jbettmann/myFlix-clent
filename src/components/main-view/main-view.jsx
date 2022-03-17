@@ -10,7 +10,6 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { UserUpdate } from '../profile-view/user-update';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
@@ -85,6 +84,28 @@ export class MainView extends React.Component { //with extends, basiclly saying 
       user: null
     });
   }
+
+  addFavorite(e, movie) {
+    e.preventDefault();
+    const Username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    console.log(token);
+    axios
+        .post(
+            `https://jordansmyflix.herokuapp.com/users/${Username}/favorites/${movie._id}`,
+            {
+                headers: { Authorization: `Bearer ${token}` },
+            }
+        )
+        .then((response) => {
+            console.log(response);
+            alert("Movie add to your Favorties!");
+            this.componentDidMount();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+};
     
   // renders what will be displayed on the screen. The visual representation of component.
   render() {
@@ -109,7 +130,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                   <>
                     {movies.map(movie => (
                       <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
-                        <MovieCard movies={movie} />
+                        <MovieCard movieData={movie} addFavoriteMovie={(e) => this.addFavorite(e, movie)} />
                       </Col>
                     ))}
                   </>
@@ -140,11 +161,12 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                 return ( 
                   <Col sm="auto" id="movie-view">
                     {/* .goback() is build-in function to go to previous page */}
-                    <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
+                    <MovieView 
+                      movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
                   </Col>
               )}} />
 
-              <Route path="/genres/:name" render={({ match }) => {
+              <Route path="/genres/:name" render={({ match, history }) => {
                 if (!user) {
                   return <Redirect to="/login" />
                 }
@@ -152,37 +174,33 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                 return (
                   <Col sm="auto" id="movie-view">
                     {/* Loop through genre names in movies array and returns movie with Genre without .Genre at end. When added .Genre will return genre info */}
-                    <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+                    <GenreView 
+                      movies={movies.filter(movie => movie.Genre.Name === match.params.name)} 
+                      genre={movies.find(m => m.Genre.Name === match.params.name).Genre}
+                      onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
 
-              <Route path="/directors/:name" render={({ match }) => {
+              <Route path="/directors/:name" render={({ match, history }) => {
                 if (!user) {
                   return <Redirect to="/login" />
                 }
                 return (
-                  <Col md={8}>
-                    <DirectorView movies={movies.filter(movie => movie.Director.Name === match.params.name)} director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()}/>
+                  <Col sm={12} md={10}>
+                    <DirectorView 
+                      movies={movies.filter(movie => movie.Director.Name === match.params.name)} 
+                      director={movies.find(m => m.Director.Name === match.params.name).Director} 
+                      onBackClick={() => history.goBack()}/>
                   </Col>
               )}}/>
 
-              <Route path={`/users/${user}`} render={({ history }) => {
+              <Route path={`/users/${user}`} render={({ match, history }) => {
                 if (!user){ 
                   return <Redirect to="/login" />
                   }
                 return (
-                  <Col md={8}>
+                  <Col sm={12} md={10}>
                     <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
-                  </Col>
-              )}}/>
-
-              <Route path={`/user-update/${user}`} render={({ match, history }) => {
-                if (!user) {
-                  return <Redirect to="/login" />
-                }
-                return (
-                  <Col md={8}>
-                    <UserUpdate user={user} onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
           </Row>
