@@ -1,5 +1,6 @@
 
 import React from 'react';
+import axios from 'axios'; // Ajax operations 
 import PropTypes from 'prop-types';
 import Button  from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -21,9 +22,8 @@ export class MovieCard extends React.Component {
           <Link to={`/movies/${movieData._id}`}>
             <Button id='btn-link' variant="link">Open</Button>
           </Link>  
-            <Button id='btn-link' variant="link" >Add To Favorites</Button>      
+            <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)} >Add To Favorites</Button>      
         </Card.Body>
-       { console.log(movieData.ImageUrl)}
       </Card>
     );
   }
