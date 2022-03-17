@@ -1,13 +1,15 @@
 
 import React from 'react';
+import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
+import './profile-view.scss';
 
-export function UserInfo({ email, name }) {
+export function UserInfo(props) {
   return (
-    <>
+    <Card id='movie-card'>
       <h4>Your Info</h4>
-      <p>Name: {name} </p>
-      <p>Email: {email} </p>
-    </>
+      <p>Name: { Name } </p>
+      <p>Email: { Email } </p>
+    </Card>
     
   )
 }
