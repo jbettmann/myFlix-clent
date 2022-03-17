@@ -10,18 +10,20 @@ import './movie-card.scss';
 export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
-    const { movies } = this.props;
+    const { movieData, addFavoriteMovie } = this.props;
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
       <Card id="movie-card" variant="dark">
-        <Card.Img variant="top" src={movies.ImageUrl} />
+        <Card.Img variant="top" src={movieData.ImageUrl} />
         <Card.Body >
-          <Card.Title >{movies.Title}</Card.Title>
-          <Card.Text>{movies.Description}</Card.Text>
-          <Link to={`/movies/${movies._id}`}>
+          <Card.Title >{movieData.Title}</Card.Title>
+          <Card.Text>{movieData.Description}</Card.Text>
+          <Link to={`/movies/${movieData._id}`}>
             <Button id='btn-link' variant="link">Open</Button>
-          </Link>       
+          </Link>  
+            <Button id='btn-link' variant="link" >Add To Favorites</Button>      
         </Card.Body>
+       { console.log(movieData.ImageUrl)}
       </Card>
     );
   }
@@ -29,7 +31,7 @@ export class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
   // props object MUST include a movie object. .shape({...}) means object
-  movies: PropTypes.shape({
+  movieData: PropTypes.shape({
     // props object MAY contain a title key, if it DOES then it MUST be a string
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,

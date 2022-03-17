@@ -1,8 +1,3 @@
-#movie-card {
-  background-color: #3d2661;
-  height: 100%;
-}
-
 .card-title {
   color: #fff;
 }
@@ -10,4 +5,13 @@
 #movie-card__main {
   margin: 1rem 0;
   flex: 1 0 auto;
+}
+
+#noLinkLook {
+  text-decoration: none;
+  color: rgb(219, 219, 219);
+}
+
+#noLinkLook:hover {
+  text-decoration: underline;
 }
