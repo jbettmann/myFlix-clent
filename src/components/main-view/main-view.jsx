@@ -89,7 +89,6 @@ export class MainView extends React.Component { //with extends, basiclly saying 
     e.preventDefault();
     const Username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    console.log(token);
     axios
         .post(
             `https://jordansmyflix.herokuapp.com/users/${Username}/favorites/${movie._id}`,
@@ -117,7 +116,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
       <Router>
         <NavList user={user} />  
         <Container>
-          <Row className="justify-content-md-center" id="main-view">
+          <Row className="justify-content-sm-center" id="main-view">
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
                     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
@@ -149,7 +148,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                   return <Redirect to="/" />
                 }
                 return (
-                  <Col sm="auto" id="movie-view">
+                  <Col xs={12} sm={9} md={6} className="justify-content-sm-center" >
                     <RegistrationView />
                   </Col>
               )}} />
@@ -159,7 +158,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                   return <Redirect to="/login" />
                 }
                 return ( 
-                  <Col sm="auto" id="movie-view">
+                  <Col sm="auto" md={8} id="movie-view">
                     {/* .goback() is build-in function to go to previous page */}
                     <MovieView 
                       movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
@@ -172,7 +171,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                 }
                 // getting movies async or returns if movies havent been added
                 return (
-                  <Col sm="auto" id="movie-view">
+                  <Col sm={12} md={8} id="movie-view">
                     {/* Loop through genre names in movies array and returns movie with Genre without .Genre at end. When added .Genre will return genre info */}
                     <GenreView 
                       movies={movies.filter(movie => movie.Genre.Name === match.params.name)} 
@@ -186,7 +185,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                   return <Redirect to="/login" />
                 }
                 return (
-                  <Col sm={12} md={10}>
+                  <Col sm={12} md={8}>
                     <DirectorView 
                       movies={movies.filter(movie => movie.Director.Name === match.params.name)} 
                       director={movies.find(m => m.Director.Name === match.params.name).Director} 

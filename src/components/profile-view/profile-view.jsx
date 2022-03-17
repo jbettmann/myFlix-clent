@@ -168,7 +168,7 @@ export class ProfileView extends React.Component {
             <Container className="profile-view" align="center">
               <Row>
                   <Col>
-                      <Card id="profile-card">
+                      <Card id="movie-card">
                           <Card.Body >
                               <Card.Title>Profile</Card.Title>
                               <Form 

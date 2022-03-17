@@ -17,18 +17,27 @@
 a {
   margin: 0.5rem 0;
 }
-#movie-card {
-  background-color: #3d2661;
-  height: 100%;
-}
-
 .card-title {
   color: #fff;
+}
+
+#movie-card {
+  background-color: #373737;
+  border-radius: 0.5rem;
 }
 
 #movie-card__main {
   margin: 1rem 0;
   flex: 1 0 auto;
+}
+
+#noLinkLook {
+  text-decoration: none;
+  color: #dbdbdb;
+}
+
+#noLinkLook:hover {
+  text-decoration: underline;
 }
 #movie-view > div {
   border: none;
@@ -56,7 +65,22 @@ a {
   color: #3d2661;
 }
 
+.navbar-nav {
+  text-align: right;
+}
+#movie-card {
+  background-color: #373737;
+  border-radius: 0.5rem;
+}
 
+form label {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+input::placeholder {
+  font-size: 0.85rem;
+}
 .fav-movies {
   margin-bottom: 15px;
 }
@@ -84,6 +108,21 @@ a {
 .card {
   margin-bottom: 15px;
 }
+
+#moive-card {
+  background-color: #373737;
+  border-radius: 0.5rem;
+}
+
+#label {
+  text-align: left;
+}
+
+.update-delete_button {
+  display: flex;
+  justify-content: space-around;
+}
+
 #body {
   background-color: #f0f0ec;
 }

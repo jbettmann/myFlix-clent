@@ -56,7 +56,7 @@ export function RegistrationView(props) {
       setEmailErr('Email Required');
       isReq = false;
   
-    } else if(email.indexOf('@') === -1){
+    } else if(email.indexOf('@') === -1 ){
       setEmailErr('You must enter a valid email address');
       isReq = false;
     }
@@ -98,44 +98,49 @@ export function RegistrationView(props) {
   return (
     <Row>
       <Col>
-        <Form>
+        <Form id="movie-card" className='p-4'>
           <Form.Group controlId="formName">
-            <Form.Label>Name:</Form.Label>
+            <Form.Label className="mb-0">Name:</Form.Label>
             <Form.Control type="text" placeholder='First and Last required' value={name} onChange={e => setName(e.target.value)} />
             {/* Display validation error */}
-            {nameErr && <p>{nameErr}</p>}
+            {nameErr && <p style={{ color: "red" }}>{nameErr}</p>}
           </Form.Group>
 
           <Form.Group controlId="formUsername">
-            <Form.Label>Username:</Form.Label>
+            <Form.Label className="mb-0">Username:</Form.Label>
             <Form.Control type="text" placeholder='Enter username (required)' value={username} onChange={e => setUsername(e.target.value)} />
             {/* Display validation error */}
-            {usernameErr && <p>{usernameErr}</p>}
+            {usernameErr && <p style={{ color: "red" }} >{usernameErr}</p>}
           </Form.Group>
 
           <Form.Group controlId="formPassword">
-            <Form.Label>Password:</Form.Label>
+            <Form.Label className="mb-0">Password:</Form.Label>
             <Form.Control type="password" placeholder='Enter password (required)' value={password} onChange={e => setPassword(e.target.value)} />
             {/* Display validation error */}
-            {passwordErr && <p>{passwordErr}</p>}
+            {passwordErr && <p style={{ color: "red" }}>{passwordErr}</p>}
           </Form.Group>
 
           <Form.Group controlId="formEmail">
-            <Form.Label>Email:</Form.Label>
+            <Form.Label className="mb-0">Email:</Form.Label>
             <Form.Control type="email" placeholder='Enter email (required)' value={email} onChange={e => setEmail(e.target.value)} />
             {/* Display validation error */}
-            {emailErr && <p>{emailErr}</p>}
+            {emailErr && <p style={{ color: "red" }}>{emailErr}</p>}
           </Form.Group>
 
           <Form.Group controlId="formBirthday">
-            <Form.Label>Birthday:</Form.Label>
+            <Form.Label className="mb-0">Birthday:</Form.Label>
             <Form.Control type="date" placeholder='Enter birthday (required)' value={birthday} onChange={e => setBirthday(e.target.value)} />
             {/* Display validation error */}
-            {birthdayErr && <p>{birthdayErr}</p>}
+            {birthdayErr && <p style={{ color: "red" }}>{birthdayErr}</p>}
           </Form.Group>
-          <Button type="submit" onClick={handleSubmit}>Submit</Button>
-          <p></p>
-          <p><Link to={'/'}>Already Registered?</Link></p>
+          <Form.Group className="flex" align="center">
+            <div>
+              <Button type="submit" className="mt-4" variant="light" onClick={handleSubmit}>Submit</Button>
+            </div>
+            <div>
+              <Link className="mt-5" to={'/'}>Already Registered?</Link>
+            </div>
+          </Form.Group>
         </Form>
       </Col>
     </Row>
