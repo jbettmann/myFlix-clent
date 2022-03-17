@@ -26,15 +26,15 @@ const isAuth = () => {
   return  (
     <Navbar id="nav" sticky="top" expand="lg">
       <Container>
-        <Navbar.Brand href="#home" id="logo" className="fs-3">myFlix</Navbar.Brand>
+        <Navbar.Brand href="/" id="logo" className="fs-3">myFlix</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto Nav-list">
+            <Nav className="me-auto Nav-list" align="right">
               {isAuth() && (
-              <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
+              <Nav.Link  href={`/users/${user}`}>Profile</Nav.Link>
               )}
               {isAuth() && (
-              <Button onClick={() => { onLoggedOut() }}>Logout</Button>
+              <Button md={1} onClick={() => { onLoggedOut() }}>Logout</Button>
               )}
               {!isAuth() && (
               <Nav.Link href="/">Sign-in</Nav.Link>
