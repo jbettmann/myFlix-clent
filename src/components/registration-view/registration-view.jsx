@@ -32,12 +32,8 @@ export function RegistrationView(props) {
     if(!name){
       setNameErr('Your name is required');
       isReq = false;
-
-    } else if(username.length < 5){
-      setUsernameErr('Username must be 5 characters long');
-      isReq = false;
     }
-
+    
     if(!username){
       setUsernameErr('Username required');
       isReq = false;
@@ -60,7 +56,7 @@ export function RegistrationView(props) {
       setEmailErr('Email Required');
       isReq = false;
   
-    } else if(email.indexOf('@', '.') === -1){
+    } else if(email.indexOf('@') === -1){
       setEmailErr('You must enter a valid email address');
       isReq = false;
     }
@@ -69,9 +65,6 @@ export function RegistrationView(props) {
       setBirthdayErr('Your birthday is required');
       isReq = false;
   
-    } else if(birthday !== 'Date'){
-      setBirthdayErr('You must add a vaild birthday. ie. DD-MM-YYYY');
-      isReq = false;
     }
 
     return isReq;
@@ -88,18 +81,16 @@ export function RegistrationView(props) {
         Password: password,
         Email: email,
         Birthday: birthday
-      })
-      .then(response => {
+      }).then(response => {
         const data = response.data;
         console.log(data);
-        alert(`You have succesfully registarted ${data.Name}, please login!` )
+        alert(`You have succesfully registarted, please login!` )
 
         window.open('/', '_self'); // '_self' so page opens in current tap
-      })
-      .catch(response => {
+      }).catch(response => {
         const data = response.data;
         console.error(data);
-        alert(`Opps ${data.Name}, somethings when wrong. Unable to register`);
+        alert(`Opps, somethings when wrong. Unable to register`);
       });
     }
   };
