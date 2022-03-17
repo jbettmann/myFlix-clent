@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Card, Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './login-view.scss';
@@ -79,7 +80,9 @@ const validate = () => {
                 </Form.Group>
                 <Button variant="light" type="submit" onClick={handleSubmit}>Submit</Button>
               </Form>
-              <Button id="btn-link" variant="link">Register</Button>
+              <Link to={`/register`}>
+                <Button id="btn-link" variant="link">Register</Button>
+              </Link>
             </Card.Body>
           </Card>
         </Container> 
