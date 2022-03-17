@@ -15,7 +15,7 @@ export function FavoriteMovies( {favoriteMoviesList} ) {
         <Row>
             {favoriteMoviesList.map(({ Title, ImageUrl, _id} ) => {
               return(
-                <Col xs={12} sm={6} md={3} key={_id} className='fav-movie'>
+                <Col xs={12} sm={6} md={3} key={_id} id='fav-movies'>
                   <Figure>
                   <Link to={`/movies/${_id}`}>
                     <Figure.Image src={ImageUrl} alt={Title}/>
