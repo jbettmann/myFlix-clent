@@ -1,13 +1,31 @@
 
 import React from 'react';
+import axios from 'axios'; // Ajax operations 
 import PropTypes from 'prop-types';
+import Button  from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
+
+import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
-    const { movieData, onMovieClick } = this.props;
+    const { movieData, addFavoriteMovie } = this.props;
     // use onMovieClick as callback on onClick event listener to change start of main-view
-    return <div className="movie-card" onClick={() => { onMovieClick(movieData); }}>{movieData.Title}</div>;
+    return (
+      <Card id="movie-card" variant="dark">
+        <Card.Img variant="top" src={movieData.ImageUrl} />
+        <Card.Body >
+          <Card.Title >{movieData.Title}</Card.Title>
+          <Card.Text>{movieData.Description}</Card.Text>
+          <Link to={`/movies/${movieData._id}`}>
+            <Button id='btn-link' variant="link">Open</Button>
+          </Link>  
+            <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)} >Add To Favorites</Button>      
+        </Card.Body>
+      </Card>
+    );
   }
 }
 
@@ -24,7 +42,6 @@ MovieCard.propTypes = {
     Release: PropTypes.string.isRequired,
     Featured: PropTypes.bool.isRequired,
     Actors: PropTypes.array.isRequired
-  }).isRequired,
+  }).isRequired
   // props object MUST contain onMovieClick and MUST be a function 
-  onMovieClick: PropTypes.func.isRequired
 };
