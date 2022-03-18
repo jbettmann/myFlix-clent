@@ -10,6 +10,7 @@ export class MovieView extends React.Component {
     render() {
         // movieData is "name of the prop" used in <MovieCard ... />
         const { movie, onBackClick } = this.props;
+        console.log(movie);
         return (
             <Card id="movie-card" variant="dark">
                 <Card.Body>
