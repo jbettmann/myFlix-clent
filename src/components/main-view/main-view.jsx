@@ -13,9 +13,11 @@ import { GenreView } from '../genre-view/genre-view';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { Spinner } from '../spinner/spinner';
 
 
 import './main-view.scss';
+import { Spinner } from '../spinner/spinner';
 
 
 // React.Component is like a template or blueprint for creating new components 
@@ -117,6 +119,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
         <NavList user={user} />  
         <Container>
           <Row className="justify-content-sm-center" id="main-view">
+            
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
                     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
@@ -124,6 +127,8 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                 if (!user) {
                   return <Redirect to="/login" />
                 }
+
+                if (movies.length === 0) return <Spinner />;
 
                 return (
                   <>
