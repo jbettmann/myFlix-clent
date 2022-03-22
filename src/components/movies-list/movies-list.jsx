@@ -30,13 +30,13 @@ function MoviesList(props) {
 
   return (
     <>
-      <Row id="movie-list-col" className="justify-content-end" > 
-        <Col md={4} id="movie-list-row" >
+      <Row id="movie-list-row"  > 
+        <Col md={4} id="movie-list-col" >
           <VisibilityFilterInput visibilityFilter={visibilityFilter} />
         </Col>
       </Row>
       {filteredMovies.map(m => (
-        <Col md={4} sm={6} id="movie-card__main" key={movies._id}>
+        <Col lg={4} md={6} sm={12} id="movie-card__main" key={movies._id}>
           <MovieCard movieData={m}  />
         </Col>
       ))}

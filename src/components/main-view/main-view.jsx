@@ -112,7 +112,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
       <Router>
         <NavList user={user} />  
         <Container>
-          <Row className="justify-content-sm-center" id="main-view">
+          <Row id="main-view">
             
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
@@ -139,7 +139,11 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   if (user) {
                     return <Redirect to="/" />;
                   }
-                  return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
+                  return (
+                    <Col className="justify-content-sm-center" >
+                      <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
+                    </Col>
+                  )
               }} /> 
 
               <Route path="/register" render={() => {
