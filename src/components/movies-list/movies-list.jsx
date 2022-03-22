@@ -1,10 +1,12 @@
 import React from 'react';
-import { Col }from 'react-bootstrap';
+import { Col, Row }from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
 import { SpinnerView } from '../spinner/spinner';
+
+import './movies-list.scss';
 
 const mapStateToProps = state => {
   const { visibilityFilter } = state;
@@ -12,7 +14,7 @@ const mapStateToProps = state => {
 };
 
 function MoviesList(props) {
-  const { movies, visibilityFilter } = props;
+  const { movies, visibilityFilter, addFavoriteMovies } = props;
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
@@ -28,13 +30,14 @@ function MoviesList(props) {
 
   return (
     <>
-      <Col md={12} style={{ margin: '1em' }}>
-        <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-      </Col>
-      
+      <Row id="movie-list-col" className="justify-content-end" > 
+        <Col md={4} id="movie-list-row" >
+          <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+        </Col>
+      </Row>
       {filteredMovies.map(m => (
         <Col md={4} sm={6} id="movie-card__main" key={movies._id}>
-          <MovieCard movieData={m} addFavoriteMovie={(e) => this.addFavorite(e, m)} />
+          <MovieCard movieData={m} addFavoriteMovie={ addFavoriteMovies } />
         </Col>
       ))}
     </>
