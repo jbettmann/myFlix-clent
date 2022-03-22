@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios'; // Ajax operations 
 import { connect } from 'react-redux';
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
@@ -39,7 +39,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
       // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
       this.state = {
           // movies: [], "** removed for Redux use"
-          user: null //default is logged out.
+          // user: null //default is logged out.
       };
   }
 
@@ -47,7 +47,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
     // Checks if user is logged in when page is loaded. gets token from local stroage 
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
+      this.props.setUser({
         user: localStorage.getItem('user')
       });
       // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
@@ -58,8 +58,11 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   // When a user successfully logs in, this function updates the `user` property in state to that particular user. 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username //username saved in user state
+    // ** Removed for Redux use
+    // this.setState({
+    //   user: authData.user.Username // username saved in user state
+    this.props.setUser({
+      user: authData.user.Username
     });
     // auth info recieved from handleSubmit method on LoginView is saved to localStorage. 
     // localStorage has setItem method taking two arguments: key and value. 
@@ -92,7 +95,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.setState({
+    this.props.setUser({
       user: null
     });
   }
@@ -106,9 +109,8 @@ class MainView extends React.Component { //with extends, basiclly saying "create
             `https://jordansmyflix.herokuapp.com/users/${Username}/favorites/${movie._id}`,
             {
                 headers: { Authorization: `Bearer ${token}` }
-            }
-        )
-        .then((response) => {
+            })
+            .then((response) => {
             console.log(response);
             alert("Movie add to your Favorties!");
             this.componentDidMount();
@@ -120,8 +122,8 @@ class MainView extends React.Component { //with extends, basiclly saying "create
     
   // renders what will be displayed on the screen. The visual representation of component.
   render() {
-    const { user } = this.state;
-    const { movies } = this.props; // ** movies removed from this.state and now extracted from this.prop for Redux
+    // const { user } = this.state; ** Removed for Redux use
+    const { movies,  user  } = this.props; // ** movies and user removed from this.state and now extracted from this.prop for Redux
 
     // load spinner if no list loads 
 
@@ -141,7 +143,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
 
                 return (
-                    <MoviesList movies={movies} />
+                    <MoviesList movies={movies} addFavoriteMovies={(e) => this.addFavorite(e, movies)} />
                     //** Below removed for Redux */
                     // { movies.map(movie => (
                     //   <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
@@ -227,10 +229,13 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 // ** Added for Redux
 // maps state of store to the props being passed into component. 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { 
+    movies: state.movies,
+    user: state.user 
+  };
 }
 
 // ** Added for Redux
 // MainView no longer carries its own state. We pass the action, setMovies, as a prop into MainView
 // { setMovies } passed to the props vis connect() and wrapped into the dispatch() function of store ( a way for the store to know that action has been called). 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
