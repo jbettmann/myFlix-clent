@@ -1,7 +1,7 @@
 import React from "react";
 import {  Row, Col, Spinner } from 'react-bootstrap';
 
-export function Spinner() {
+export function SpinnerView() {
   return (
     <Row className="login-view justify-content-sm-center align-items-center"> 
       <Col sm="auto">

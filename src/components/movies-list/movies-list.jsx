@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
-import { Spinner } from '../spinner/spinner';
+import { SpinnerView } from '../spinner/spinner';
 
 const mapStateToProps = state => {
   const { visibilityFilter } = state;
@@ -22,7 +22,7 @@ function MoviesList(props) {
 
   if (!movies) {
     <Col md={4} sm={6} id="movie-card__main" >
-      <Spinner />  
+      <SpinnerView />  
     </Col>
   }   
 
