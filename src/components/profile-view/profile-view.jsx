@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import './profile-view.scss';
 import { Link } from 'react-router-dom';
@@ -96,7 +97,7 @@ export class ProfileView extends React.Component {
 
         axios
             .delete(
-                `https://jordansmyflix.herokuapp.com/users/${Username}/movies/${movie._id}`,
+                `https://jordansmyflix.herokuapp.com/users/${Username}/favorites/${movie._id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
@@ -280,4 +281,18 @@ export class ProfileView extends React.Component {
             </Container>
         );
     }
+}
+
+// Set the PropTypes for the ProfileView
+ProfileView.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+          Name: PropTypes.string.isRequired,
+          Description: PropTypes.string.isRequired,
+      }).isRequired,
+  })).isRequired,
+  onBackClick: PropTypes.func.isRequired
 }
