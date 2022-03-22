@@ -2,28 +2,35 @@
 // Requirment to create component
 import React from 'react';
 import axios from 'axios'; // Ajax operations 
+import { connect } from 'react-redux';
+
+import { setMovies } from '../../actions/actions';
+import MoviesList from '../movies-list/movies-list';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
 import {  Col, Row, Container, Button } from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
+// ** import { MovieCard } from '../movie-card/movie-card'; "removed when creating store for Redux"
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
-import { Spinner } from '../spinner/spinner';
+
+
+
 
 
 import './main-view.scss';
-import { Spinner } from '../spinner/spinner';
 
 
 // React.Component is like a template or blueprint for creating new components 
 // export "exposes" MainView, making it available for use by other components, modules and files. aka, youll be able import it into other files
 // creates MainView component. "class" states class component, oppposed to function component
-export class MainView extends React.Component { //with extends, basiclly saying "create new MainView using React.Component template"
+
+// ** later date ** removed "export" for Redux use
+class MainView extends React.Component { //with extends, basiclly saying "create new MainView using React.Component template"
 
   // React uses constructor method to create component
   constructor() {
@@ -31,7 +38,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
       super();
       // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
       this.state = {
-          movies: [],
+          // movies: [], "** removed for Redux use"
           user: null //default is logged out.
       };
   }
@@ -70,9 +77,12 @@ export class MainView extends React.Component { //with extends, basiclly saying 
     })
     .then(response => {
       // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
+
+      // ** Below removed for Redux
+      // this.setState({
+      //   movies: response.data
+
+      this.props.setMovies(response.data); // ** Added for Redux
     })
     .catch(function (error) {
       console.log(error);
@@ -95,7 +105,7 @@ export class MainView extends React.Component { //with extends, basiclly saying 
         .post(
             `https://jordansmyflix.herokuapp.com/users/${Username}/favorites/${movie._id}`,
             {
-                headers: { Authorization: `Bearer ${token}` },
+                headers: { Authorization: `Bearer ${token}` }
             }
         )
         .then((response) => {
@@ -110,7 +120,8 @@ export class MainView extends React.Component { //with extends, basiclly saying 
     
   // renders what will be displayed on the screen. The visual representation of component.
   render() {
-    const { movies, user } = this.state;
+    const { user } = this.state;
+    const { movies } = this.props; // ** movies removed from this.state and now extracted from this.prop for Redux
 
     // load spinner if no list loads 
 
@@ -128,16 +139,16 @@ export class MainView extends React.Component { //with extends, basiclly saying 
                   return <Redirect to="/login" />
                 }
 
-                if (movies.length === 0) return <Spinner />;
 
                 return (
-                  <>
-                    {movies.map(movie => (
-                      <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
-                        <MovieCard movieData={movie} addFavoriteMovie={(e) => this.addFavorite(e, movie)} />
-                      </Col>
-                    ))}
-                  </>
+                    <MoviesList movies={movies} />
+                    //** Below removed for Redux */
+                    // { movies.map(movie => (
+                    //   <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
+                    //     <MovieCard movieData={movie} addFavoriteMovie={(e) => this.addFavorite(e, movie)} />
+                    //   </Col>
+                    // ))} 
+                  
                 )
               }} />
 
@@ -213,3 +224,13 @@ export class MainView extends React.Component { //with extends, basiclly saying 
     )
   }
 }
+// ** Added for Redux
+// maps state of store to the props being passed into component. 
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// ** Added for Redux
+// MainView no longer carries its own state. We pass the action, setMovies, as a prop into MainView
+// { setMovies } passed to the props vis connect() and wrapped into the dispatch() function of store ( a way for the store to know that action has been called). 
+export default connect(mapStateToProps, { setMovies } )(MainView);

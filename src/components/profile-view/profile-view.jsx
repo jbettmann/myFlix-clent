@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+
 import './profile-view.scss';
 import { Link } from 'react-router-dom';
-import { UserInfo } from './user-info';
+
 import { Container, Card, Button, Row, Col, Form, Figure } from 'react-bootstrap';
 
 export class ProfileView extends React.Component {
