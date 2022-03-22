@@ -7,7 +7,7 @@ export class MovieView extends React.Component {
 
     render() {
         // movieData is "name of the prop" used in <MovieCard ... />
-        const { movie, onBackClick } = this.props;
+        const { movie, onBackClick, addFavoriteMovie } = this.props;
         return (
             <Card id="movie-card" variant="dark">
                 <Card.Body>
@@ -48,6 +48,7 @@ export class MovieView extends React.Component {
                     </div>
                     {/* button sets selectedMovie to null, allowing MainView to stop rendering MovieView */}
                     <Button variant="light" onClick={() => { onBackClick(); }}>Back</Button>
+                    <Button id='btn-link' variant="link" onClick={(e) => addFavoriteMovie(e, movie)} >Add To Favorites</Button>     
                 </Card.Body>
             </Card>
         )
