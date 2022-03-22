@@ -100,25 +100,6 @@ class MainView extends React.Component { //with extends, basiclly saying "create
     });
   }
 
-  addFavorite(e, movie) {
-    e.preventDefault();
-    const Username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    axios
-        .post(
-            `https://jordansmyflix.herokuapp.com/users/${Username}/favorites/${movie._id}`,
-            {
-                headers: { Authorization: `Bearer ${token}` }
-            })
-            .then((response) => {
-            console.log(response);
-            alert("Movie add to your Favorties!");
-            this.componentDidMount();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-};
     
   // renders what will be displayed on the screen. The visual representation of component.
   render() {
@@ -143,7 +124,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
 
                 return (
-                    <MoviesList movies={movies} addFavoriteMovies={(e) => this.addFavorite(e, movies)} />
+                    <MoviesList movies={movies} />
                     //** Below removed for Redux */
                     // { movies.map(movie => (
                     //   <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
