@@ -2,6 +2,7 @@
 
 export const SET_MOVIES = 'SET_MOVIES'; // initializes the movies list with movies
 export const SET_FILTER = 'SET_FILTER'; // sets filter to filter movies list
+export const SET_USER = 'SET_USER';
 
 // think of funcitons as event constructors. (value) can be name whatever you want. 
 export function setMovies(value) {
@@ -14,6 +15,13 @@ export function setMovies(value) {
 export function setFilter(value) {
   return {
     type: SET_FILTER,
+    value
+  }; 
+}
+
+export function setUser(value) {
+  return {
+    type: SET_USER,
     value
   }; 
 }
