@@ -1,5 +1,7 @@
+$background-color: #f0f0ecf8;
+
 #nav {
-  background-color: #59418000;
+  background-color: $background-color;
 }
 
 #logo {
@@ -9,4 +11,16 @@
 
 .navbar-nav {
   text-align: right;
+}
+
+#logout-button {
+  width: 30%;
+  align-self: right;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav {
+    width: 50%;
+    align-self: right;
+  }
 }
