@@ -6,4 +6,18 @@ This client is the front-end of the myFlix application. It provide users with ac
 
 ##### Built With:
 
+- Parcel (build tool)
 - React
+
+#### Technical Requirments:
+
+- Application must be a single-page application (SPA)
+- Must use state routing to navigate between views and share URLs
+- Give users the option to filter movies
+- Give users the option to sort movies
+- Must initially use Parcel as its build tool
+- Application must be written using the React library and in ES2015+
+- Must be written with React Redux (hence respecting the Flux pattern)
+- Uses Bootstrap as a UI library for styling and responsiveness
+- Contain a mix of class components and function components
+- Application may be hosted online
