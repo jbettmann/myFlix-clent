@@ -1,0 +1,16 @@
+#movie-list-row {
+  padding-right: 0;
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  #movie-list-row {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #movie-list-col {
+    padding-right: 0;
+  }
+}
