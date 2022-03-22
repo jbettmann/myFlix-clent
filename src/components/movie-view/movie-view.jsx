@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './movie-view.scss';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
@@ -9,7 +8,6 @@ export class MovieView extends React.Component {
     render() {
         // movieData is "name of the prop" used in <MovieCard ... />
         const { movie, onBackClick } = this.props;
-        console.log(movie);
         return (
             <Card id="movie-card" variant="dark">
                 <Card.Body>
