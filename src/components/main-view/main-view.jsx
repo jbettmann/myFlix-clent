@@ -17,7 +17,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
-import { Spinner } from '../spinner/spinner';
+
 
 
 

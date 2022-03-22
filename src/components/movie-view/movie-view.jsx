@@ -1,6 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import PropTypes from 'prop-types';
+
 import './movie-view.scss';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';

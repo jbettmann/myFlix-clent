@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
+import {  Card} from 'react-bootstrap';
 import './profile-view.scss';
 
 export function UserInfo(props) {
