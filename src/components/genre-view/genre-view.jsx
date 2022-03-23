@@ -26,6 +26,7 @@ export function GenreView ({genre, onBackClick, movies}) {
             </Card>
           </Col>
         </Row>
+        <br></br>
         <Card className="card-content" >
           <Row id="favorite-movie">
             {movies.map(movie => (
