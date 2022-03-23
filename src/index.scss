@@ -1,8 +1,11 @@
 $color: black;
 $background-color: #f0f0ec;
+$font-weight: 300;
+$bold: 600;
 
 #body {
   background-color: $background-color;
+  font-weight: $font-weight;
 }
 
 h5 {
