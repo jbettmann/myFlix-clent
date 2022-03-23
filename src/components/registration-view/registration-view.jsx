@@ -84,7 +84,7 @@ export function RegistrationView(props) {
       }).then(response => {
         const data = response.data;
         console.log(data);
-        alert(`You have succesfully registarted, please login!` )
+        alert(`You have succesfully registered, please login!` )
 
         window.open('/', '_self'); // '_self' so page opens in current tap
       }).catch(response => {
