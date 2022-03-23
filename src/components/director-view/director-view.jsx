@@ -40,11 +40,6 @@ export class DirectorView extends React.Component {
                           className="fav-poster"
                           variant="top"
                           src={movie.ImageUrl} />
-                        <Card.Body>
-                          <Card.Title className="movie_title">
-                            {movie.Title}
-                          </Card.Title>
-                        </Card.Body>
                       </Card>
                     ))}
                   </Row>
