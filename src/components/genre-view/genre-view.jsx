@@ -24,7 +24,7 @@ export function GenreView ({genre, onBackClick, movies}) {
           </Col>
         </Row>
         <br></br>
-        <Card className="card-content" >
+       
           <Row id="favorite-movie">
             {movies.map(movie => (
               <Col md={3} key={movie._id} >   
@@ -37,7 +37,7 @@ export function GenreView ({genre, onBackClick, movies}) {
               </Col>
             ))} 
           </Row> 
-        </Card>    
+          
       </Container>
     );
   }

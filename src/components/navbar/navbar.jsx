@@ -5,6 +5,7 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import './nav.scss';
 
 export function NavList({ user }) {
+  console.log(user);
 
   // logs user out and sets state to null
 const onLoggedOut = () => {
