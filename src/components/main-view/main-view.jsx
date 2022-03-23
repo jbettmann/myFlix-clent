@@ -124,7 +124,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
 
                 return (
-                  <Row className="justify-content-start">
+                  <Row className="justify-content-start movies-list-container">
                     <MoviesList movies={movies} />
                   </Row>
                     //** Below removed for Redux */

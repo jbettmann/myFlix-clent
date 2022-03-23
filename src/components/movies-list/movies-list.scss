@@ -2,6 +2,12 @@
   padding-right: 0;
 }
 
+@media (max-width: 575.9px) {
+  .movies-list-container {
+    justify-content: center;
+  }
+}
+
 @media (min-width: 577px) and (max-width: 767.5px) {
   #movie-list-row {
     justify-content: center;
