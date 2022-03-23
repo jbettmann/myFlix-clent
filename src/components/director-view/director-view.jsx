@@ -33,9 +33,9 @@ export class DirectorView extends React.Component {
               </Card>
               <Card>
                 <Card.Body>
-                  <Row>
+                  <Row className="favorite-movie">
                     {movies.map(movie => (
-                      <Card className="favorite-movie card-content" key={movie._id} >
+                      <Card id="movie-card " className="card-content" key={movie._id} >
                         <Card.Img
                           className="fav-poster"
                           variant="top"

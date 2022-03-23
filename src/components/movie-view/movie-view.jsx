@@ -15,16 +15,14 @@ export class MovieView extends React.Component {
                   <Card.Title className="movie-title" >{movie.Title}</Card.Title>
                   <Card.Text >
                     <div className="movie-description">Description: {movie.Description} </div>
-                    <div className="label">Genre:
-                      <Link to={`/genres/${movie.Genre.Name}`}>
-                          <Button id="noLinkLook" variant="link">{movie.Genre.Name}</Button>
-                      </Link>
+                    <div className="label">
+                      <span className="label">Genre: </span>
+                      <Link id="noLinkLook" to={`/genres/${movie.Genre.Name}`}> {movie.Genre.Name}</Link>
                     </div>
-                    <span  className="label">Director:
-                      <Link to={`/directors/${movie.Director.Name}`}>
-                          <Button id="noLinkLook" variant="link">{movie.Director.Name}</Button>
-                      </Link>
-                    </span >
+                    <div >
+                      <span className="label">Director:</span>
+                      <Link id="noLinkLook" to={`/directors/${movie.Director.Name}`}> {movie.Director.Name}</Link>
+                    </div >
                     <div className="movie-releaseDate">
                       <span className="label">Release Date: </span>
                       <span className="value">{movie.Release}</span>
