@@ -1,3 +1,5 @@
+$background-color: #f0f0ec;
+
 #noLinkLook {
   text-decoration: none;
 }
@@ -11,6 +13,14 @@
 }
 
 #favorite-movie {
+  background-color: $background-color;
   justify-content: space-evenly;
   align-items: flex-start;
+  border: none;
+}
+
+#movie_title {
+  font-size: 0.8rem;
+  color: #000;
+  text-align: center;
 }

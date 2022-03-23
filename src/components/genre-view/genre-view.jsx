@@ -37,7 +37,7 @@ export function GenreView ({genre, onBackClick, movies}) {
                       variant="top"
                       src={movie.ImageUrl} />
                   <Card.Body>
-                      <Card.Title className="movie_title">
+                      <Card.Title id="movie_title">
                           {movie.Title}
                       </Card.Title>
                   </Card.Body>
