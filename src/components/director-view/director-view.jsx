@@ -37,7 +37,7 @@ export class DirectorView extends React.Component {
                   <Row className="favorite-movie">
                     {movies.map(movie => (
                       <Card id="movie-card " className="card-content" key={movie._id} >
-                        <Link to={`/movies/${_id}`}> 
+                        <Link to={`/movies/${movie._id}`}> 
                           <Card.Img
                             className="fav-poster"
                             variant="top"
