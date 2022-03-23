@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Row, Card, Button, Col, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import './genre-view.scss';
 
 export function GenreView ({genre, onBackClick, movies}) {
@@ -31,11 +32,13 @@ export function GenreView ({genre, onBackClick, movies}) {
           <Row id="favorite-movie">
             {movies.map(movie => (
               <Col md={3} key={movie._id} > 
-                <Card>         
-                  <Card.Img
-                      className="fav-poster"
-                      variant="top"
-                      src={movie.ImageUrl} />
+                <Card>   
+                  <Link to={`/movies/${_id}`}>  
+                    <Card.Img
+                        className="fav-poster"
+                        variant="top"
+                        src={movie.ImageUrl} />
+                  </Link>    
                 </Card>   
               </Col>
             ))} 

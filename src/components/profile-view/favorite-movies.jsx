@@ -1,6 +1,7 @@
 import { remove } from 'immutable'
 import React from 'react'
-import { Button, Card, Col, Figure, Link, Row } from 'react-bootstrap'; 
+import { Link } from 'react-router-dom';
+import { Button, Card, Col, Figure, Row } from 'react-bootstrap'; 
 import './profile-view.scss'
 
 export function FavoriteMovies( {favoriteMoviesList} ) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Card, Button, Row} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class DirectorView extends React.Component {
 
@@ -36,10 +37,12 @@ export class DirectorView extends React.Component {
                   <Row className="favorite-movie">
                     {movies.map(movie => (
                       <Card id="movie-card " className="card-content" key={movie._id} >
-                        <Card.Img
-                          className="fav-poster"
-                          variant="top"
-                          src={movie.ImageUrl} />
+                        <Link to={`/movies/${_id}`}> 
+                          <Card.Img
+                            className="fav-poster"
+                            variant="top"
+                            src={movie.ImageUrl} />
+                        </Link>
                       </Card>
                     ))}
                   </Row>
