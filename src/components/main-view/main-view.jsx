@@ -112,7 +112,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
       <Router>
         <NavList user={user} />  
         <Container>
-          <Row id="main-view">
+          <Row id="main-view" className="justify-content-sm-center" >
             
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
@@ -140,9 +140,9 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                     return <Redirect to="/" />;
                   }
                   return (
-                    <Col className="justify-content-sm-center" >
+                    <Col xs={12} sm={9} md={6} className="justify-content-sm-center" >
                       <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
-                    </Col>
+                   </Col>
                   )
               }} /> 
 
@@ -151,11 +151,9 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   return <Redirect to="/" />
                 }
                 return (
-                  <Row className="justify-content-xl-center" >
-                    <Col xs={12} sm={9} md={6} >
-                      <RegistrationView />
-                    </Col>
-                  </Row>
+                  <Col xs={12} sm={9} md={6} className="justify-content-sm-center" >
+                    <RegistrationView />
+                  </Col>
               )}} />
 
               <Route path="/movies/:movieId" render={({ match, history }) => {
