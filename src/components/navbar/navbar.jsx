@@ -31,7 +31,7 @@ const isAuth = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto Nav-list align-items-end" align="right">
               {isAuth() && (
-              <Nav.Link  href={`/users/${user}`}>Profile</Nav.Link>
+              <Nav.Link  href={`/users/${user.user}`}>Profile</Nav.Link>
               )}
               {isAuth() && (
               <Button id="logout-button" md={1} onClick={() => { onLoggedOut() }}>Logout</Button>
