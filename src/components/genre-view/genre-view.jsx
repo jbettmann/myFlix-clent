@@ -27,7 +27,7 @@ export function GenreView ({genre, onBackClick, movies}) {
        
           <Row id="favorite-movie">
             {movies.map(movie => (
-              <Col md={3} key={movie._id} >   
+              <Col md={3} className="mt-1" key={movie._id} >   
                   <Link to={`/movies/${movie._id}`}>  
                     <Card.Img
                         className="fav-poster"

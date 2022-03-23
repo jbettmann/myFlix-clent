@@ -28,22 +28,18 @@ export class DirectorView extends React.Component {
                       <Button variant="light" onClick={() => { onBackClick(); }}>Back</Button>
                   </Card.Body>
               </Card>
-              <Card>
-                <Card.Body>
-                  <Row className="favorite-movie">
-                    {movies.map(movie => (
-                      <Card id="movie-card " className="card-content" key={movie._id} >
-                        <Link to={`/movies/${movie._id}`}> 
-                          <Card.Img
-                            className="fav-poster"
-                            variant="top"
-                            src={movie.ImageUrl} />
-                        </Link>
-                      </Card>
-                    ))}
-                  </Row>
-                </Card.Body>
-              </Card>
+              <Row className="favorite-movie">
+                {movies.map(movie => (
+                  <Card id="movie-card " className="card-content mt-1" key={movie._id} >
+                    <Link to={`/movies/${movie._id}`}> 
+                      <Card.Img
+                        className="fav-poster"
+                        variant="top"
+                        src={movie.ImageUrl} />
+                    </Link>
+                  </Card>
+                ))}
+              </Row>
             </Container>
         );
     }
