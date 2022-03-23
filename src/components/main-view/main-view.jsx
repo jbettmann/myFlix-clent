@@ -151,9 +151,11 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   return <Redirect to="/" />
                 }
                 return (
-                  <Col xs={12} sm={9} md={6} className="justify-content-xl-center" >
-                    <RegistrationView />
-                  </Col>
+                  <Row className="justify-content-xl-center" >
+                    <Col xs={12} sm={9} md={6} >
+                      <RegistrationView />
+                    </Col>
+                  </Row>
               )}} />
 
               <Route path="/movies/:movieId" render={({ match, history }) => {
