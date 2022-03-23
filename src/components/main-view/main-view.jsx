@@ -124,7 +124,9 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
 
                 return (
+                  <Row className="justify-content-start">
                     <MoviesList movies={movies} />
+                  </Row>
                     //** Below removed for Redux */
                     // { movies.map(movie => (
                     //   <Col md={4} sm={6} id="movie-card__main" key={movie._id}>
