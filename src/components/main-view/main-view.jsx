@@ -146,7 +146,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   )
               }} /> 
 
-              <Route path="/register" render={() => {
+              <Route exact path="/register" render={() => {
                 if (user) {
                   return <Redirect to="/" />
                 }
