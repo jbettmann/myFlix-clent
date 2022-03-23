@@ -151,7 +151,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   return <Redirect to="/" />
                 }
                 return (
-                  <Col xs={12} sm={9} md={6} className="justify-content-sm-center" >
+                  <Col xs={12} sm={9} md={6} className="justify-content-xl-center" >
                     <RegistrationView />
                   </Col>
               )}} />
