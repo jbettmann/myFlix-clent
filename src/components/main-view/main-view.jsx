@@ -112,7 +112,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
       <Router>
         <NavList user={user} />  
         <Container>
-          <Row id="main-view" className="justify-content-sm-center" >
+          <Row id="main-view" className="justify-content-sm-center movies-list-container" >
             
               {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
               <Route exact path="/" render={() => {
@@ -124,7 +124,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
 
                 return (
-                  <Row className="justify-content-start movies-list-container">
+                  <Row className="justify-content-start ">
                     <MoviesList movies={movies} />
                   </Row>
                     //** Below removed for Redux */
