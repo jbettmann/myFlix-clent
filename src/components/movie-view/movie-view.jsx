@@ -10,30 +10,21 @@ export class MovieView extends React.Component {
         const { movie, onBackClick, addFavoriteMovie } = this.props;
         return (
             <Card id="movie-card" variant="dark">
+              <Card.Img src={movie.ImageUrl} className="movie-poster" />
                 <Card.Body>
-                    <div className="movie-poster">
-                      <img src={movie.ImageUrl} />
+                  <Card.Title className="movie-title" >{movie.Title}</Card.Title>
+                  <Card.Text >
+                    <div className="movie-description">Description: {movie.Description} </div>
+                    <div className="label">Genre:
+                      <Link to={`/genres/${movie.Genre.Name}`}>
+                          <Button id="noLinkLook" variant="link">{movie.Genre.Name}</Button>
+                      </Link>
                     </div>
-                    <div className="movie-title">
-                      <span className="label">Title: </span>
-                      <span className="value">{movie.Title}</span>
-                    </div>
-                    <div className="movie-description">
-                      <span className="label">Description: </span>
-                      <span className="value">{movie.Description}</span>
-                    </div>
-                    <div className="movie-genre">
-                      <span className="label">Genre: </span>
-                    <Link to={`/genres/${movie.Genre.Name}`}>
-                        <Button id="noLinkLook" variant="link">{movie.Genre.Name}</Button>
-                    </Link>
-                    </div>
-                    <div className="movie-director">
-                      <span className="label">Director: </span>
-                    <Link  to={`/directors/${movie.Director.Name}`}>
-                        <Button id="noLinkLook" variant="link">{movie.Director.Name}</Button>
-                    </Link>
-                    </div>
+                    <span  className="label">Director:
+                      <Link to={`/directors/${movie.Director.Name}`}>
+                          <Button id="noLinkLook" variant="link">{movie.Director.Name}</Button>
+                      </Link>
+                    </span >
                     <div className="movie-releaseDate">
                       <span className="label">Release Date: </span>
                       <span className="value">{movie.Release}</span>
@@ -46,6 +37,7 @@ export class MovieView extends React.Component {
                       <span className="label">Featured: </span>
                       <span className="value">{movie.Featured}</span>
                     </div>
+                  </Card.Text>
                     {/* button sets selectedMovie to null, allowing MainView to stop rendering MovieView */}
                     <Button variant="light" onClick={() => { onBackClick(); }}>Back</Button>
                     <Button id='btn-link' variant="link" onClick={(e) => addFavoriteMovie(e, movie)} >Add To Favorites</Button>     
@@ -54,3 +46,15 @@ export class MovieView extends React.Component {
         )
     }
 }
+
+// <Card id="movie-card" variant="dark">
+// <Card.Img variant="top" src={movieData.ImageUrl} />
+// <Card.Body >
+//   <Card.Title >{movieData.Title}</Card.Title>
+//   <Card.Text>{movieData.Description}</Card.Text>
+//   <Link to={`/movies/${movieData._id}`}>
+//     <Button id='btn-link' variant="link" addFavoriteMovie={(e) => { this.addFavorite(e, movieData) }}>Open</Button>
+//   </Link>  
+//     <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => this.addFavorite(e, movieData)} >Add To Favorites</Button>      
+// </Card.Body>
+// </Card>
