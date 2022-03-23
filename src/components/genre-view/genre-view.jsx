@@ -27,15 +27,13 @@ export function GenreView ({genre, onBackClick, movies}) {
         <Card className="card-content" >
           <Row id="favorite-movie">
             {movies.map(movie => (
-              <Col md={3} key={movie._id} > 
-                <Card>   
+              <Col md={3} key={movie._id} >   
                   <Link to={`/movies/${movie._id}`}>  
                     <Card.Img
                         className="fav-poster"
                         variant="top"
                         src={movie.ImageUrl} />
-                  </Link>    
-                </Card>   
+                  </Link>     
               </Col>
             ))} 
           </Row> 
