@@ -11,11 +11,7 @@ export class DirectorView extends React.Component {
             <Container >
               <Card id='movie-card'>
                   <Card.Body>
-                      <Card.Title></Card.Title>
-                      <Card.Text>
-                          <span className="label">Name: </span>
-                          <span className="value">{director.Name}</span>
-                      </Card.Text>
+                      <Card.Title>{director.Name}</Card.Title>
                       <Card.Text>
                           <span className="label">Bio: </span>
                           <span className="value">{director.Bio}</span>
