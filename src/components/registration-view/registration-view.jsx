@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { setUser, validateInput } from '../../actions/actions';
 
 import './registration-view.scss';
 
@@ -24,6 +26,16 @@ export function RegistrationView(props) {
   const [ passwordErr, setPasswordErr ] = useState('');
   const [ emailErr, setEmailErr ] = useState('');
   const [ birthdayErr, setBirthdayErr ] = useState('');
+
+  useEffect(() => {
+    setUser({
+      Username: '',
+      Password: '',
+      Email: '',
+      Birthday: '',
+      FavoriteMovies: [],
+    });
+  }, []);
 
   // validate user inputs
   const validate = () => {
@@ -155,5 +167,15 @@ RegistrationView.propTypes = {
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
     Birthday: PropTypes.number.isRequired
-  })
+  }),
+  setUser: PropTypes.func,
+  validateInput: PropTypes.func,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { setUser, validateInput })(RegistrationView);
