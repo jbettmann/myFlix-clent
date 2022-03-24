@@ -257,10 +257,10 @@ export class ProfileView extends React.Component {
                           FavoriteMovies.find((fav) => fav === movie._id)
                       ) {
                       return (
-                        <Col xs={12} sm={6} md={3} key={movie._id} className='fav-movies'>
+                        <Col xs={12} sm={6} md={6} lg={3} key={movie._id} className='fav-movies'>
                           <Figure>
                           <Link to={`/movies/${movie._id}`}>
-                            <Figure.Image src={movie.ImageUrl} alt={movie.Title}/>
+                            <Figure.Image src={movie.ImageUrl} crossOrigin="true" alt={movie.Title}/>
                             <Figure.Caption>
                               {movie.Title}
                             </Figure.Caption>
