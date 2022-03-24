@@ -2,6 +2,7 @@ import React from 'react';
 import './movie-view.scss';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
+import { addFavorite } from '../add-favorite-function/add-favorite-function';
 
 export class MovieView extends React.Component {
 
@@ -10,7 +11,7 @@ export class MovieView extends React.Component {
         const { movie, onBackClick, addFavoriteMovie } = this.props;
         return (
             <Card id="movie-card" variant="dark">
-              <Card.Img src={movie.ImageUrl} className="movie-poster" />
+              <Card.Img src={movie.ImageUrl} className="movie-poster" crossOrigin="true" />
                 <Card.Body>
                   <Card.Title className="movie-title" >{movie.Title}</Card.Title>
                   <Card.Text >
@@ -41,7 +42,7 @@ export class MovieView extends React.Component {
                   </Card.Text>
                     {/* button sets selectedMovie to null, allowing MainView to stop rendering MovieView */}
                     <Button variant="light" onClick={() => { onBackClick(); }}>Back</Button>
-                    <Button id='btn-link' variant="link" onClick={(e) => addFavoriteMovie(e, movie)} >Add To Favorites</Button>     
+                    <Button id='btn-link' variant="link" onClick={(e) => addFavorite(e, movie)} >Add To Favorites</Button>     
                 </Card.Body>
             </Card>
         )
