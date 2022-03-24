@@ -92,8 +92,12 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.props.setUser({
-      user: null
+    this.props.setUser( {
+      Username: '',
+      Email: '',
+      Password: '',
+      Birthday: '',
+      FavoriteMovies: [], 
     });
   }
 
