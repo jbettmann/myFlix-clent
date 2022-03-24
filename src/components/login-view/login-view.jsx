@@ -4,18 +4,14 @@ import axios from 'axios';
 import { Card, Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { setUser, validateInput } from '../../actions/actions';
-import { connect } from 'react-redux';
 
 import './login-view.scss';
 
 export function LoginView(props) {
-
-  useEffect(() => {
-    setUser({ Username: '', Password: '' });
-  }, []);
   // set useState() to empty string. useState returns array of paired values destructured by []
   // useState() creats local state and preserves between render cycles. 
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
 
 // Declare hook for each input
   const [ usernameErr, setUsernameErr ] = useState('');
@@ -35,7 +31,7 @@ const validate = () => {
      setPasswordErr('*Password Required');
      isReq = false;
     }else if(password.length < 6){
-     setPasswordErr('*Password must be 6 characters long');
+     setPassword('*Password must be 6 characters long');
      isReq = false;
     }
 
@@ -71,14 +67,14 @@ const validate = () => {
               <Form>
                 <Form.Group controlId="formUsername">
                   <Form.Label>Username:</Form.Label>
-                  <Form.Control type="text" value={username} onChange={e => validateInput(e.target.value, 'Username')} />
+                  <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
                   {/* Display validation error */}
                   {usernameErr && <p>{usernameErr}</p>}
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
                   <Form.Label>Password:</Form.Label>
-                  <Form.Control type="password" value={password} onChange={e => validateInput(e.target.value, 'Password')} />
+                  <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
                   {/* Display validation error */}
                   {passwordErr && <p>{passwordErr}</p>}
                 </Form.Group>
@@ -103,11 +99,3 @@ LoginView.propTypes = {
   }),
   onLoggedIn: PropTypes.func.isRequired
 };
-
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  };
-};
-
-export default connect(mapStateToProps, { setUser, validateInput })(LoginView);

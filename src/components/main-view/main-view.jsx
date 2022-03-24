@@ -19,6 +19,9 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
 
 
+
+
+
 import './main-view.scss';
 
 
@@ -141,11 +144,11 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   return (
                     <Col xs={12} sm={9} md={6} className="justify-content-sm-center" >
                       <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
-                    </Col>
+                   </Col>
                   )
               }} /> 
 
-              <Route path="/register" render={() => {
+              <Route exact path="/register" render={() => {
                 if (user) {
                   return <Redirect to="/" />
                 }

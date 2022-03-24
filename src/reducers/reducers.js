@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { SET_FILTER, SET_MOVIES, SET_USER,  VALIDATE_INPUT,} from "../actions/actions";
+import { SET_FILTER, SET_MOVIES, SET_USER } from "../actions/actions";
 
 
 // if fucntions are "concerned" by the action, it will change the state
@@ -25,32 +25,14 @@ function movies(state = [], action) {
   }
 }
 
-/* Users */
-
-function user(
-  state = {
-    Username: '',
-    Email: '',
-    Password: '',
-    Birthday: '',
-    FavoriteMovies: [],
-  },action) {
-  const { field, value } = action;
+function user(state = null, action) {
   switch (action.type) {
     case SET_USER:
-      return value;
-
-    case VALIDATE_INPUT:
-      return {
-        ...state,
-        [field]: value,
-      };
-
+      return action.value;
     default:
       return state;
   }
 }
-
 
 //  a combinded reducer (reducer made out of other reducers)
 const moviesApp = combineReducers({
