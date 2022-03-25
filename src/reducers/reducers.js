@@ -1,6 +1,12 @@
 import { combineReducers } from "redux";
 
-import { SET_FILTER, SET_MOVIES, SET_USER } from "../actions/actions";
+import { 
+  SET_FILTER,
+  SET_MOVIES, 
+  SET_USER,   
+  UPDATE_USER,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE} from "../actions/actions";
 
 
 // if fucntions are "concerned" by the action, it will change the state
@@ -25,20 +31,43 @@ function movies(state = [], action) {
   }
 }
 
+/* Users */
+
 function user(state = null, action) {
-  switch (action.type) {
+  switch(action.type) {
     case SET_USER:
-      return action.value;
+      return action.user;
+    case UPDATE_USER:
+      return {
+        ...state,
+        ...action.user
+      };
     default:
       return state;
   }
 }
 
+function favoriteMovies(state = [], action) {
+  switch(action.type) {
+    case ADD_FAVORITE:
+      return [
+        ...state,
+        action.movie
+      ];
+    case REMOVE_FAVORITE:
+      return state.filter(movie => movie !== action.movie);
+    default:
+      return state;
+  }
+}
+
+
 //  a combinded reducer (reducer made out of other reducers)
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,
-    user
+    user,
+    favoriteMovies
   });
 
 
