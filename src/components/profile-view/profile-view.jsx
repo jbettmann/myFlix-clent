@@ -13,8 +13,9 @@ import { SpinnerView } from '../spinner/spinner';
 export class ProfileView extends React.Component {
     constructor() {
         super();
+        
     }
-
+    
     componentDidMount() {
         this.getUser();
     }
@@ -35,15 +36,13 @@ export class ProfileView extends React.Component {
             .get(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
-            .then(response => {
-              const data = response.data;
-        
+            .then((response) => {
               this.props.setUser({
-                Username: data.Username,
-                Password: data.Password,
-                Email: data.Email,
-                Birthday: data.Birthday,
-                FavoriteMovies: data.FavoriteMovies
+                  Username: response.data.Username,
+                  Password: response.data.Password,
+                  Email: response.data.Email,
+                  Birthday: response.data.Birthday,
+                  FavoriteMovies: response.data.FavoriteMovies,
               });
             })
             .catch(function (error) {
@@ -151,10 +150,10 @@ export class ProfileView extends React.Component {
     }
 
     render() {
-        const { movies, onBackClick } = this.props;
-        const { FavoriteMovies, Username, Email, Birthday } = this.props.user || {};
+        const { onBackClick } = this.props;
+        const { FavoriteMovies, Username, Email, Birthday, movies} = this.props.user || {};
 
-        if (!Username) {
+        if (Username === null) {
             return <SpinnerView />
         }
 
