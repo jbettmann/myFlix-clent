@@ -1,6 +1,16 @@
 import { combineReducers } from "redux";
 
+<<<<<<< HEAD
 import { SET_FILTER, SET_MOVIES, SET_USER,  VALIDATE_INPUT,} from "../actions/actions";
+=======
+import { 
+  SET_FILTER,
+  SET_MOVIES, 
+  SET_USER,   
+  UPDATE_USER,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE} from "../actions/actions";
+>>>>>>> main
 
 
 // if fucntions are "concerned" by the action, it will change the state
@@ -27,6 +37,7 @@ function movies(state = [], action) {
 
 /* Users */
 
+<<<<<<< HEAD
 function user(
   state = {
     Username: '',
@@ -46,17 +57,46 @@ function user(
         [field]: value,
       };
 
+=======
+function user(state = null, action) {
+  switch(action.type) {
+    case SET_USER:
+      return action.user;
+    case UPDATE_USER:
+      return {
+        ...state,
+        ...action.user
+      };
+>>>>>>> main
     default:
       return state;
   }
 }
 
+<<<<<<< HEAD
+=======
+function favoriteMovies(state = [], action) {
+  switch(action.type) {
+    case ADD_FAVORITE:
+      return [
+        ...state,
+        action.movie
+      ];
+    case REMOVE_FAVORITE:
+      return state.filter(movie => movie !== action.movie);
+    default:
+      return state;
+  }
+}
+
+>>>>>>> main
 
 //  a combinded reducer (reducer made out of other reducers)
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,
-    user
+    user,
+    favoriteMovies
   });
 
 

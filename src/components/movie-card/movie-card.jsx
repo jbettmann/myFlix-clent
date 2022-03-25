@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Button  from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import { addFavorite } from '../add-favorite-function/add-favorite-function';
+import { addFavoriteMovie } from '../add-favorite-function/add-favorite-function';
 
 import './movie-card.scss';
 
@@ -25,7 +25,7 @@ export class MovieCard extends React.Component {
           <Link to={`/movies/${movieData._id}`}>
             <Button id='btn-link' variant="link" >Open</Button>
           </Link>  
-            <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => addFavorite(e, movieData)} >Add To Favorites</Button>      
+            <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)} >Add To Favorites</Button>      
         </Card.Body>
       </Card>
     );

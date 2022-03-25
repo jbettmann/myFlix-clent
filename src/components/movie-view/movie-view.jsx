@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './movie-view.scss';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
-import { addFavorite } from '../add-favorite-function/add-favorite-function';
+import { addFavoriteMovie } from '../add-favorite-function/add-favorite-function';
 
 export class MovieView extends React.Component {
 
     render() {
         // movieData is "name of the prop" used in <MovieCard ... />
-        const { movie, onBackClick, addFavoriteMovie } = this.props;
+        const { movie, onBackClick } = this.props;
         return (
             <Card id="movie-card" variant="dark">
               <Card.Img src={movie.ImageUrl} className="movie-poster" crossOrigin="true" />
@@ -25,7 +26,10 @@ export class MovieView extends React.Component {
                     </div>
                     <div className="movie-view-div">
                       <span className="label">Director:</span>
-                      <Link id="noLinkLook" to={`/directors/${movie.Director.Name}`}> {movie.Director.Name}</Link>
+                      {movie.Director.map((Director, i) => (
+                        <Link id="noLinkLook" to={`/directors/${Director.Name}`}  key={i}>{Director.Name}</Link> ))
+                        .reduce((prev, curr) => [ prev, ", ", curr ])
+                      } 
                     </div >
                     <div className="movie-view-div">
                       <span className="label">Release Date: </span>
@@ -42,21 +46,25 @@ export class MovieView extends React.Component {
                   </Card.Text>
                     {/* button sets selectedMovie to null, allowing MainView to stop rendering MovieView */}
                     <Button variant="light" onClick={() => { onBackClick(); }}>Back</Button>
-                    <Button id='btn-link' variant="link" onClick={(e) => addFavorite(e, movie)} >Add To Favorites</Button>     
+                    <Button id='btn-link' variant="link" onClick={(e) => addFavoriteMovie(e, movie)} >Add To Favorites</Button>     
                 </Card.Body>
             </Card>
         )
     }
 }
 
-// <Card id="movie-card" variant="dark">
-// <Card.Img variant="top" src={movieData.ImageUrl} />
-// <Card.Body >
-//   <Card.Title >{movieData.Title}</Card.Title>
-//   <Card.Text>{movieData.Description}</Card.Text>
-//   <Link to={`/movies/${movieData._id}`}>
-//     <Button id='btn-link' variant="link" addFavoriteMovie={(e) => { this.addFavorite(e, movieData) }}>Open</Button>
-//   </Link>  
-//     <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => this.addFavorite(e, movieData)} >Add To Favorites</Button>      
-// </Card.Body>
-// </Card>
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImageUrl: PropTypes.string.isRequired,
+    Release: PropTypes.string.isRequired,
+    Genre: PropTypes.object.isRequired,
+    Actors: PropTypes.array.isRequired,
+    Featured: PropTypes.bool.isRequired
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+  addFavoriteMovie: PropTypes.func,
+  
+};

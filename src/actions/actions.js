@@ -3,7 +3,13 @@
 export const SET_MOVIES = 'SET_MOVIES'; // initializes the movies list with movies
 export const SET_FILTER = 'SET_FILTER'; // sets filter to filter movies list
 export const SET_USER = 'SET_USER';
+<<<<<<< HEAD
 export const VALIDATE_INPUT = 'VALIDATE_INPUT';
+=======
+export const UPDATE_USER = 'UPDATE_USER';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+>>>>>>> main
 
 // think of funcitons as event constructors. (value) can be name whatever you want. 
 export function setMovies(value) {
@@ -20,13 +26,14 @@ export function setFilter(value) {
   }; 
 }
 
-export function setUser(value) {
+export function setUser(user) {
   return {
     type: SET_USER,
-    value
+    user
   }; 
 }
 
+<<<<<<< HEAD
 export function validateInput(
   value = { Username: '', Email: '', Password: '', Birthday: '' },
   field = null
@@ -36,4 +43,26 @@ export function validateInput(
     value,
     field,
   };
+=======
+
+export function updateUser(user) {
+  return {
+    type: UPDATE_USER,
+    user
+  }
+}
+
+export function addFavorite(movie) {
+  return {
+    type: ADD_FAVORITE,
+    movie
+  }
+}
+
+export function removeFavorite(movie) {
+  return {
+    type: REMOVE_FAVORITE,
+    movie
+  }
+>>>>>>> main
 }

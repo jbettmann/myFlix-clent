@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
+=======
+import { setUser, updateUser } from '../../actions/actions';
+>>>>>>> main
 
 import './profile-view.scss';
 import { Link } from 'react-router-dom';
 
 import { Container, Card, Button, Row, Col, Form, Figure } from 'react-bootstrap';
+import { SpinnerView } from '../spinner/spinner';
 
+<<<<<<< HEAD
 import { setUser, validateInput } from '../../actions/actions';
 
 export function ProfileView({ user, movies, setUser, validateInput }) {
@@ -21,8 +27,20 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
   const [birthdayError, setBirthdayError] = useState('');
   //array of movie objects of user's favorite movies:
   const [favorites, setFavorites] = useState([]);
+=======
+export class ProfileView extends React.Component {
+    constructor() {
+        super();
+        
+    }
+    
+    componentDidMount() {
+        this.getUser();
+    }
+>>>>>>> main
 
 
+<<<<<<< HEAD
   useEffect(() => {
       axios
         .get(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
@@ -34,6 +52,23 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
                 Birthday: response.data.Birthday.substring(0, 10),
               };
               setUser(userData);
+=======
+    getUser() {
+        const Username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        axios
+            .get(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((response) => {
+              this.props.setUser({
+                  Username: response.data.Username,
+                  Password: response.data.Password,
+                  Email: response.data.Email,
+                  Birthday: response.data.Birthday,
+                  FavoriteMovies: response.data.FavoriteMovies,
+              });
+>>>>>>> main
             })
             .catch(function (error) {
                 console.log(error);
@@ -60,6 +95,7 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
    const editUser = (e) => {
       let isValid = validateChanges();
         e.preventDefault();
+<<<<<<< HEAD
       if(isValid) {
         axios
             .put(
@@ -83,6 +119,28 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
               localStorage.setItem('user', userData.Username);
               alert("Profile updated");
               window.open('/profile', '_self');
+=======
+        const Username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+
+        axios.put(`https://jordansmyflix.herokuapp.com/users/${Username}`,
+                this.state,
+                { headers: { Authorization: `Bearer ${token}` } 
+              })
+              .then(response => {
+                const data = response.data;
+          
+                this.props.updateUser({
+                  Username: data.Username,
+                  Password: data.Password,
+                  Email: data.Email,
+                  Birthday: data.Birthday
+                });
+
+                localStorage.setItem('user', this.props.user.Username);
+                alert("Profile updated");
+                window.open('/profile', '_self');
+>>>>>>> main
             })
             .catch(function (error) {
                 console.log(error);
@@ -110,16 +168,26 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
     };
 
     // Deregister
+<<<<<<< HEAD
   onDeleteUser = (e) => {
     e.preventDefault();
     console.log('onDeleteUser');
+=======
+    onDeleteUser() {
+      const confirmation = window.confirm('Are you sure you want to delete your account?');
+
+      if (confirmation) {
+        const Username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+
+>>>>>>> main
         axios
             .delete(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
                 console.log(response);
-                alert("Profile deleted");
+                alert("Your account has been deleted");
                 localStorage.removeItem('user');
                 localStorage.removeItem('token');
                 window.open('/', '_self');
@@ -127,6 +195,7 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
             .catch(function (error) {
                 console.log(error);
             });
+<<<<<<< HEAD
     };
   
 
@@ -137,6 +206,14 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
     if (user.Username.length < 4) {
       setUsernameError('Username must have at least 4 characters.');
       isValid = false;
+=======
+    }
+  }
+    setUsername(value) {
+        this.setState({
+            Username: value,
+        });
+>>>>>>> main
     }
 
     if (user.Password.length < 6) {
@@ -154,9 +231,19 @@ export function ProfileView({ user, movies, setUser, validateInput }) {
       isValid = false;
     }
 
+<<<<<<< HEAD
     return isValid;
   };
 
+=======
+    render() {
+        const { onBackClick } = this.props;
+        const { FavoriteMovies, Username, Email, Birthday, movies} = this.props.user || {};
+
+        if (Username === null) {
+            return <SpinnerView />
+        }
+>>>>>>> main
 
     return (
         <Container className="profile-view" align="center">
@@ -284,6 +371,7 @@ ProfileView.propTypes = {
           Description: PropTypes.string.isRequired,
       }).isRequired,
   })).isRequired,
+<<<<<<< HEAD
   onBackClick: PropTypes.func.isRequired
 }
 
@@ -295,3 +383,31 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { setUser, validateInput })(ProfileView);
+=======
+  onBackClick: PropTypes.func.isRequired,
+  getUser: PropTypes.func,
+  onBackClick: PropTypes.func,
+  setUser: PropTypes.func,
+  updateUser: PropTypes.func
+};
+
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    movies: state.movies
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUser: (user) => {
+      dispatch(setUser(user))
+    },
+    updateUser: (user) => {
+      dispatch(updateUser(user))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);
+>>>>>>> main

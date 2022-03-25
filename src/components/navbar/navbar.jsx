@@ -7,8 +7,14 @@ import { setUser } from '../../actions/actions';
 
 import './nav.scss';
 
+<<<<<<< HEAD
 export function NavList({ user, setUser }) {
   // console.log(user);
+=======
+export function NavList() {
+  const user = localStorage.getItem('user');
+  console.log(user);
+>>>>>>> main
 
   // logs user out and sets state to null
   const onLoggedOut = () => {
