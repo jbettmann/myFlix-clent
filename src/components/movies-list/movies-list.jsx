@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Row }from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
-import { SpinnerView } from '../spinner/spinner';
 
 import './movies-list.scss';
 
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 };
 
 function MoviesList(props) {
-  const { movies, visibilityFilter, addFavoriteMovies } = props;
+  const { movies, visibilityFilter } = props;
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
@@ -22,11 +22,6 @@ function MoviesList(props) {
     filteredMovies = movies.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
-  if (!movies) {
-    <Col md={4} sm={6} id="movie-card__main" >
-      <SpinnerView />  
-    </Col>
-  }   
 
   return (
     <>
@@ -36,13 +31,22 @@ function MoviesList(props) {
         </Col>
       </Row>
       {filteredMovies.map(m => (
-        <Col lg={4} md={6} sm={12} id="movie-card__main" key={movies._id}>
+        <Col lg={4} md={6} sm={12} id="movie-card__main" key={m._id}>
           <MovieCard movieData={m}  />
         </Col>
       ))}
     </>
   )
 }
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      filter: PropTypes.func
+    })
+  ),
+  visibilityFilter: PropTypes.string
+};
 
 // connects MoviesList to store
 // mapStateToProps converts store into props for MovieList to use.
