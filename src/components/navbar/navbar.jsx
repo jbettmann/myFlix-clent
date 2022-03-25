@@ -4,7 +4,8 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 import './nav.scss';
 
-export function NavList({ user }) {
+export function NavList() {
+  const user = localStorage.getItem('user');
   console.log(user);
 
   // logs user out and sets state to null
