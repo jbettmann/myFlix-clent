@@ -1,8 +1,5 @@
 import { combineReducers } from "redux";
 
-<<<<<<< HEAD
-import { SET_FILTER, SET_MOVIES, SET_USER,  VALIDATE_INPUT,} from "../actions/actions";
-=======
 import { 
   SET_FILTER,
   SET_MOVIES, 
@@ -10,7 +7,6 @@ import {
   UPDATE_USER,
   ADD_FAVORITE,
   REMOVE_FAVORITE} from "../actions/actions";
->>>>>>> main
 
 
 // if fucntions are "concerned" by the action, it will change the state
@@ -37,27 +33,6 @@ function movies(state = [], action) {
 
 /* Users */
 
-<<<<<<< HEAD
-function user(
-  state = {
-    Username: '',
-    Email: '',
-    Password: '',
-    Birthday: '',
-    FavoriteMovies: [],
-  },action) {
-  const { field, value } = action;
-  switch (action.type) {
-    case SET_USER:
-      return value;
-
-    case VALIDATE_INPUT:
-      return {
-        ...state,
-        [field]: value,
-      };
-
-=======
 function user(state = null, action) {
   switch(action.type) {
     case SET_USER:
@@ -67,14 +42,11 @@ function user(state = null, action) {
         ...state,
         ...action.user
       };
->>>>>>> main
     default:
       return state;
   }
 }
 
-<<<<<<< HEAD
-=======
 function favoriteMovies(state = [], action) {
   switch(action.type) {
     case ADD_FAVORITE:
@@ -89,7 +61,6 @@ function favoriteMovies(state = [], action) {
   }
 }
 
->>>>>>> main
 
 //  a combinded reducer (reducer made out of other reducers)
 const moviesApp = combineReducers({
