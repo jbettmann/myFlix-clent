@@ -8,7 +8,7 @@ import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"; // BrowserRouter used to implement state-based routing. HashRouter used for hash-based routing.
-import {  Col, Row, Container, Button } from 'react-bootstrap'; 
+import {  Col, Row, Container } from 'react-bootstrap'; 
 import { LoginView } from '../login-view/login-view';
 // ** import { MovieCard } from '../movie-card/movie-card'; "removed when creating store for Redux"
 import { MovieView } from '../movie-view/movie-view';
@@ -17,6 +17,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { SpinnerView } from '../spinner/spinner';
 
 
 
@@ -37,10 +38,10 @@ class MainView extends React.Component { //with extends, basiclly saying "create
       // OOP, call the constructor of parent class. Initializes component state. Without, Error occurs with this.state
       super();
       // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
-      this.state = {
+      // this.state = {
           // movies: [], "** removed for Redux use"
           // user: null //default is logged out.
-      };
+      // };
   }
 
   componentDidMount() {
@@ -110,7 +111,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
     return (
       <Router>
-        <NavList user={user} />  
+        <NavList />  
         <Container>
           <Row id="main-view" className="justify-content-sm-center movies-list-container" >
             
@@ -122,6 +123,13 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   return <Redirect to="/login" />
                 }
 
+                if (movies.length === 0) {
+                  return(
+                  <Col md={4} sm={6} id="movie-card__main" >
+                    <SpinnerView />  
+                  </Col>
+                  )
+                } 
 
                 return (
                   <Row className="justify-content-start ">
@@ -162,6 +170,15 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 if (!user) {
                   return <Redirect to="/login" />
                 }
+
+                if (movies.length === 0) {
+                  return(
+                  <Col md={4} sm={6} id="movie-card__main" >
+                    <SpinnerView />  
+                  </Col>
+                  )
+                } 
+
                 return ( 
                   <Col sm="auto" md={8} id="movie-view">
                     {/* .goback() is build-in function to go to previous page */}
@@ -174,6 +191,15 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 if (!user) {
                   return <Redirect to="/login" />
                 }
+
+                if (movies.length === 0) {
+                  return(
+                  <Col md={4} sm={6} id="movie-card__main" >
+                    <SpinnerView />  
+                  </Col>
+                  )
+                } 
+
                 // getting movies async or returns if movies havent been added
                 return (
                   <Col sm={12} md={8} id="movie-view">
@@ -189,11 +215,20 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 if (!user) {
                   return <Redirect to="/login" />
                 }
+
+                if (movies.length === 0) {
+                  return(
+                  <Col md={4} sm={6} id="movie-card__main" >
+                    <SpinnerView />  
+                  </Col>
+                  )
+                } 
+
                 return (
                   <Col sm={12} md={8}>
                     <DirectorView 
                       movies={movies.filter(movie => movie.Director.Name === match.params.name)} 
-                      director={movies.find(m => m.Director.Name === match.params.name).Director} 
+                      director={movies.find(m => m.Director.Name === match.params.name).Director } 
                       onBackClick={() => history.goBack()}/>
                   </Col>
               )}}/>
@@ -202,6 +237,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 if (!user){ 
                   return <Redirect to="/login" />
                   }
+
                 return (
                   <Col sm={12} md={10}>
                     <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
