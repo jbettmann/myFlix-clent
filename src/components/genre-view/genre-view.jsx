@@ -32,7 +32,8 @@ export function GenreView ({genre, onBackClick, movies}) {
                     <Card.Img
                         className="fav-poster"
                         variant="top"
-                        src={movie.ImageUrl} />
+                        src={movie.ImageUrl}
+                        crossOrigin="true" />
                   </Link>     
               </Col>
             ))} 
