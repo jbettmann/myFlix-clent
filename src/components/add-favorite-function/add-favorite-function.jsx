@@ -16,7 +16,6 @@ export function addFavoriteMovie(e, movie) {
           })
           .then((response) => {
           console.log(response);
-          this.props.addFavorite();
           alert("Movie add to your Favorties!");
       })
       .catch(function (error) {
