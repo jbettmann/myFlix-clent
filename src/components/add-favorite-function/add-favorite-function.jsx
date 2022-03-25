@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios'; 
+import { connect } from 'react-redux';
+import { addFavorite } from '../../actions/actions';
 
 
-
-export function addFavorite(e, movie) {
+export function addFavoriteMovie(e, movie) {
   e.preventDefault();
   const Username = localStorage.getItem('user');
   const token = localStorage.getItem('token');
@@ -15,9 +16,27 @@ export function addFavorite(e, movie) {
           })
           .then((response) => {
           console.log(response);
+          this.props.addFavorite();
           alert("Movie add to your Favorties!");
       })
       .catch(function (error) {
           console.log(error);
       });
 };
+
+
+const mapStateToProps = state => {
+  return {
+    movies: state.movies
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addFavorite: (movie) => {
+      dispatch(addFavorite(movie));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(addFavoriteMovie);
