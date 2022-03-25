@@ -1,28 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setUser, updateUser } from '../../actions/actions';
 
 import './profile-view.scss';
 import { Link } from 'react-router-dom';
 
 import { Container, Card, Button, Row, Col, Form, Figure } from 'react-bootstrap';
+import { SpinnerView } from '../spinner/spinner';
 
 export class ProfileView extends React.Component {
     constructor() {
         super();
-
-        this.state = {
-            Username: null,
-            Password: null,
-            Email: null,
-            Birthday: null,
-            FavoriteMovies: [],
-        };
     }
 
     componentDidMount() {
-        const accessToken = localStorage.getItem('token');
-        this.getUser(accessToken);
+        this.getUser();
     }
 
     onLoggedOut() {
@@ -34,20 +28,23 @@ export class ProfileView extends React.Component {
         window.open('/', '_self');
     }
 
-    getUser = (token) => {
+    getUser() {
         const Username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         axios
             .get(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
-            .then((response) => {
-                this.setState({
-                    Username: response.data.Username,
-                    Password: response.data.Password,
-                    Email: response.data.Email,
-                    Birthday: response.data.Birthday,
-                    FavoriteMovies: response.data.FavoriteMovies,
-                });
+            .then(response => {
+              const data = response.data;
+        
+              this.props.setUser({
+                Username: data.Username,
+                Password: data.Password,
+                Email: data.Email,
+                Birthday: data.Birthday,
+                FavoriteMovies: data.FavoriteMovies
+              });
             })
             .catch(function (error) {
                 console.log(error);
@@ -59,28 +56,21 @@ export class ProfileView extends React.Component {
         const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
-        axios
-            .put(
-                `https://jordansmyflix.herokuapp.com/users/${Username}`,
-                {
-                    Username: this.state.Username,
-                    Password: this.state.Password,
-                    Email: this.state.Email,
-                    Birthday: this.state.Birthday,
-                },
-                {
-                    headers: { Authorization: `Bearer ${token}` },
-                }
-            )
-            .then((response) => {
-                this.setState({
-                    Username: response.data.Username,
-                    Password: response.data.Password,
-                    Email: response.data.Email,
-                    Birthday: response.data.Birthday,
+        axios.put(`https://jordansmyflix.herokuapp.com/users/${Username}`,
+                this.state,
+                { headers: { Authorization: `Bearer ${token}` } 
+              })
+              .then(response => {
+                const data = response.data;
+          
+                this.props.updateUser({
+                  Username: data.Username,
+                  Password: data.Password,
+                  Email: data.Email,
+                  Birthday: data.Birthday
                 });
 
-                localStorage.setItem('user', this.state.Username);
+                localStorage.setItem('user', this.props.user.Username);
                 alert("Profile updated");
                 window.open('/profile', '_self');
             })
@@ -114,6 +104,9 @@ export class ProfileView extends React.Component {
 
     // Deregister
     onDeleteUser() {
+      const confirmation = window.confirm('Are you sure you want to delete your account?');
+
+      if (confirmation) {
         const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
@@ -123,7 +116,7 @@ export class ProfileView extends React.Component {
             })
             .then((response) => {
                 console.log(response);
-                alert("Profile deleted");
+                alert("Your account has been deleted");
                 localStorage.removeItem('user');
                 localStorage.removeItem('token');
                 window.open('/', '_self');
@@ -132,7 +125,7 @@ export class ProfileView extends React.Component {
                 console.log(error);
             });
     }
-
+  }
     setUsername(value) {
         this.setState({
             Username: value,
@@ -158,11 +151,11 @@ export class ProfileView extends React.Component {
     }
 
     render() {
-        const { movies, onBackClick, user } = this.props;
-        const { FavoriteMovies, Username, Email, Birthday } = this.state;
+        const { movies, onBackClick } = this.props;
+        const { FavoriteMovies, Username, Email, Birthday } = this.props.user || {};
 
         if (!Username) {
-            return null;
+            return <SpinnerView />
         }
 
         return (
@@ -293,5 +286,29 @@ ProfileView.propTypes = {
           Description: PropTypes.string.isRequired,
       }).isRequired,
   })).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
+  getUser: PropTypes.func,
+  onBackClick: PropTypes.func,
+  setUser: PropTypes.func,
+  updateUser: PropTypes.func
+};
+
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    movies: state.movies
+  }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUser: (user) => {
+      dispatch(setUser(user))
+    },
+    updateUser: (user) => {
+      dispatch(updateUser(user))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);
