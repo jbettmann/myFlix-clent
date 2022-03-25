@@ -35,7 +35,8 @@ export class DirectorView extends React.Component {
                       <Card.Img
                         className="fav-poster"
                         variant="top"
-                        src={movie.ImageUrl} />
+                        src={movie.ImageUrl}
+                        crossOrigin="true" />
                     </Link>
                   </Card>
                 ))}
