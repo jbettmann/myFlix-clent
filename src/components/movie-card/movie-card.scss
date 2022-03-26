@@ -1,9 +1,13 @@
+$secondary: #373737;
+$logo: #3d2661;
+
 .card-title {
   color: #fff;
 }
 
 #movie-card {
-  background-color: #373737;
+  position: relative;
+  background-color: $secondary;
   border-radius: 0.5rem;
 }
 
@@ -18,4 +22,27 @@
 
 #noLinkLook:hover {
   text-decoration: underline;
+}
+
+.star {
+  color: lighten($logo, 50%);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0.7rem;
+  &:hover {
+    color: lighten($logo, 20%);
+    cursor: pointer;
+  }
+}
+
+#btn-link {
+  background-color: darken($secondary, 7%);
+  border-color: darken($secondary, 7%);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
