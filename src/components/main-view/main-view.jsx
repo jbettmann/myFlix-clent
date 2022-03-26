@@ -241,7 +241,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
                 return (
                   <Col sm={12} md={10}>
-                    <ProfileView onBackClick={() => history.goBack()} />
+                    <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
           </Row>
