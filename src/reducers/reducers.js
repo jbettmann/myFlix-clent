@@ -6,7 +6,7 @@ import {
   SET_USER,   
   UPDATE_USER,
   ADD_FAVORITE,
-  REMOVE_FAVORITE} from "../actions/actions";
+  REMOVE_FAVORITE } from "../actions/actions";
 
 
 // if fucntions are "concerned" by the action, it will change the state
