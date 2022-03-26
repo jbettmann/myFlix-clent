@@ -8,7 +8,7 @@ import './profile-view.scss';
 import { Link } from 'react-router-dom';
 
 import { Container, Card, Button, Row, Col, Form, Figure } from 'react-bootstrap';
-import { SpinnerView } from '../spinner/spinner';
+
 
 export class ProfileView extends React.Component {
     constructor() {
@@ -17,13 +17,13 @@ export class ProfileView extends React.Component {
     }
     
     componentDidMount() {
-        this.getUser();
+        this.props.setUser();
     }
 
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.setState({
+        this.setUser({
             user: null,
         });
         window.open('/', '_self');
@@ -150,12 +150,8 @@ export class ProfileView extends React.Component {
     }
 
     render() {
-        const { onBackClick } = this.props;
-        const { FavoriteMovies, Username, Email, Birthday, movies} = this.props.user || {};
-
-        if (Username === null) {
-            return <SpinnerView />
-        }
+        const { onBackClick, movies } = this.props;
+        const { FavoriteMovies, Username, Email, Birthday } = this.props.user;
 
         return (
             <Container className="profile-view" align="center">
