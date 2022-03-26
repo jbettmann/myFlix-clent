@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Star } from 'react-bootstrap-icons';
 import axios from 'axios'; 
 import PropTypes from 'prop-types';
 import Button  from 'react-bootstrap/Button';
@@ -20,12 +21,11 @@ export class MovieCard extends React.Component {
       <Card id="movie-card" variant="dark">
         <Card.Img variant="top" src={movieData.ImageUrl} crossOrigin="true" />
         <Card.Body >
-          <Card.Title >{movieData.Title}</Card.Title>
-          <Card.Text>{movieData.Description}</Card.Text>
+          <Card.Title align='center' >{movieData.Title}</Card.Title>
           <Link to={`/movies/${movieData._id}`}>
-            <Button id='btn-link' variant="link" >Open</Button>
+            <Button variant="light"  align='center'>Open</Button>
           </Link>  
-            <Button id='btn-link' variant="link" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)} >Add To Favorites</Button>      
+          <Star size={20} className="star" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)}/>    
         </Card.Body>
       </Card>
     );
