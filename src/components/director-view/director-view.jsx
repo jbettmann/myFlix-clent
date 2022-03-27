@@ -21,7 +21,7 @@ export const DirectorView = ({directorName, onBackClick, movies}) => {
                  Death: response.data[0].Death,
                  Bio: response.data[0].Bio
                })
-               console.log(response.data[0].Name)
+               console.log(response.data)
              }).catch(error => {
                console.log('error:', error)
              })
