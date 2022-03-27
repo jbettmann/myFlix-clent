@@ -81,7 +81,7 @@ export class ProfileView extends React.Component {
     // Delete a movie from FavoriteMovies list
     onRemoveFavorite = (e, movie) => {
         e.preventDefault();
-        const Username = localStorage.getItem('user');
+        const {Username} = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
         axios
