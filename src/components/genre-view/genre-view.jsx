@@ -12,7 +12,7 @@ export function GenreView ({genre, onBackClick, movies}) {
           <Col>
             <Card id="movie-card" variant="dark">
                 <Card.Body>
-                    <Card.Title>{genre.Name}</Card.Title>
+                    <Card.Title >{genre.Name}</Card.Title>
                     <Card.Text>
                         <span className="label">Description: </span>
                         <span className="value">{genre.Description}</span>
