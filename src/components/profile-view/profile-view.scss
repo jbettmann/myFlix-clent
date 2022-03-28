@@ -41,3 +41,18 @@
   display: flex;
   justify-content: space-around;
 }
+
+#profile-card {
+  align-items: normal;
+}
+
+form {
+  label {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+}
+
+input::placeholder {
+  font-size: 0.85rem;
+}
