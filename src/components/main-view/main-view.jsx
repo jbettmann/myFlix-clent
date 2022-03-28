@@ -44,10 +44,12 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   componentDidMount() {
     // Checks if user is logged in when page is loaded. gets token from local stroage 
     let accessToken = localStorage.getItem('token');
+    let user = localStorage.getItem('user');
     if (accessToken !== null) {
       this.props.setUser({
-        user: localStorage.getItem('user')
+        user: user
       });
+      
       // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
       this.getMovies(accessToken)
     }
@@ -134,6 +136,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
                 return (
                   <Row className="justify-content-start ">
+                    
                     <MoviesList movies={movies} />
                   </Row>
                     //** Below removed for Redux */
@@ -228,16 +231,20 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 return (
                   <Col sm={12} md={8}>
                     <DirectorView 
-                      // movies={movies.filter(movie => movie.Director.Name === match.params.name)} 
+                      movies={movies.filter(movie => movie.Director.find(d => d.Name === match.params.name))} 
                       // director={movies.find(m => m.Director.Name === match.params.name).Director } 
                       directorName={match.params.name}
                       onBackClick={() => history.goBack()}/>
                   </Col>
               )}}/>
 
-              <Route path={`/users/${user}`} render={({ match, history }) => {
+              <Route path={`/users/:username`} render={({ history }) => {
+                let user= localStorage.getItem('user');
+                console.log(movies)
                 if (!user){ 
+                  
                   return <Redirect to="/login" />
+                  
                   }
 
                 return (
