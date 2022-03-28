@@ -8,6 +8,7 @@ import './profile-view.scss';
 import { Link } from 'react-router-dom';
 
 import { Container, Card, Button, Row, Col, Form, Figure } from 'react-bootstrap';
+import { FavoriteMovies } from './favorite-movies';
 
 
 export class ProfileView extends React.Component {
@@ -16,9 +17,9 @@ export class ProfileView extends React.Component {
         
     }
     
-    componentDidMount() {
-        this.props.setUser();
-    }
+    componentDidMount() {   
+      this.getUser();
+  }
 
     onLoggedOut() {
         localStorage.removeItem('token');
@@ -37,13 +38,14 @@ export class ProfileView extends React.Component {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
+              console.log(response.data)
               this.props.setUser({
                   Username: response.data.Username,
                   Password: response.data.Password,
                   Email: response.data.Email,
                   Birthday: response.data.Birthday,
                   FavoriteMovies: response.data.FavoriteMovies,
-              });
+              }); 
             })
             .catch(function (error) {
                 console.log(error);
@@ -81,7 +83,7 @@ export class ProfileView extends React.Component {
     // Delete a movie from FavoriteMovies list
     onRemoveFavorite = (e, movie) => {
         e.preventDefault();
-        const {Username} = localStorage.getItem('user');
+        const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
         axios
@@ -151,14 +153,14 @@ export class ProfileView extends React.Component {
 
     render() {
         const { onBackClick, movies } = this.props;
-        const { FavoriteMovies, Username, Email, Birthday } = this.props.user;
+        const { FavoriteMovies, Username, Email, Birthday } = this.props.user || {};
 
         return (
             <Container className="profile-view" align="center">
               <Row>
                   <Col>
                       <Card id="movie-card">
-                          <Card.Body >
+                          <Card.Body id="profile-card" >
                               <Card.Title>Profile</Card.Title>
                               <Form 
                                   className="update-form"
@@ -227,7 +229,7 @@ export class ProfileView extends React.Component {
                       </Card>
                   </Col>
               </Row>
-              <Card>
+              {/* <Card>
                 <Card.Body>
                   <Row>
                     <Col xs={12} >
@@ -235,7 +237,7 @@ export class ProfileView extends React.Component {
                     </Col>
                   </Row>
                   <Row>
-                    {FavoriteMovies.length === 0 && (
+                    {FavoriteMovies != null && FavoriteMovies.length === 0 && (
                       <div className="text-center">No Favorite Movies</div>
                       )}
                     {FavoriteMovies.length > 0 &&
@@ -261,7 +263,7 @@ export class ProfileView extends React.Component {
                     })}
                   </Row>
                 </Card.Body>
-              </Card>
+              </Card>  */}
               <div className="backButton">
                   <Button variant="outline-primary" onClick={() => { onBackClick(null); }}>Back</Button>
               </div>
