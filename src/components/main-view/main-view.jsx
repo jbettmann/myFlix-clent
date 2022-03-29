@@ -16,7 +16,7 @@ import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { NavList } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
-import { ProfileView } from '../profile-view/profile-view';
+import ProfileView from '../profile-view/profile-view';
 import { SpinnerView } from '../spinner/spinner';
 
 
@@ -61,9 +61,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
     // ** Removed for Redux use
     // this.setState({
     //   user: authData.user.Username // username saved in user state
-    this.props.setUser({
-      user: authData.user.Username
-    });
+    this.props.setUser(authData.user);
     // auth info recieved from handleSubmit method on LoginView is saved to localStorage. 
     // localStorage has setItem method taking two arguments: key and value. 
     localStorage.setItem('token', authData.token);
@@ -91,18 +89,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
       console.log(error);
     });
   }
-  // logs user out and sets state to null
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.props.setUser( {
-      Username: '',
-      Email: '',
-      Password: '',
-      Birthday: '',
-      FavoriteMovies: [], 
-    });
-  }
+
 
     
   // renders what will be displayed on the screen. The visual representation of component.
@@ -184,7 +171,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 } 
 
                 return ( 
-                  <Col sm="auto" md={8} id="movie-view">
+                  <Col sm="auto" md={6} id="movie-view">
                     {/* .goback() is build-in function to go to previous page */}
                     <MovieView 
                       movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
@@ -239,17 +226,14 @@ class MainView extends React.Component { //with extends, basiclly saying "create
               )}}/>
 
               <Route path={`/users/:username`} render={({ history }) => {
-                let user= localStorage.getItem('user');
-                console.log(movies)
-                if (!user){ 
-                  
-                  return <Redirect to="/login" />
-                  
-                  }
+                
+                // if (!user){ 
+                //   return <Redirect to="/login" />
+                // }
 
                 return (
                   <Col sm={12} md={10}>
-                    <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
+                    <ProfileView  onBackClick={() => history.goBack()} />
                   </Col>
               )}}/>
           </Row>
@@ -260,14 +244,26 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 }
 // ** Added for Redux
 // maps state of store to the props being passed into component. 
-let mapStateToProps = state => {
+let mapStateToProps = (state) => {
   return { 
     movies: state.movies,
     user: state.user 
   };
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setUser: (user) => {
+      dispatch(setUser(user))
+    },
+    setMovies: (movie) => {
+      dispatch(setMovies(movie))
+    }
+
+  }
+}
+
 // ** Added for Redux
 // MainView no longer carries its own state. We pass the action, setMovies, as a prop into MainView
 // { setMovies } passed to the props vis connect() and wrapped into the dispatch() function of store ( a way for the store to know that action has been called). 
-export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+export default connect(mapStateToProps, mapDispatchToProps)(MainView);

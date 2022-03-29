@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setUser, updateUser } from '../../actions/actions';
+
+import { updateUser, setUser } from '../../actions/actions';
 
 import './profile-view.scss';
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { Container, Card, Button, Row, Col, Form, Figure } from 'react-bootstrap
 import { FavoriteMovies } from './favorite-movies';
 
 
-export class ProfileView extends React.Component {
+class ProfileView extends React.Component {
     constructor() {
         super();
         
@@ -19,14 +20,15 @@ export class ProfileView extends React.Component {
     
     componentDidMount() {   
       this.getUser();
+      console.log('mounted');
   }
 
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.setUser({
-            user: null,
-        });
+        // this.setUser({
+        //     user: null,
+        // });
         window.open('/', '_self');
     }
 
@@ -154,6 +156,7 @@ export class ProfileView extends React.Component {
     render() {
         const { onBackClick, movies } = this.props;
         const { FavoriteMovies, Username, Email, Birthday } = this.props.user || {};
+        console.log(this.props.user);
 
         return (
             <Container className="profile-view" align="center">
@@ -229,7 +232,8 @@ export class ProfileView extends React.Component {
                       </Card>
                   </Col>
               </Row>
-              {/* <Card>
+              <br></br>
+              <Card id='movie-card'>
                 <Card.Body>
                   <Row>
                     <Col xs={12} >
@@ -249,12 +253,12 @@ export class ProfileView extends React.Component {
                       return (
                         <Col xs={12} sm={6} md={6} lg={3} key={movie._id} className='fav-movies'>
                           <Figure>
-                          <Link to={`/movies/${movie._id}`}>
+                          <Link  id="noLinkLook" to={`/movies/${movie._id}`}>
                             <Figure.Image src={movie.ImageUrl} crossOrigin="true" alt={movie.Title}/>
                             <Figure.Caption>
                               {movie.Title}
                             </Figure.Caption>
-                          </Link>
+                          </Link  >
                           <Button size="sm" variant="danger" value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove</Button>
                           </Figure>
                         </Col>
@@ -263,9 +267,9 @@ export class ProfileView extends React.Component {
                     })}
                   </Row>
                 </Card.Body>
-              </Card>  */}
+              </Card>
               <div className="backButton">
-                  <Button variant="outline-primary" onClick={() => { onBackClick(null); }}>Back</Button>
+                  <Button variant="light"  onClick={() => { onBackClick(null); }}>Back</Button>
               </div>
               <br />
             </Container>
@@ -287,13 +291,15 @@ ProfileView.propTypes = {
   getUser: PropTypes.func,
   onBackClick: PropTypes.func,
   setUser: PropTypes.func,
-  updateUser: PropTypes.func
+  updateUser: PropTypes.func,
+  user: PropTypes.shape({})
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    user: state.user,
-    movies: state.movies
+    movies: state.movies,
+    user: state.user
   }
 }
 
