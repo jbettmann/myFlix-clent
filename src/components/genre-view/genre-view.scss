@@ -1,4 +1,9 @@
-$background-color: #f0f0ec;
+$color: #f0f0ec;
+$background-color: #373737;
+$secondary: #373737;
+$logo: #3d2661;
+$font-weight: 300;
+$bold: 600;
 
 #noLinkLook {
   text-decoration: none;
@@ -9,7 +14,11 @@ $background-color: #f0f0ec;
 }
 
 #movie-card {
+  color: $color;
+
+  background-color: $background-color;
   border-radius: 0.5rem;
+  filter: drop-shadow(12px -2px 20px #000);
 }
 
 #favorite-movie {
