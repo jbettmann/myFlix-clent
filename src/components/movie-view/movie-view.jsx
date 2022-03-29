@@ -37,7 +37,11 @@ export class MovieView extends React.Component {
                     </div>
                     <div className="movie-view-div">
                       <span className="label">Actors: </span>
-                      <span className="value">{movie.Actors}</span>
+                      {movie.Actors.map((actors, i) => (
+                        <span className="value" key={i}>{actors}</span> ))
+                        .reduce((prev, curr) => [ prev, ", ", curr ])
+                      } 
+                      
                     </div>
                     <div className="movie-view-div">
                       <span className="label">Featured: </span>
