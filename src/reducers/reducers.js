@@ -34,6 +34,7 @@ function movies(state = [], action) {
 /* Users */
 
 function user(state = null, action) {
+  console.log('action', action)
   switch(action.type) {
     case SET_USER:
       return action.user;
