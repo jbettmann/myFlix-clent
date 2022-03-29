@@ -1,8 +1,12 @@
-$background-color: #f0f0ecf6;
+$color: black;
+$background-color: #373737;
+$secondary: #3d2661;
 $logo: #3d2661;
+$font-weight: 300;
+$bold: 600;
 
 #nav {
-  background-color: $background-color;
+  background-color: lighten($secondary, 50%);
 }
 
 #logo {
@@ -10,13 +14,25 @@ $logo: #3d2661;
   color: #3d2661;
 }
 
+.navbar-brand {
+  margin-left: 2rem !important;
+}
+
+.navbar-toggler {
+  margin-right: 2rem !important;
+}
+
 .navbar-nav {
   text-align: right;
 }
 
+.navbar-nav .nav-link {
+  padding-right: 2rem !important;
+}
+
 #logout-button {
-  width: 30%;
   align-self: right;
+  margin-right: 2rem !important;
 }
 
 @media (min-width: 992px) {

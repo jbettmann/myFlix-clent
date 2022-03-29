@@ -1,3 +1,10 @@
+$color: black;
+$background-color: #373737;
+$secondary: #373737;
+$logo: #3d2661;
+$font-weight: 300;
+$bold: 600;
+
 .fav-movies {
   margin-bottom: 15px;
 
@@ -28,9 +35,13 @@
   margin-bottom: 15px;
 }
 
-#moive-card {
-  background-color: #373737;
+#movie-card {
+  height: 100%;
+  color: $color;
+  position: relative;
+  background-color: $background-color;
   border-radius: 0.5rem;
+  filter: drop-shadow(12px -2px 20px #000);
 }
 
 #label {
@@ -55,4 +66,8 @@ form {
 
 input::placeholder {
   font-size: 0.85rem;
+}
+
+.favoriteMovie-card {
+  margin-top: 1rem;
 }

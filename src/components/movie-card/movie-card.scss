@@ -1,18 +1,29 @@
+$color: #f0f0ec;
+$background-color: #373737;
 $secondary: #373737;
 $logo: #3d2661;
+$font-weight: 300;
+$bold: 600;
 
 .card-title {
-  color: #fff;
+  color: $color;
 }
 
 #movie-card {
+  height: 100%;
+  color: $color;
   position: relative;
-  background-color: $secondary;
+  background-color: $background-color;
   border-radius: 0.5rem;
+  filter: drop-shadow(12px -2px 20px #000);
 }
 
 #movie-card__main {
   margin: 1rem 0;
+}
+
+#movie-body-card {
+  justify-content: space-between;
 }
 
 #noLinkLook {
@@ -34,11 +45,6 @@ $logo: #3d2661;
     color: lighten($logo, 20%);
     cursor: pointer;
   }
-}
-
-#btn-link {
-  background-color: darken($secondary, 7%);
-  border-color: darken($secondary, 7%);
 }
 
 .card-body {
