@@ -12,7 +12,7 @@ import './login-view.scss';
 export function LoginView(props) {
 
   useEffect(() => {
-    setUser({ Username: '', Password: '' });
+    // setUser({ username: '', password: '' });
   }, []);
   // set useState() to empty string. useState returns array of paired values destructured by []
   // useState() creats local state and preserves between render cycles. 
@@ -56,6 +56,8 @@ const validate = () => {
     .then(response => {
       const data = response.data;
       props.onLoggedIn(data);
+      console.log('log in', response.data)
+      // this.props.setUser({user: response.data.user})
     })
     .catch(e => {
       console.log('no such user')
