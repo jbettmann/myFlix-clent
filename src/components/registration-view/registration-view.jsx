@@ -5,7 +5,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { setUser, validateInput } from '../../actions/actions';
+import { setUser } from '../../actions/actions';
 
 import './registration-view.scss';
 
@@ -169,7 +169,6 @@ RegistrationView.propTypes = {
     Birthday: PropTypes.number.isRequired
   }),
   setUser: PropTypes.func,
-  validateInput: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -178,4 +177,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setUser, validateInput })(RegistrationView);
+export default connect(mapStateToProps, { setUser })(RegistrationView);
