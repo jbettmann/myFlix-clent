@@ -169,7 +169,7 @@ class ProfileView extends React.Component {
                 <Col xs={12} sm={12} md={6} lg={4} >
                   <Card id="user-info">  
                     <Card.Body id="profile-card" className="user-info" > 
-                      <Card.Title id="profile-title">Profile</Card.Title>
+                      <Card.Title id="profile-title">Account Info</Card.Title>
                       <Card.Text align="left" >
                         <span id="profile-label">Username: </span>
                         <span id="profile-value">{Username}</span>
