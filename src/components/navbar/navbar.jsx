@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import {Link} from "react-router-dom"
 import { connect } from 'react-redux';
 
 import { setUser } from '../../actions/actions';
@@ -9,7 +10,7 @@ import './nav.scss';
 
 export function NavList() {
   const user = localStorage.getItem('user');
-  console.log(user);
+  // console.log(user);
 
   // logs user out and sets state to null
   const onLoggedOut = () => {
@@ -43,7 +44,7 @@ const isAuth = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto Nav-list align-items-end" align="right">
               {isAuth() && (
-              <Nav.Link  href={`/users/${user}`}>Profile</Nav.Link>
+              <Nav.Link as={Link} to={`/users/${user}`}>Profile</Nav.Link>
               )}
               {isAuth() && (
               <Button id="logout-button" variant="outline-light"  md={1} onClick={() => { onLoggedOut() }}>Logout</Button>

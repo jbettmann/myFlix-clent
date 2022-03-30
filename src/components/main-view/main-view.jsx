@@ -44,28 +44,40 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   componentDidMount() {
     // Checks if user is logged in when page is loaded. gets token from local stroage 
     let accessToken = localStorage.getItem('token');
-    let user = localStorage.getItem('user');
+    let Username = localStorage.getItem('user');
+
     if (accessToken !== null) {
-      this.props.setUser({
-        user: user
-      });
-      
+      axios
+          .get(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
+              headers: { Authorization: `Bearer ${accessToken}` },
+          })
+          .then((response) => {
+            console.log(response.data)
+            this.props.setUser(response.data); 
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+      }
+
       // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
       this.getMovies(accessToken)
     }
-  }
+  
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user. 
   onLoggedIn(authData) {
-    console.log(authData);
+    console.log('onLogIn: ', authData);
     // ** Removed for Redux use
     // this.setState({
     //   user: authData.user.Username // username saved in user state
     this.props.setUser(authData.user);
+
     // auth info recieved from handleSubmit method on LoginView is saved to localStorage. 
     // localStorage has setItem method taking two arguments: key and value. 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+  
 
     // gets movies once user is logged in. 'this' refers to object itself, aka MainView class. 
     this.getMovies(authData.token);
@@ -96,6 +108,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   render() {
     // const { user } = this.state; ** Removed for Redux use
     const { movies,  user  } = this.props; // ** movies and user removed from this.state and now extracted from this.prop for Redux
+    console.log('mainview: ', user);
 
     // load spinner if no list loads 
 
@@ -136,19 +149,6 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 )
               }} />
 
-              < Route path="/users/:username" render={({ history }) => {
-                
-                // if (!user){ 
-                //   return <Redirect to="/login" />
-                // }
-
-                return (
-                  <Col sm={12} md={10}>
-                    <ProfileView  user={user} onBackClick={() => history.goBack()} />
-                  </Col>
-                  )
-                }} /> 
-
               <Route path="/login" render={() => {
                   if (user) {
                     return <Redirect to="/" />;
@@ -185,10 +185,11 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
                 return ( 
                   <Col sm="auto" md={6} id="movie-view">
+                    {/* .goback() is build-in function to go to previous page */}
                     <MovieView 
                       movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
                   </Col>
-                  )}} />
+              )}} />
 
               <Route path="/genres/:name" render={({ match, history }) => {
                 if (!user) {
@@ -237,6 +238,17 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   </Col>
               )}}/>
 
+              <Route path="/users/:username" render={({ match, history }) => {
+                
+                // if (!user){ 
+                //   return <Redirect to="/login" />
+                // }
+
+                return (
+                  <Col >
+                    <ProfileView onBackClick={() => history.goBack()} />
+                  </Col>
+              )}}/>
           </Row>
         </Container>
       </Router>
