@@ -136,6 +136,19 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                 )
               }} />
 
+              < Route path="/users/:username" render={({ history }) => {
+                
+                // if (!user){ 
+                //   return <Redirect to="/login" />
+                // }
+
+                return (
+                  <Col sm={12} md={10}>
+                    <ProfileView  user={user} onBackClick={() => history.goBack()} />
+                  </Col>
+                  )
+                }} /> 
+
               <Route path="/login" render={() => {
                   if (user) {
                     return <Redirect to="/" />;
@@ -172,11 +185,10 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
                 return ( 
                   <Col sm="auto" md={6} id="movie-view">
-                    {/* .goback() is build-in function to go to previous page */}
                     <MovieView 
                       movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
                   </Col>
-              )}} />
+                  )}} />
 
               <Route path="/genres/:name" render={({ match, history }) => {
                 if (!user) {
@@ -225,17 +237,6 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   </Col>
               )}}/>
 
-              <Route path="/users/:username" render={({ history }) => {
-                
-                // if (!user){ 
-                //   return <Redirect to="/login" />
-                // }
-
-                return (
-                  <Col sm={12} md={10}>
-                    <ProfileView  onBackClick={() => history.goBack()} />
-                  </Col>
-              )}}/>
           </Row>
         </Container>
       </Router>

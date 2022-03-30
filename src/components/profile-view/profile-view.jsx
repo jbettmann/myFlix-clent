@@ -19,9 +19,8 @@ class ProfileView extends React.Component {
     }
     
     componentDidMount() {   
-      this.getUser();
-      console.log('mounted');
-  }
+      this.getUser()
+    }
 
     onLoggedOut() {
         localStorage.removeItem('token');
