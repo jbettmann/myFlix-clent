@@ -225,7 +225,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   </Col>
               )}}/>
 
-              <Route path={`/users/:username`} render={({ history }) => {
+              <Route path="/users/:username" render={({ history }) => {
                 
                 // if (!user){ 
                 //   return <Redirect to="/login" />
