@@ -4,8 +4,7 @@ export const SET_MOVIES = 'SET_MOVIES'; // initializes the movies list with movi
 export const SET_FILTER = 'SET_FILTER'; // sets filter to filter movies list
 export const SET_USER = 'SET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
-export const ADD_FAVORITE = 'ADD_FAVORITE';
-export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+
 
 // think of funcitons as event constructors. (value) can be name whatever you want. 
 export function setMovies(value) {
@@ -34,19 +33,5 @@ export function updateUser(user) {
   return {
     type: UPDATE_USER,
     user
-  }
-}
-
-export function addFavorite(movie) {
-  return {
-    type: ADD_FAVORITE,
-    movie
-  }
-}
-
-export function removeFavorite(movie) {
-  return {
-    type: REMOVE_FAVORITE,
-    movie
   }
 }

@@ -4,9 +4,7 @@ import {
   SET_FILTER,
   SET_MOVIES, 
   SET_USER,   
-  UPDATE_USER,
-  ADD_FAVORITE,
-  REMOVE_FAVORITE } from "../actions/actions";
+  UPDATE_USER } from "../actions/actions";
 
 
 // if fucntions are "concerned" by the action, it will change the state
@@ -48,27 +46,13 @@ function user(state = null, action) {
   }
 }
 
-function favoriteMovies(state = [], action) {
-  switch(action.type) {
-    case ADD_FAVORITE:
-      return [
-        ...state,
-        action.movie
-      ];
-    case REMOVE_FAVORITE:
-      return state.filter(movie => movie !== action.movie);
-    default:
-      return state;
-  }
-}
 
 
 //  a combinded reducer (reducer made out of other reducers)
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,
-    user,
-    favoriteMovies
+    user
   });
 
 
