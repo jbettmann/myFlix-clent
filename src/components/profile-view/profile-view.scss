@@ -44,6 +44,10 @@ $bold: 600;
   filter: drop-shadow(12px -2px 20px #000);
 }
 
+.user-info {
+  padding: 2rem !important;
+}
+
 #label {
   text-align: left;
 }
@@ -57,13 +61,37 @@ $bold: 600;
   align-items: normal;
 }
 
-form {
-  label {
-    font-size: 0.9rem;
-    margin-top: 1rem;
-  }
+#profile-info-body {
+  display: flex;
 }
 
+#user-info {
+  color: $color !important;
+  position: relative;
+  background-color: lighten($logo, 50%);
+  border-radius: 0.5rem;
+  filter: drop-shadow(12px -2px 20px #000);
+}
+
+#profile-title {
+  color: $color !important;
+}
+
+#profile-label {
+  color: $color !important;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+#profile-value {
+  color: $color !important;
+  font-weight: $bold;
+  font-size: 1.1rem;
+}
+
+.user-update {
+  max-width: 800px !important;
+}
 input::placeholder {
   font-size: 0.85rem;
 }

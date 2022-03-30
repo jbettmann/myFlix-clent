@@ -150,7 +150,7 @@ export function RegistrationView(props) {
               <Button type="submit" className="mt-4" variant="light" onClick={handleSubmit}>Submit</Button>
             </div>
             <div>
-              <Link className="mt-5" to={'/'}>Already Registered?</Link>
+              <Link id="btn-link" className="mt-5" to={'/'}>Already Registered?</Link>
             </div>
           </Form.Group>
         </Form>

@@ -24,8 +24,8 @@ export class MovieCard extends React.Component {
           <Card.Title align='center' >{movieData.Title}</Card.Title>
           <Link to={`/movies/${movieData._id}`}>
             <Button variant="light" className="movie-card-button" align='center'>Open</Button>
-          </Link>  
-          <Star size={20} className="star" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)}/>    
+          </Link>
+          <Star size={20} className="star" value={movieData._id} onClick={(e) => addFavoriteMovie(e, movieData)}/> 
         </Card.Body>
       </Card>
     );
