@@ -15,7 +15,7 @@ export function addFavoriteMovie(e, movie) {
           })
           .then((response) => {
           console.log(response);
-          alert("Movie add to your Favorties!");
+          alert("Movie add to Favortie Movies!");
       })
       .catch(function (error) {
           console.log(error);
