@@ -28,7 +28,9 @@ node_modules
 .cache
 .parcel-cache
 
-dist/
+dist/*
+!dist/_redirects
+
 
 .DS_Store
 
