@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios'; 
-import { connect } from 'react-redux';
-import { addFavorite } from '../../actions/actions';
+
 
 
 export function addFavoriteMovie(e, movie) {
@@ -22,20 +21,3 @@ export function addFavoriteMovie(e, movie) {
           console.log(error);
       });
 };
-
-
-const mapStateToProps = state => {
-  return {
-    movies: state.movies
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addFavorite: (movie) => {
-      dispatch(addFavorite(movie));
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(addFavoriteMovie);
