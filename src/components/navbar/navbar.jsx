@@ -39,7 +39,7 @@ const isAuth = () => {
   return  (
     <Navbar id="nav" sticky="top" expand="md" >
       <Container>
-        <Navbar.Brand href="/" id="logo" className="fs-3">myFlix</Navbar.Brand>
+        <Navbar.Brand as={Link} to={`/`} id="logo" className="fs-3">myFlix</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto Nav-list align-items-end" align="right">

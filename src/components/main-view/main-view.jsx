@@ -240,9 +240,9 @@ class MainView extends React.Component { //with extends, basiclly saying "create
 
               <Route path="/users/:username" render={({ match, history }) => {
                 
-                // if (!user){ 
-                //   return <Redirect to="/login" />
-                // }
+                if (!user){ 
+                  return <Redirect to="/login" />
+                }
 
                 return (
                   <Col >

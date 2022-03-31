@@ -32,16 +32,16 @@ export const DirectorView = ({directorName, onBackClick, movies}) => {
                  if (d.Name === directorName) {
                   return (
                     <Card.Body key={i}>   
-                        <Card.Title>{d.Name}</Card.Title>
-                        <Card.Text>
+                        <Card.Title >{d.Name}</Card.Title>
+                        <Card.Text align="left">
                             <span className="label">Bio: </span>
                             <span className="value">{d.Bio}</span>
                         </Card.Text>
-                        <Card.Text>
+                        <Card.Text align="left">
                             <span className="label">Birth: </span>
                             <span className="value">{d.Birth}</span>
                         </Card.Text>
-                        <Card.Text>
+                        <Card.Text align="left">
                             <span className="label">Death: </span>
                             <span className="value">{d.Death}</span>
                         </Card.Text>  

@@ -18,23 +18,15 @@ class ProfileView extends React.Component {
         
     }
     
-    componentDidMount() {   
-      let accessToken = localStorage.getItem('token');
+    // componentDidMount() {   
+    //   let accessToken = localStorage.getItem('token');
       
-      if (accessToken !== null) {
-        this.props.setUser(this.props.user)
-      }
-    }
+    //   if (accessToken !== null) {
+    //     this.props.setUser(this.props.user)
+    //   }
+    // }
     
 
-    onLoggedOut() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        // this.setUser({
-        //     user: null,
-        // });
-        window.open('/', '_self');
-    }
 
     // getUser() {
     //     const Username = localStorage.getItem('user');
