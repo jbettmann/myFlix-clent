@@ -1,4 +1,4 @@
-# myFlix-clent
+# myFlix-clent [![Netlify Status](https://api.netlify.com/api/v1/badges/61f8e4ac-639e-4296-9176-e9cf9c836958/deploy-status)](https://app.netlify.com/sites/bettsmyflix/deploys)
 
 ##### Description:
 
