@@ -17,15 +17,6 @@ class ProfileView extends React.Component {
         super();
         
     }
-    
-    // componentDidMount() {   
-    //   let accessToken = localStorage.getItem('token');
-      
-    //   if (accessToken !== null) {
-    //     this.props.setUser(this.props.user)
-    //   }
-    // }
-    
 
 
     // getUser() {
