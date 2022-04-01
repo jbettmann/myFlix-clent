@@ -2,7 +2,9 @@
 
 ##### Description:
 
-This client is the front-end of the myFlix application. It provide users with access to information about different movies, descriptions, directors, actors and genres. Users will be able to sign up, update their personal information, and create a list of their favorite and to-watch movies.
+This is the client-side/frontend single-page myFlix application. Is displays responsive and rich UI components implemented with react-bootstrap. It provide users with access to information about different movies, their descriptions, directors, actors and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies. This client-side myFlix application makes all its call to the myFlix RESTful API.
+
+Learn more about the [myFlix RESTful API](https://github.com/jbettmann/myFlix-app)
 
 ##### Live Demo:
 
