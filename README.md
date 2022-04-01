@@ -11,7 +11,7 @@ Check out the live demo of [myFlix](https://bettsmyflix.netlify.app/) app. To pl
 Username: Test1
 Password: password
 
-![screenshot of live myFlix homepage](/../README_SS/myFlix_screenshot.png)
+![screenshot of live myFlix homepage](../../README_SS/myFlix_screenshot.png)
 
 ##### Built With:
 
