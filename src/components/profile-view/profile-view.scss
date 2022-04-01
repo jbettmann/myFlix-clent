@@ -41,7 +41,7 @@ $bold: 600;
   position: relative;
   background-color: $background-color;
   border-radius: 0.5rem;
-  filter: drop-shadow(12px -2px 20px #000);
+  box-shadow: 2px 0px 30px 2px #000;
 }
 
 .user-info {
@@ -70,7 +70,7 @@ $bold: 600;
   position: relative;
   background-color: lighten($logo, 50%);
   border-radius: 0.5rem;
-  filter: drop-shadow(12px -2px 20px #000);
+  box-shadow: 2px 0px 30px 2px #000;
 }
 
 #profile-title {
