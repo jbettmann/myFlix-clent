@@ -7,7 +7,7 @@ import {
   UPDATE_USER } from "../actions/actions";
 
 
-// if fucntions are "concerned" by the action, it will change the state
+// if functions are "concerned" by the action, it will change the state
 // states that if the given action is "unrelated" to the reducer, then it should return whatever state it’s been given
 //  state = '' gives default value to state.
 function visibilityFilter(state = '', action) {
@@ -48,7 +48,7 @@ function user(state = null, action) {
 
 
 
-//  a combinded reducer (reducer made out of other reducers)
+//  a combined reducer (reducer made out of other reducers)
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,

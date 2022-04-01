@@ -15,7 +15,7 @@ export function LoginView(props) {
     // setUser({ username: '', password: '' });
   }, []);
   // set useState() to empty string. useState returns array of paired values destructured by []
-  // useState() creats local state and preserves between render cycles. 
+  // useState() create local state and preserves between render cycles. 
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 // Declare hook for each input
@@ -44,7 +44,7 @@ const validate = () => {
 }
 
   const handleSubmit = (e) => {
-    // prevents default behavior of page refresh/reload when button clicked/submited from <button type="submit".
+    // prevents default behavior of page refresh/reload when button clicked/submitted from <button type="submit".
     e.preventDefault();
     const isReq = validate();
     if(isReq) {
@@ -52,7 +52,7 @@ const validate = () => {
       Username: username,
       Password: password
     })
-    // onLoggedIn passed through prop is called. We grab the "data" becuase we want username AND token.
+    // onLoggedIn passed through prop is called. We grab the "data" because we want username AND token.
     .then(response => {
       const data = response.data;
       props.onLoggedIn(data);

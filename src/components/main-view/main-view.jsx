@@ -1,5 +1,5 @@
 
-// Requirment to create component
+// Requirement to create component
 import React from 'react';
 import axios from 'axios'; // Ajax operations 
 import { connect } from 'react-redux';
@@ -24,17 +24,17 @@ import './main-view.scss';
 
 
 // React.Component is like a template or blueprint for creating new components 
-// export "exposes" MainView, making it available for use by other components, modules and files. aka, youll be able import it into other files
-// creates MainView component. "class" states class component, oppposed to function component
+// export "exposes" MainView, making it available for use by other components, modules and files. aka, you'll be able import it into other files
+// creates MainView component. "class" states class component, opposite to function component
 
 // ** later date ** removed "export" for Redux use
-class MainView extends React.Component { //with extends, basiclly saying "create new MainView using React.Component template"
+class MainView extends React.Component { //with extends, basically saying "create new MainView using React.Component template"
 
   // React uses constructor method to create component
   constructor() {
       // OOP, call the constructor of parent class. Initializes component state. Without, Error occurs with this.state
       super();
-      // starting value of MainView state.  The place to initialize a state’s values since component hasnt been rendered yet. 
+      // starting value of MainView state.  The place to initialize a state’s values since component hasn't been rendered yet. 
       // this.state = {
           // movies: [], "** removed for Redux use"
           // user: null //default is logged out.
@@ -42,7 +42,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
   }
 
   componentDidMount() {
-    // Checks if user is logged in when page is loaded. gets token from local stroage 
+    // Checks if user is logged in when page is loaded. gets token from local storage 
     let accessToken = localStorage.getItem('token');
     let Username = localStorage.getItem('user');
 
@@ -60,7 +60,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
           });
       }
 
-      // if token is pressent, getMovies method is called which makes a GET request to 'movies' endpoint
+      // if token is present, getMovies method is called which makes a GET request to 'movies' endpoint
       this.getMovies(accessToken)
     }
   
@@ -73,7 +73,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
     //   user: authData.user.Username // username saved in user state
     this.props.setUser(authData.user);
 
-    // auth info recieved from handleSubmit method on LoginView is saved to localStorage. 
+    // auth info received from handleSubmit method on LoginView is saved to localStorage. 
     // localStorage has setItem method taking two arguments: key and value. 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
@@ -118,7 +118,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
         <Container>
           <Row id="main-view" className="justify-content-sm-center movies-list-container" >
             
-              {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to redner if match with URL) prop */}
+              {/* Route tells React your route. Each Route has a path(that expresses what it should match) and render()(what to render if match with URL) prop */}
               <Route exact path="/" render={() => {
                     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView.
                     
@@ -204,7 +204,7 @@ class MainView extends React.Component { //with extends, basiclly saying "create
                   )
                 } 
 
-                // getting movies async or returns if movies havent been added
+                // getting movies async or returns if movies haven't been added
                 return (
                   <Col sm={12} md={8} id="movie-view">
                     {/* Loop through genre names in movies array and returns movie with Genre without .Genre at end. When added .Genre will return genre info */}

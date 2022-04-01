@@ -1,4 +1,4 @@
-# myFlix-clent [![Netlify Status](https://api.netlify.com/api/v1/badges/61f8e4ac-639e-4296-9176-e9cf9c836958/deploy-status)](https://app.netlify.com/sites/bettsmyflix/deploys)
+# myFlix-client [![Netlify Status](https://api.netlify.com/api/v1/badges/61f8e4ac-639e-4296-9176-e9cf9c836958/deploy-status)](https://app.netlify.com/sites/bettsmyflix/deploys)
 
 ##### Description:
 
@@ -9,7 +9,7 @@ This client is the front-end of the myFlix application. It provide users with ac
 - Parcel (build tool)
 - React
 
-#### Technical Requirments:
+#### Technical Requirements:
 
 - Application must be a single-page application (SPA)
 - Must use state routing to navigate between views and share URLs
