@@ -11,7 +11,7 @@ import './registration-view.scss';
 
 export function RegistrationView(props) {
   // set useState() to empty string. useState returns array of paired values destructured by []
-  // useState() creats local state and preserves between render cycles. 
+  // useState() create local state and preserves between render cycles. 
   const [ name, setName ] = useState('');
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -83,7 +83,7 @@ export function RegistrationView(props) {
   };
 
   const handleSubmit = (e) => {
-    // prevents default behavior of page refresh/reload when button clicked/submited from <button type="submit".
+    // prevents default behavior of page refresh/reload when button clicked/submitted from <button type="submit".
     e.preventDefault();
     const isReq = validate();
     if(isReq) {
@@ -96,13 +96,13 @@ export function RegistrationView(props) {
       }).then(response => {
         const data = response.data;
         console.log(data);
-        alert(`You have succesfully registered, please login!` )
+        alert(`You have successfully registered, please login!` )
 
         window.open('/', '_self'); // '_self' so page opens in current tap
       }).catch(response => {
         const data = response.data;
         console.error(data);
-        alert(`Opps, somethings when wrong. Unable to register`);
+        alert(`Oops, somethings when wrong. Unable to register`);
       });
     }
   };
