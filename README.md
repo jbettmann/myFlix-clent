@@ -2,12 +2,30 @@
 
 ##### Description:
 
-This client is the front-end of the myFlix application. It provide users with access to information about different movies, descriptions, directors, actors and genres. Users will be able to sign up, update their personal information, and create a list of their favorite and to-watch movies .
+This client is the front-end of the myFlix application. It provide users with access to information about different movies, descriptions, directors, actors and genres. Users will be able to sign up, update their personal information, and create a list of their favorite and to-watch movies.
+
+##### Live Demo:
+
+Check out the live demo of [myFlix](https://bettsmyflix.netlify.app/) app. To play around, register yourself or sign in with the account:
+
+Username: Test1
+Password: password
+
+![screenshot of live myFlix homepage](../README_SS/myFlix_screenshot.png)
 
 ##### Built With:
 
 - Parcel (build tool)
 - React
+- React Redux
+- Hosted on Netlify
+
+##### Key Features:
+
+- Allows new users to register, and existing users to login/logout
+- Allows users to view details about movies, genres and directors
+- Users are able to update or delete their profile
+- Users are able to add/remove movies to their list of favorites
 
 #### Technical Requirements:
 
