@@ -16,6 +16,11 @@ $bold: 600;
   background-color: $background-color;
   border-radius: 0.5rem;
   filter: drop-shadow(12px -2px 20px #000);
+  overflow: hidden;
+  text-overflow: ellipsis; // makes sure title doesnt wrap and coloumn stay the same height on small screens
+  margin: auto;
+  width: 100%;
+
 }
 
 #movie-card__main {
