@@ -20,7 +20,6 @@ $bold: 600;
   text-overflow: ellipsis; // makes sure title doesn't wrap and column stay the same height on small screens
   margin: auto;
   width: 100%;
-
 }
 
 #movie-card__main {
@@ -52,7 +51,7 @@ $bold: 600;
   }
 }
 
-.card-body {
+.movie-card-body {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -20,7 +20,7 @@ export class MovieCard extends React.Component {
     return (
       <Card id="movie-card" variant="dark">
         <Card.Img variant="top" src={movieData.ImageUrl} crossOrigin="true" />
-        <Card.Body id="movie-body-card" >
+        <Card.Body className="movie-card-body" id="movie-body-card" >
           <Card.Title align='center' >{movieData.Title}</Card.Title>
           <Link to={`/movies/${movieData._id}`}>
             <Button variant="light" className="movie-card-button" align='center'>Open</Button>
