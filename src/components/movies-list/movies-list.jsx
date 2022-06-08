@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Col, Row }from 'react-bootstrap';
-import { connect } from 'react-redux';
+import React from "react";
+import PropTypes from "prop-types";
+import { Col, Row } from "react-bootstrap";
+import { connect } from "react-redux";
 
-import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
-import { MovieCard } from '../movie-card/movie-card';
+import { MovieCard } from "../movie-card/movie-card";
 
-import './movies-list.scss';
+import "./movies-list.scss";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { visibilityFilter } = state;
   return { visibilityFilter };
 };
@@ -17,35 +16,36 @@ function MoviesList(props) {
   const { movies, visibilityFilter } = props;
   let filteredMovies = movies;
 
-  if (visibilityFilter !== '') {
-    // .toLowerCase method returns same string in loswer case characters. 
-    filteredMovies = movies.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
+  if (visibilityFilter !== "") {
+    // .toLowerCase method returns same string in loswer case characters.
+    filteredMovies = movies.filter((m) =>
+      m.Title.toLowerCase().includes(visibilityFilter.toLowerCase())
+    );
   }
-
 
   return (
     <>
-      <Row id="movie-list-row"  > 
+      {/* <Row id="movie-list-row"  > 
         <Col md={4} id="movie-list-col" >
           <VisibilityFilterInput visibilityFilter={visibilityFilter} />
         </Col>
-      </Row>
-      {filteredMovies.map(m => (
+      </Row> */}
+      {filteredMovies.map((m) => (
         <Col lg={3} md={4} sm={6} sx={12} id="movie-card__main" key={m._id}>
-          <MovieCard movieData={m}  />
+          <MovieCard movieData={m} />
         </Col>
       ))}
     </>
-  )
+  );
 }
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      filter: PropTypes.func
+      filter: PropTypes.func,
     })
   ),
-  visibilityFilter: PropTypes.string
+  visibilityFilter: PropTypes.string,
 };
 
 // connects MoviesList to store
