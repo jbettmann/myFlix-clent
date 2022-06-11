@@ -36,16 +36,23 @@ export function NavList({ visibilityFilter }) {
           myFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto Nav-list align-items-center" align="right">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-flex-end"
+        >
+          <Nav className="Nav-list align-items-center" align="right">
             {isAuth() && (
               <>
-                <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-                <Nav.Link as={Link} to={`/users/${user}`}>
+                <VisibilityFilterInput
+                  className="nav__item"
+                  visibilityFilter={visibilityFilter}
+                />
+                <Nav.Link className="nav__item" as={Link} to={`/users/${user}`}>
                   Profile
                 </Nav.Link>
                 <Button
                   id="logout-button"
+                  className="nav__item"
                   variant="outline-light"
                   md={1}
                   onClick={() => {
