@@ -11,20 +11,13 @@ export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
     const { movieData } = this.props;
-    const image = document.querySelector(".movie-img");
-    console.log({ image });
 
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
       // <Card id="movie-card" variant="dark">
       <div className="movie-card__content">
         <Link className="movie-card" to={`/movies/${movieData._id}`}>
-          <div
-            style={{
-              width: image ? `${image.clientWidth}px` : 0,
-              height: image ? `${image.clientHeight}px` : 0,
-            }}
-          ></div>
+          <div></div>
           <Card.Img
             className="movie-img"
             variant="top"

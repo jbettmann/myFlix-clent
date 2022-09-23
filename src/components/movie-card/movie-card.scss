@@ -22,8 +22,11 @@ $black: #000;
   div {
     opacity: 0;
     z-index: 1;
+    height: 100%;
+    width: 100%;
     position: absolute;
     background-image: linear-gradient(transparent, $black);
+
     transition: all 0.7s;
   }
 }
