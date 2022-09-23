@@ -11,7 +11,7 @@ export class MovieCard extends React.Component {
   render() {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
     const { movieData } = this.props;
-    const image = document.querySelector("img");
+    const image = document.querySelector(".movie-img");
     console.log({ image });
 
     // use onMovieClick as callback on onClick event listener to change start of main-view
