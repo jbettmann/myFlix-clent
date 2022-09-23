@@ -4,22 +4,42 @@ $secondary: #373737;
 $logo: #3d2661;
 $font-weight: 300;
 $bold: 600;
+$black: #000;
 
 .card-title {
   color: $color;
 }
-
-#movie-card {
+.movie-card__content {
   height: 100%;
-  color: $color;
   position: relative;
-  background-color: $background-color;
-  border-radius: 0.5rem;
-  box-shadow: 2px 0px 30px 2px #000;
+}
+.movie-card {
+  color: $color;
+  cursor: pointer;
+  transition: all 0.7s;
   overflow: hidden;
   text-overflow: ellipsis; // makes sure title doesn't wrap and column stay the same height on small screens
-  margin: auto;
-  width: 100%;
+  div {
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    background-image: linear-gradient(transparent, $black);
+    transition: all 0.7s;
+  }
+}
+.movie-card:hover {
+  div {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .movie-title {
+    opacity: 1;
+    z-index: 2;
+  }
+  .movie-img {
+    transform: scale(1.1);
+  }
 }
 
 #movie-card__main {
@@ -28,6 +48,21 @@ $bold: 600;
 
 #movie-body-card {
   justify-content: space-between;
+}
+
+.movie-title {
+  text-align: center;
+  opacity: 0;
+  position: absolute;
+  bottom: 5px;
+
+  transition: all 0.7s;
+}
+
+.movie-img {
+  height: 100%;
+  box-shadow: 2px 0px 30px 2px #000;
+  transition: all 0.7s;
 }
 
 #noLinkLook {
@@ -42,9 +77,9 @@ $bold: 600;
 .star {
   color: lighten($logo, 50%);
   position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0.7rem;
+  bottom: 0.5rem;
+  right: 0.5rem;
+
   &:hover {
     color: lighten($logo, 20%);
     cursor: pointer;

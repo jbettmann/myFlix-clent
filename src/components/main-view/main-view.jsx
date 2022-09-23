@@ -128,14 +128,14 @@ class MainView extends React.Component {
 
                 if (movies.length === 0) {
                   return (
-                    <Col md={4} sm={6} id="movie-card__main">
+                    <Col lg={4} md={4} sm={6} id="movie-card__main">
                       <SpinnerView />
                     </Col>
                   );
                 }
 
                 return (
-                  <Row className="justify-content-start ">
+                  <Row className="justify-content-start movie-list">
                     <MoviesList movies={movies} />
                   </Row>
                   //** Below removed for Redux */
