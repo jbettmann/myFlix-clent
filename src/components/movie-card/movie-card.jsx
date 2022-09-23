@@ -1,8 +1,6 @@
 import React from "react";
 import { Star } from "react-bootstrap-icons";
-import axios from "axios";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { addFavoriteMovie } from "../add-favorite-function/add-favorite-function";
@@ -14,6 +12,8 @@ export class MovieCard extends React.Component {
     // movieData is "name of the prop" used in <MovieCard ... /> and onMovieClick is the function from main-view passed as prop
     const { movieData } = this.props;
     const image = document.querySelector("img");
+    let width = image.clientWidth;
+    let height = image.clientHeight;
 
     // use onMovieClick as callback on onClick event listener to change start of main-view
     return (
@@ -22,8 +22,8 @@ export class MovieCard extends React.Component {
         <Link className="movie-card" to={`/movies/${movieData._id}`}>
           <div
             style={{
-              width: `${image.clientWidth}px`,
-              height: `${image.clientHeight}px`,
+              width: width ? `${width}px` : 0,
+              height: height ? `${height}px` : 0,
             }}
           ></div>
           <Card.Img
