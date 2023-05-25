@@ -13,7 +13,7 @@ export const DirectorView = ({directorName, onBackClick, movies}) => {
            let token = localStorage.getItem('token');
            console.log('directorName', directorName)
            if (token) {
-             axios.get(`https://jordansmyflix.herokuapp.com/movies/directors/${directorName}`, {
+             axios.get(`https://my-flix-app.vercel.app/movies/directors/${directorName}`, {
                headers: {authorization: `Bearer ${token}`}
              }).then(response => {
                setDirector(response.data)

@@ -46,7 +46,7 @@ class MainView extends React.Component {
 
     if (accessToken !== null) {
       axios
-        .get(`https://jordansmyflix.herokuapp.com/users/${Username}`, {
+        .get(`https://my-flix-app.vercel.app/users/${Username}`, {
           headers: { Authorization: `Bearer ${accessToken}` },
         })
         .then((response) => {
@@ -82,7 +82,7 @@ class MainView extends React.Component {
   // getMovies helps with refactoring, to not repeat ourself. Executes a GET request to 'movies' endpoint.
   getMovies(token) {
     axios
-      .get("https://jordansmyflix.herokuapp.com/movies", {
+      .get("https://my-flix-app.vercel.app/movies", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
